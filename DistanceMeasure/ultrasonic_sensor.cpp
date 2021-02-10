@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 #include <iostream>
-#include <chrono>
-#include <thread>
+#include <unistd.h>
 using namespace std;
 
  
@@ -15,33 +14,33 @@ using namespace std;
 
 
 void setup() {
-		cout << "Wiring Pi..." << endl;
+        cout << "Wiring Pi..." << endl;
         wiringPiSetup();
         cout << "Setting Pin Modes..." << endl;
         pinMode(TRIG, OUTPUT);
         pinMode(ECHO, INPUT);
+        //TRIG pin must start LOW
+        cout << "Setting pin mode to LOW..." << endl;
+        digitalWrite(TRIG, LOW);
+        delay(500);
+        // delayMicroseconds(2);
+        // delay(500);
+        // sleep(2);
 }
  
 int getCM() {
-		//TRIG pin must start LOW
-        cout << "Setting pin mode to LOW..." << endl;
-        digitalWrite(TRIG, LOW);
-        delayMicroseconds(2);
+        // delay(10);
         //Send trig pulse
-        cout << "Sending TRIG pulse..." << endl;
         digitalWrite(TRIG, HIGH);
+        // sleep(0.00001);
         delayMicroseconds(10);
         digitalWrite(TRIG, LOW);
-		cout << "Sending ECHO pulse" << endl;
         //Wait for echo start
         while(digitalRead(ECHO) == 0);
-		cout << "ECHO end" << endl;
         //Wait for echo end
         long startTime = micros();
-        cout << "ECHO traveling..." << endl;
         while(digitalRead(ECHO) == 1);
         long travelTime = micros() - startTime;
-		cout << "ECHO travel complete." << endl;
         //Get distance in cm
         int distance = travelTime / 58;
  
@@ -49,13 +48,12 @@ int getCM() {
 }
  
 int main(void) {
-	cout << "Started Sensor System..." << endl;
+    cout << "Started Sensor System..." << endl;
     setup();
     while (TRUE)
     {
-        int dist=getCM();
-        cout << "Distance: %dcm\n" << dist << endl;
+        printf("Distance: %dcm\n", getCM());
+        delay(1000);
     }
-    delay(1000);
     return 0;
 }
