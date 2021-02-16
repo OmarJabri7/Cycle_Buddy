@@ -25,7 +25,6 @@ void setup() {
         delay(500);
         // delayMicroseconds(2);
         // delay(500);
-        // sleep(2);
 }
  
 int getCM() {
