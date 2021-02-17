@@ -73,11 +73,11 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 <!-- Contact Info -->
 ## Contact
-[Omar Jabri](https://github.com/OmarJabri7)
+Omar @[Omar Jabri](https://github.com/OmarJabri7)
 <br />
-[Chang Liu](https://github.com/Cliu1993)
+Chang @[Chang Liu](https://github.com/Cliu1993)
 <br />
-[Yifan Xie](https://github.com/Yifan-Xie)
+Yifan @[Yifan Xie](https://github.com/Yifan-Xie)
 <br />
 [Project address](https://github.com/OmarJabri7/Cycle_Buddy)
 
