@@ -1,7 +1,7 @@
 <h2 align="center">Cycle Buddy</h2>  
 <p align="center">
   <a href="https://github.com/OmarJabri7/Cycle_Buddy">
-    <img src="https://github.com/Yifan-Xie/Image/blob/Cycle_Buddy/pictures/Cycle_Buddy_Logo.png" alt="Logo" >
+    <img src="https://github.com/Yifan-Xie/Image/blob/Cycle_Buddy/pictures/Logo.png" alt="Logo" >
   </a>
   
   <p align="center">
