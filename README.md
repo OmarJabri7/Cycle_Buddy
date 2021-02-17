@@ -21,7 +21,7 @@
     <li><a href="#hardware">Hardware</a></li>       
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#Packages needed">Packages needed</a>
+    <li><a href="#Packages">Packages</a>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -55,7 +55,7 @@ Cycle Buddy is System that detects danger levels in bikers relative to drivers. 
 The step to finish the project.
 
 <!-- Getting Started -->
-## Packages needed
+## Packages
 Cmake and OpenCv now.
 
 <!-- Usage -->
