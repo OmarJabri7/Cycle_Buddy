@@ -57,7 +57,7 @@ The step to finish the project.
 
 <!-- Getting Started -->
 ## Packages
-Cmake and OpenCv now.
+Cmake, OpenCv, WiringPi
 
 <!-- Usage -->
 ## Usage
