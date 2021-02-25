@@ -11,9 +11,11 @@ using namespace std;
 #define TRIG 23
 #define ECHO 24
 
+static volatile int timeDetected = 0 ;
 
 
-void setup() {
+
+void setup_2() {
         cout << "Wiring Pi..." << endl;
         wiringPiSetup();
         cout << "Setting Pin Modes..." << endl;
@@ -23,15 +25,11 @@ void setup() {
         cout << "Setting pin mode to LOW..." << endl;
         digitalWrite(TRIG, LOW);
         delay(500);
-        // delayMicroseconds(2);
-        // delay(500);
 }
  
 int getCM() {
-        // delay(10);
         //Send trig pulse
         digitalWrite(TRIG, HIGH);
-        // sleep(0.00001);
         delayMicroseconds(10);
         digitalWrite(TRIG, LOW);
         //Wait for echo start
@@ -46,9 +44,9 @@ int getCM() {
         return distance;
 }
  
-int main(void) {
+int do_sonar(void) {
     cout << "Started Sensor System..." << endl;
-    setup();
+    setup_2();
     while (TRUE)
     {
         printf("Distance: %dcm\n", getCM());
