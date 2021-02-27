@@ -61,7 +61,14 @@ Cmake, OpenCv, WiringPi
 
 <!-- Usage -->
 ## Usage
-The method to use it.
+This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.<br/>
+Please follow these necessary steps: <br/>
+1. Link the necessary executables and libraries using CMake:
+`cmake .`
+2. Build the project using make:
+`make`
+3. Run the test file labeled Cycle_Buddy:
+`./Cycle_Buddy`
 
 <!-- Contributing -->
 ## Contributing
