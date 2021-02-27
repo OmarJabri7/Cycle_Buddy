@@ -10,7 +10,7 @@ using namespace std;
 
 class sensorSampleCallback : public SensorCallback{
     virtual void dataIn(int v){
-        printf("vel = %d\n", v);
+        printf("vel = %d m/s\n", v);
     }
 };
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
     Sensor* hallEffectSensor = new Sensor(pinIn,pinOut);
     sensorSampleCallback hallCallback;
     hallEffectSensor->setCallBack(&hallCallback);
-    hallEffectSensor->start(wheelRadius);
+    hallEffectSensor->start(pinIn, pinOut);
     getchar();
     hallEffectSensor->stop();
     delete hallEffectSensor;

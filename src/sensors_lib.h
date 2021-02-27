@@ -24,7 +24,7 @@ class Sensor{
 
         void setCallBack(SensorCallback* cb);
 
-        void start(int wheelRadius = 10);
+        void start(int pinIn, int pinOut);
 
         void stop();
 
@@ -36,7 +36,7 @@ class Sensor{
 
         SensorCallback* sensorCb = NULL;
 
-        static void run(Sensor* sensor);
+        static void run(Sensor* sensor, int pinIn, int pinOut);
 };
 
 #endif
