@@ -1,6 +1,5 @@
-#ifndef __SENSORSLIB.h
-#define __SENSORSLIB.h
-// namespace sensor;
+#ifndef __SENSORSLIB_h
+#define __SENSORSLIB_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <wiringPi.h>
@@ -8,6 +7,7 @@
 #include <unistd.h>
 #define _USE_MATHS_DEFINES
 #include <math.h>
+#include <thread>
 
 class SensorCallback{
 
@@ -18,33 +18,25 @@ class SensorCallback{
 
 class Sensor{
 
-    private:
-
-        int pinIn;
-        int pinOut;
-
     public:
 
+        Sensor(int pinIn, int pinOut);
 
-    Sensor(int pinIn, int pinOut){
-        this->pinIn = pinIn;
-        this->pinOut = pinOut;
-    }
+        void setCallBack(SensorCallback* cb);
 
-    void setPins(int pinIn, int pinOut){
-        this->pinIn = pinIn;
-        this->pinOut = pinOut;
-    }
+        void start(int wheelRadius = 10);
 
-    int getPins(){
-        return pinIn, pinOut;
-    }
+        void stop();
 
-    void setCallBack(SensorCallback* cb);
+    private:
 
-    void start(int wheelRadius);
+        std::thread* sensorThread = NULL;
 
-    void stop();
+        int running = 0;
+
+        SensorCallback* sensorCb = NULL;
+
+        static void run(Sensor* sensor);
 };
 
 #endif

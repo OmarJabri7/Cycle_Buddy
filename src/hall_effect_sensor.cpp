@@ -40,30 +40,30 @@ void handle(void){
 //     return 0;
 // }
 
-Sensor::Sensor(int pinIn,int pinOut){
+Sensor::Sensor(int pinIn, int pinOut){
     try{
         wiringPiSetup();
         pinMode(pinIn,INPUT);
         pinMode(pinOut,OUTPUT);
-        wiringPiISR(HALL, INT_EDGE_RISING, &handle);
+        wiringPiISR(pinIn, INT_EDGE_RISING, &handle); //Calls handle once pin edge is rising HIGH
     }
     catch(const char* error){
         cout << error << endl;
     }
 }
 
-void Sensor::setCallback(SensorCallback* cb){
-    SensorCallback = cb;
+void Sensor::setCallBack(SensorCallback* cb){
+    sensorCb = cb;
 }
 
 void Sensor::run(Sensor* hallEffect){
     hallEffect->running = 1;
     while(hallEffect->running){
-        if(hallEffect->SensorCallback){
-            hallEffect->SensorCallback->dataIn(timeDetected);
+        if(hallEffect->sensorCb){
+            hallEffect->sensorCb->dataIn(timeDetected);
         }
     }
-    exit();
+    exit(0);
 }
 
 void Sensor::start(int wheelRadius){
