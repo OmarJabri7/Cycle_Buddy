@@ -13,7 +13,6 @@ using namespace std;
 class hallSampleCallback : public SensorCallback{
     virtual void dataIn(double v){
         if(v != INIT){
-            // ofstream velocities("hall_log.txt",ios_base::app);
             printf("Velocity: %f m/s\n", v);
         }
     }
@@ -21,7 +20,6 @@ class hallSampleCallback : public SensorCallback{
 
 class sonarSampleCallback : public SensorCallback{
     virtual void dataIn(double t){
-        // ofstream distances("sonar_log.txt",ios_base::app);
         printf("Distance: %f cm\n", t/58);
     }
 };

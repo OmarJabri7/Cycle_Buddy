@@ -24,9 +24,9 @@ void Sensor::setCallBack(SensorCallback* cb){
 
 void Sensor::run_sonar(Sensor* sonar, int *pinIn, int *pinOut){
     sonar->running = 1;
-    digitalWrite(*pinOut, LOW);
-    delay(500);
     while(sonar->running){
+        digitalWrite(*pinOut, LOW);
+        delay(500);
         //Send trig pulse
         digitalWrite(*pinOut, HIGH);
         delayMicroseconds(10);
@@ -39,7 +39,6 @@ void Sensor::run_sonar(Sensor* sonar, int *pinIn, int *pinOut){
         long travelTime = micros() - startTime;
         //Get distance in cm
         if(sonar->sensorCb){
-            // double distance = travelTime / 58;
             sonar->sensorCb->dataIn(travelTime);
         }
     }
