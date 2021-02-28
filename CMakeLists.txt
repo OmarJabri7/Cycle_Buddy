@@ -10,8 +10,7 @@ include_directories(src)
 find_library(wiringPi_LIB wiringPi)
 
 add_executable(Cycle_Buddy 
-            src/hall_effect_test.cpp
-            src/hall_effect_sensor.cpp
-            src/ultrasonic_sensor.cpp)
+            src/sensors_test.cpp
+            src/sensors.cpp)
 
 target_link_libraries(Cycle_Buddy ${wiringPi_LIB})

@@ -13,18 +13,18 @@ class SensorCallback{
 
     public:
 
-        virtual void dataIn(int data) = 0;
+        virtual void dataIn(double data) = 0;
 };
 
 class Sensor{
 
     public:
 
-        Sensor(int pinIn, int pinOut);
+        Sensor(int *pinIn, int *pinOut);
 
         void setCallBack(SensorCallback* cb);
 
-        void start(int pinIn, int pinOut);
+        void start(int *pinIn, int *pinOut, const int sensorType);
 
         void stop();
 
@@ -36,7 +36,9 @@ class Sensor{
 
         SensorCallback* sensorCb = NULL;
 
-        static void run(Sensor* sensor, int pinIn, int pinOut);
+        static void run_hall(Sensor* sensor, int *pinIn, int *pinOut);
+        
+        static void run_sonar(Sensor* sensor, int *pinIn, int *pinOut);
 };
 
 #endif
