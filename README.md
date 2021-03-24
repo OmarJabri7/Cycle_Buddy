@@ -53,7 +53,15 @@ Cycle Buddy is System that detects danger levels in bikers relative to drivers. 
 
 
 ## Roadmap
-The step to finish the project.
+### Process of license plate recognition
+#### 1. Image capture
+#### 2. Image prepreocessing
+#### 3. License plate location
+#### 4. License plate location character segmentation
+#### 5. Character recognition 
+#### 6. Output the results
+
+### Threads of Sensors 
 
 <!-- Getting Started -->
 ## Packages
