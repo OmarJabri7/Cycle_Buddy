@@ -1,0 +1,45 @@
+\hypertarget{classSensorCallback}{}\doxysection{Sensor\+Callback Class Reference}
+\label{classSensorCallback}\index{SensorCallback@{SensorCallback}}
+
+
+{\ttfamily \#include $<$sensors\+\_\+lib.\+h$>$}
+
+Inheritance diagram for Sensor\+Callback\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSensorCallback}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d}{data\+In}} (double data)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that allows sensors to return their readings using threading callbacks. \begin{DoxyAuthor}{Author}
+Omar Jabri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d}\label{classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d}} 
+\index{SensorCallback@{SensorCallback}!dataIn@{dataIn}}
+\index{dataIn@{dataIn}!SensorCallback@{SensorCallback}}
+\doxysubsubsection{\texorpdfstring{dataIn()}{dataIn()}}
+{\footnotesize\ttfamily virtual void Sensor\+Callback\+::data\+In (\begin{DoxyParamCaption}\item[{double}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Public asbtract function accessed by each thread to return their readings. 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ data (type double) returned from the different sensors. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/sensors\+\_\+lib.\+h\end{DoxyCompactItemize}
