@@ -12,7 +12,14 @@
 using namespace std;
 #define INIT 2147483647
 
+/** Sample Call Back class inheriting SensorCallback, 
+    associated with the hall effect sensor
+ */
 class hallSampleCallback : public SensorCallback{
+    /** Call back functin associated with hall effect sensor to return the velocity readiings.
+    */
+    /** @param v - velocity of bicycle wheel reading from hall sensor
+    */
     virtual void dataIn(double v){
         if(v != INIT){
             auto time_now = chrono::system_clock::now();
@@ -22,8 +29,14 @@ class hallSampleCallback : public SensorCallback{
         }
     }
 };
-
+/** Sample Call Back class inheriting SensorCallback, 
+    associated with the sonar sensor
+ */
 class sonarSampleCallback : public SensorCallback{
+    /** Call back functin associated with sonar sensor to return the velocity readiings.
+    */
+    /** @param t - time of echo heading t obstacle and coming back as reading from sonar sensor
+    */
     virtual void dataIn(double t){
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);

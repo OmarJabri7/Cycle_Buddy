@@ -1,14 +1,5 @@
 #ifndef __SENSORSLIB_h
 #define __SENSORSLIB_H
-/** @brief This is a C++ library that includes abstract functions for both Soar and Hall Effect sensors.
-  Built into this library are the following attributes:
-  1- MultiThreading with calbacks for each sensor to run in parallel.
-  2- Functions for each sensor in the system.
-  3- Values that each thread can access simultaneously.
-  3- Sensors Callback classes that return the readings of each sensor.
-  @author Omar Jabri
-  @date March 2020
-  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <wiringPi.h>
@@ -17,6 +8,7 @@
 #define _USE_MATHS_DEFINES
 #include <math.h>
 #include <thread>
+// #include "firebase/app.h"
 
 /** Class that allows sensors to return their readings using threading callbacks.
     @author Omar Jabri
@@ -35,7 +27,7 @@ class SensorCallback{
     @date March 2020
      */
 class Sensor{
-    /** public functions./values accessible from threads.
+    /** public functions/values accessible from threads.
      */
     public:
         /** Default Sensor Constructor

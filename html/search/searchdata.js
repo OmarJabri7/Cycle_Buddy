@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "dhs",
+  0: "hs",
   1: "hs",
-  2: "ds"
+  2: "s"
 };
 
 var indexSectionNames =
@@ -15,7 +15,7 @@ var indexSectionNames =
 var indexSectionLabels =
 {
   0: "All",
-  1: "Data Structures",
+  1: "Classes",
   2: "Functions"
 };
 
