@@ -9,13 +9,9 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text=""
-        android:textColor="@color/black"
-        android:gravity="center_horizontal" />
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:id="@+id/distance_chart"
+        />
 </LinearLayout>

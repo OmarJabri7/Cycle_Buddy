@@ -1,15 +1,25 @@
 package com.example.cyclebuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.channels.FileLock;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         Thread serverThread = null;
 
-        private TextView text;
+        private LineChart distance_chart;
 
         public static final int SERVERPORT = 8080;
+
+        private boolean plot_data = true;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -29,10 +41,22 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            text = (TextView) findViewById(R.id.text);
+            distance_chart = (LineChart) findViewById(R.id.distance_chart);
 
+            distance_chart.getDescription().setEnabled(true);
+            distance_chart.getDescription().setText("Real Time distance data");
+            distance_chart.setTouchEnabled(false);
+            distance_chart.setDragEnabled(false);
+            distance_chart.setScaleEnabled(false);
+            YAxis leftYAxis = distance_chart.getAxisLeft();
+            leftYAxis.setEnabled(false);
+            distance_chart.setDrawGridBackground(false);
+            distance_chart.setPinchZoom(false);
+            distance_chart.setBackgroundColor(Color.WHITE);
+            LineData distance_data = new LineData();
+            distance_data.setValueTextColor(Color.WHITE);
+            distance_chart.setData(distance_data);
             updateConversationHandler = new Handler();
-
             this.serverThread = new Thread(new ServerThread());
             this.serverThread.start();
 
@@ -46,6 +70,36 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        private void addEntry(String readings){
+            LineData data = distance_chart.getData();
+            if(data != null){
+                ILineDataSet set = data.getDataSetByIndex(0);
+                if(set == null){
+                    set = createSet();
+                    data.addDataSet(set);
+                }
+                data.addEntry(new Entry(set.getEntryCount(),Float.parseFloat(readings)),0);
+                data.notifyDataChanged();
+                distance_chart.notifyDataSetChanged();
+                distance_chart.setMaxVisibleValueCount(150);
+                distance_chart.setData(data);
+                distance_chart.moveViewToX(set.getEntryCount());
+                YAxis right = distance_chart.getAxisRight();
+                right.setAxisMaximum(Float.parseFloat(readings) + 10);
+                right.setAxisMinimum(Float.parseFloat(readings) - 10);
+            }
+        }
+
+        private LineDataSet createSet(){
+            LineDataSet set = new LineDataSet(null, "Ultrasonic Data");
+            set.setAxisDependency(YAxis.AxisDependency.RIGHT);
+            set.setLineWidth(3);
+            set.setColor(Color.MAGENTA);
+            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            set.setCubicIntensity(0.2f);
+            return set;
         }
 
         class ServerThread implements Runnable {
@@ -66,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
 //                        text.setText("Distance: " + data + "\n");
 //                        CommunicationThread commThread = new CommunicationThread(socket);
 //                        new Thread(commThread).start();
-                        updateConversationHandler.post(new updateUIThread(data));
+                        addEntry(data);
+//                        updateConversationHandler.post(new updateUIThread(data));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -121,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                text.setText(text.getText().toString()+"Distance: "+ msg + "\n");
+                addEntry(this.msg);
             }
         }
     }
