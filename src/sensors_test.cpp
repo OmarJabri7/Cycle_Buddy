@@ -1,4 +1,5 @@
 #include "sensors_lib.h"
+#include "fast_cgi_web_api.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,14 +9,16 @@
 #include <chrono>
 #include <ctime>
 #include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <jsoncpp/json/json.h>
 #define _USE_MATHS_DEFINES
 #include <math.h>
-#include <sys/socket.h>
-#include <bluetooth/bluetooth.h>
-#include <bluetooth/rfcomm.h>
 using namespace std;
 #define INIT 2147483647
-#define UUID "163660a6-ad17-44fc-99c5-5c75e78ad815"
+#define PORT 8080
 
 /** Sample Call Back class inheriting SensorCallback, 
     associated with the hall effect sensor
@@ -47,25 +50,33 @@ class sonarSampleCallback : public SensorCallback{
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
         printf("Distance: %f cm\n", t/58);
         cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
-        double distance = t/58;
-        string data = to_string(distance);
-        const void *buffer = data.c_str();
-        //Send Data via bluetooth
-        struct sockaddr_rc addr = {0};
-        int s, status;
-        // char dest[18] = "14:D1:69:2F:E0:67"; // Android MAC addr
-        // char dest[18] = "78:31:c1:d7:19:1a"; // Laptop MAC addr
-        char dest[18] = "A0:AF:BD:8D:5A:53"; // VM MAC addr
-        s = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
-        addr.rc_family = AF_BLUETOOTH;
-        addr.rc_channel = (uint8_t) 1;
-        str2ba(dest, &addr.rc_bdaddr);
-        status = connect(s, (struct sockaddr *)&addr, sizeof(addr));
-        cout << "Status: " << status << endl;
-        if(status == 0){
-            status = write(s,buffer, sizeof(buffer));
-        }
-        close(s);
+	double distance = t/58;
+	string data = to_string(distance) + ", " + to_string(timestamp);
+	const void *buffer_data = data.c_str();
+	//double updated_t = t/58;
+	//memcpy(&distance, &(updated_t),sizeof(distance));
+	/** Send sensor readings to app */
+	int sock = 0, conn_status;
+	struct sockaddr_in server_addr;
+	char buffer[2048] = {0};
+	sock = socket(AF_INET, SOCK_STREAM, 0);
+	if(inet_pton(AF_INET, "100.81.12.70", &server_addr.sin_addr) <= 0) {
+	  printf("\nInvalid address/ Address not supported \n");
+	  }
+	/*if(inet_pton(AF_INET, "100.81.12.118", &server_addr.sin_addr) <= 0){
+	  printf("\nInvalid address/ Address not supported\n");
+	  }*/
+	server_addr.sin_family = AF_INET;
+	server_addr.sin_port = htons(PORT);
+	conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
+	if(conn_status < 0){
+	  perror("ERROR connecting\n");
+	}
+        else {
+	  send(sock, buffer_data, sizeof distance, 0);
+	  printf("Data sent\n");
+	  close(sock);
+	  }
     }
 };
 
