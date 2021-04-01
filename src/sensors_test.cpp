@@ -20,7 +20,9 @@ using namespace std;
 #define INIT 2147483647
 #define PORT_SONAR 8080
 #define PORT_HALL 6000
-
+#define PORT_UDP 8888
+#define MAXLINE 1024
+char hostIp[MAXLINE];
 /** Sample Call Back class inheriting SensorCallback, 
     associated with the hall effect sensor
  */
@@ -42,7 +44,7 @@ class hallSampleCallback : public SensorCallback{
 	    struct sockaddr_in server_addr;
 	    char buffer[2048] = {0};
 	    sock = socket (AF_INET, SOCK_STREAM, 0);
-	    if(inet_pton(AF_INET, "100.81.12.70", &server_addr.sin_addr) <= 0){
+	    if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0){
 	      printf("\nInvalid address/ Address not supported \n");
 	    }
 	    server_addr.sin_family = AF_INET;
@@ -80,7 +82,7 @@ class sonarSampleCallback : public SensorCallback{
 	struct sockaddr_in server_addr;
 	char buffer[2048] = {0};
 	sock = socket(AF_INET, SOCK_STREAM, 0);
-	if(inet_pton(AF_INET, "100.81.12.70", &server_addr.sin_addr) <= 0) {
+	if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
 	  printf("\nInvalid address/ Address not supported \n");
 	} // Address for huwaei phone
 	/*if(inet_pton(AF_INET, "100.81.12.118", &server_addr.sin_addr) <= 0){
@@ -101,6 +103,24 @@ class sonarSampleCallback : public SensorCallback{
 };
 
 int main(int argc, char *argv[]){
+  /** Get Phone address from UDP broadcast message*/
+    int sockfd;
+    char buffer[MAXLINE];
+    struct sockaddr_in serv_addr;
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    memset(&serv_addr, 0, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(PORT_UDP);
+    serv_addr.sin_addr.s_addr = INADDR_ANY;
+    bind(sockfd, (const struct sockaddr *)&serv_addr,sizeof(serv_addr));
+    int n;
+    socklen_t len;
+    cout << serv_addr.sin_addr.s_addr << endl;
+    n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&serv_addr, &len);
+    buffer[n] = '\0';
+    strcpy(hostIp, buffer);
+    cout << "BUFFER UDP IP:" << buffer << endl;
+    close(sockfd);
     const int HALL = 0;
     const int SONAR = 1;
     int pinInHall = 1;
