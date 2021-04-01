@@ -19,4 +19,10 @@
         android:layout_height="250sp"
         android:id="@+id/vel_chart"
         />
+
+    <Button
+        android:id="@+id/connectBtn"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:text="Connect" />
 </LinearLayout>
