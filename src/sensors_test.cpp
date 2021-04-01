@@ -18,7 +18,8 @@
 #include <math.h>
 using namespace std;
 #define INIT 2147483647
-#define PORT 8080
+#define PORT_SONAR 8080
+#define PORT_HALL 6000
 
 /** Sample Call Back class inheriting SensorCallback, 
     associated with the hall effect sensor
@@ -29,12 +30,33 @@ class hallSampleCallback : public SensorCallback{
     /** @param v - velocity of bicycle wheel reading from hall sensor
     */
     virtual void dataIn(double v){
-        if(v != INIT){
+      int sock = 0, conn_status;
+      //if(v != INIT){
             auto time_now = chrono::system_clock::now();
             time_t timestamp = chrono::system_clock::to_time_t(time_now);
             printf("Velocity: %f m/s\n", v);
             cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
-        }
+	    string data = to_string(v) + ", " + to_string(timestamp);
+	    const void *buffer_data = data.c_str();
+	    /** Send sensor readings to app */
+	    struct sockaddr_in server_addr;
+	    char buffer[2048] = {0};
+	    sock = socket (AF_INET, SOCK_STREAM, 0);
+	    if(inet_pton(AF_INET, "100.81.12.70", &server_addr.sin_addr) <= 0){
+	      printf("\nInvalid address/ Address not supported \n");
+	    }
+	    server_addr.sin_family = AF_INET;
+	    server_addr.sin_port = htons(PORT_HALL);
+	    conn_status = connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
+	    if(conn_status < 0){
+	      perror("ERROR connecting");
+	    }
+	    else {
+	      send(sock, buffer_data, sizeof v, 0);
+	      printf("HALL: Velocity sent\n");
+	      close(sock);
+	    }
+	    // }
     }
 };
 /** Sample Call Back class inheriting SensorCallback, 
@@ -53,8 +75,6 @@ class sonarSampleCallback : public SensorCallback{
 	double distance = t/58;
 	string data = to_string(distance) + ", " + to_string(timestamp);
 	const void *buffer_data = data.c_str();
-	//double updated_t = t/58;
-	//memcpy(&distance, &(updated_t),sizeof(distance));
 	/** Send sensor readings to app */
 	int sock = 0, conn_status;
 	struct sockaddr_in server_addr;
@@ -62,19 +82,19 @@ class sonarSampleCallback : public SensorCallback{
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 	if(inet_pton(AF_INET, "100.81.12.70", &server_addr.sin_addr) <= 0) {
 	  printf("\nInvalid address/ Address not supported \n");
-	  }
+	} // Address for huwaei phone
 	/*if(inet_pton(AF_INET, "100.81.12.118", &server_addr.sin_addr) <= 0){
 	  printf("\nInvalid address/ Address not supported\n");
-	  }*/
+	  }*/ //Address for macbook
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_port = htons(PORT);
+	server_addr.sin_port = htons(PORT_SONAR);
 	conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
 	if(conn_status < 0){
 	  perror("ERROR connecting\n");
 	}
         else {
 	  send(sock, buffer_data, sizeof distance, 0);
-	  printf("Data sent\n");
+	  printf("SONAR: Distance sent\n");
 	  close(sock);
 	  }
     }
