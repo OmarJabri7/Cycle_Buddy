@@ -54,19 +54,21 @@ void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
     int triggeredCounter = 0;
     double vel = 0.0;
     while(hallEffect->running){
-        if(digitalRead(*pinIn) == 1 && ((micros()/1000000.0 - timeDetected >= 2.5) || timeDetected == 0)){
+      if(digitalRead(*pinIn) == 1 && ((micros()/1000000.0 - timeDetected >= 2.5))){
             triggeredCounter++;
             interval = micros()/1000000.0 - timeDetected;
             vel = abs((2*pi*wheelRadius)/interval);
             timeDetected = micros()/1000000.0;
-            cout << triggeredCounter << endl;
-            digitalWrite(*pinOut,1);
             if(hallEffect->sensorCb){
                 hallEffect->sensorCb->dataIn(vel);
             }
         }
-        else{
-            digitalWrite(*pinOut,0);
+      else if(triggeredCounter == 0){
+	triggeredCounter++;
+	timeDetected = micros()/1000000.0;
+	  if(hallEffect->sensorCb){
+	    hallEffect->sensorCb->dataIn(vel);
+	  }
         }
     }
     exit(0);
