@@ -14,4 +14,9 @@
         android:layout_height="250sp"
         android:id="@+id/distance_chart"
         />
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:id="@+id/vel_chart"
+        />
 </LinearLayout>

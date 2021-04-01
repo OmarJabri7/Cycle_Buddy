@@ -3,6 +3,7 @@ package com.example.cyclebuddy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.channels.FileLock;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,13 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
         Handler updateConversationHandler;
 
-        Thread serverThread = null;
+        ServerThread serverThreadSonar = null;
+
+        ServerThread serverThreadHall = null;
 
         private LineChart distance_chart;
 
-        public static final int SERVERPORT = 8080;
+        private LineChart vel_chart;
 
-        private boolean plot_data = true;
+        public static final int SERVERPORT_SONAR = 8080;
+
+        public static final int SERVERPORT_HALL = 6000;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -56,10 +63,42 @@ public class MainActivity extends AppCompatActivity {
             LineData distance_data = new LineData();
             distance_data.setValueTextColor(Color.WHITE);
             distance_chart.setData(distance_data);
-            updateConversationHandler = new Handler();
-            this.serverThread = new Thread(new ServerThread());
-            this.serverThread.start();
 
+            vel_chart = (LineChart) findViewById(R.id.vel_chart);
+
+            vel_chart.getDescription().setEnabled(true);
+            vel_chart.getDescription().setText("Real Time velocity data");
+            vel_chart.setTouchEnabled(false);
+            vel_chart.setDragEnabled(false);
+            vel_chart.setScaleEnabled(false);
+            YAxis leftYAxisHall = vel_chart.getAxisLeft();
+            leftYAxis.setEnabled(false);
+            vel_chart.setDrawGridBackground(false);
+            vel_chart.setPinchZoom(false);
+            vel_chart.setBackgroundColor(Color.WHITE);
+            LineData vel_data = new LineData();
+            distance_data.setValueTextColor(Color.WHITE);
+            vel_chart.setData(vel_data);
+
+//            updateConversationHandler = new Handler();
+
+            try {
+                this.serverThreadSonar = new ServerThread(SERVERPORT_SONAR,
+                            "SONAR",
+                            distance_chart,2);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+
+            try {
+                this.serverThreadHall = new ServerThread(SERVERPORT_HALL,
+                                "HALL",
+                                vel_chart,2);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            new Thread(this.serverThreadSonar).start();
+            new Thread(this.serverThreadHall).start();
         }
 
         @Override
@@ -72,111 +111,112 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        private void addEntry(String readings){
-            LineData data = distance_chart.getData();
+        private void addEntry(String readings, String sensorType, LineChart chart){
+            LineData data = chart.getData();
             if(data != null){
                 ILineDataSet set = data.getDataSetByIndex(0);
                 if(set == null){
-                    set = createSet();
+                    set = createSet(sensorType);
                     data.addDataSet(set);
                 }
                 data.addEntry(new Entry(set.getEntryCount(),Float.parseFloat(readings)),0);
                 data.notifyDataChanged();
-                distance_chart.notifyDataSetChanged();
-                distance_chart.setMaxVisibleValueCount(150);
-                distance_chart.setData(data);
-                distance_chart.moveViewToX(set.getEntryCount());
-                YAxis right = distance_chart.getAxisRight();
-                right.setAxisMaximum(Float.parseFloat(readings) + 10);
-                right.setAxisMinimum(Float.parseFloat(readings) - 10);
+                chart.notifyDataSetChanged();
+                chart.setMaxVisibleValueCount(150);
+                chart.setData(data);
+                chart.moveViewToX(set.getEntryCount());
+                YAxis right = chart.getAxisRight();
+                if(sensorType == "SONAR") {
+                    right.setAxisMaximum(Float.parseFloat(readings) + 10);
+                    right.setAxisMinimum(Float.parseFloat(readings) - 10);
+                }
+                else if(sensorType == "HALL"){
+                    right.setAxisMaximum(Float.parseFloat(readings) + 20);
+                    right.setAxisMinimum(Float.parseFloat(readings) - 20);
+                }
             }
         }
 
-        private LineDataSet createSet(){
-            LineDataSet set = new LineDataSet(null, "Ultrasonic Data");
+        private LineDataSet createSet(String sensorType){
+            LineDataSet set = null;
+            if(sensorType.equals("SONAR")) {
+                set = new LineDataSet(null, "Ultrasonic Data");
+                set.setColor(Color.RED);
+            }
+            else {
+                set = new LineDataSet(null, "Hall Effect Data");
+                set.setColor(Color.GREEN);
+            }
             set.setAxisDependency(YAxis.AxisDependency.RIGHT);
             set.setLineWidth(3);
-            set.setColor(Color.MAGENTA);
             set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set.setCubicIntensity(0.2f);
             return set;
         }
 
+
+
         class ServerThread implements Runnable {
+            String sensorType;
+            LineChart chart;
+            ServerSocket serverSocket;
+            private final ExecutorService pool;
+
+           public ServerThread(int port, String sensorType, LineChart chart, int poolSize) throws IOException {
+                this.sensorType = sensorType;
+                this.chart = chart;
+                this.serverSocket = new ServerSocket(port);
+                pool = Executors.newFixedThreadPool(poolSize);
+            }
 
             public void run() {
                 Socket socket = null;
                 try {
-                    serverSocket = new ServerSocket(SERVERPORT);
+                    for(;;){
+                        pool.execute(new Handler(serverSocket.accept(),sensorType,chart));
+                    }
+//                    serverSocket = new ServerSocket(portNo);
                 } catch (IOException e) {
+                    pool.shutdown();
                     e.printStackTrace();
                 }
-                while (!Thread.currentThread().isInterrupted()) {
-                    try {
 
-                        socket = serverSocket.accept();
-                        BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        String data = input.readLine();
-//                        text.setText("Distance: " + data + "\n");
-//                        CommunicationThread commThread = new CommunicationThread(socket);
-//                        new Thread(commThread).start();
-                        addEntry(data);
-//                        updateConversationHandler.post(new updateUIThread(data));
+//                while (true) {
+//                    try {
+//                        socket = serverSocket.accept();
+//                        BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//                        String data = input.readLine();
+//                        addEntry(data, sensorType, chart);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+            }
+            class Handler implements Runnable {
+                private final Socket socket;
+                String sensorType;
+                LineChart chart;
+                Handler(Socket socket, String sensorType, LineChart chart) {
+                    this.socket = socket;
+                    this.sensorType = sensorType;
+                    this.chart = chart;
+                }
+                public void run() {
+                    // read and service request on socket
+                    BufferedReader input = null;
+                    try {
+                        input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
-            }
-        }
-
-        class CommunicationThread implements Runnable {
-
-            private Socket clientSocket;
-
-            private BufferedReader input;
-
-            public CommunicationThread(Socket clientSocket) {
-
-                this.clientSocket = clientSocket;
-
-                try {
-
-                    this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            public void run() {
-
-                while (!Thread.currentThread().isInterrupted()) {
-
+                    String data = null;
                     try {
-
-                        String read = input.readLine();
-
-                        updateConversationHandler.post(new updateUIThread(read));
-//                        text.setText(text.getText().toString()+"Distance: "+ read + "\n");
-
+                        data = input.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    addEntry(data, this.sensorType, this.chart);
                 }
-            }
-
-        }
-
-        class updateUIThread implements Runnable {
-            private String msg;
-
-            public updateUIThread(String str) {
-                this.msg = str;
-            }
-
-            @Override
-            public void run() {
-                addEntry(this.msg);
             }
         }
     }
