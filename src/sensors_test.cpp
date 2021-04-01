@@ -17,12 +17,13 @@
 #define _USE_MATHS_DEFINES
 #include <math.h>
 using namespace std;
-#define INIT 2147483647
+
 #define PORT_SONAR 8080
 #define PORT_HALL 6000
 #define PORT_UDP 8888
 #define MAXLINE 1024
 char hostIp[MAXLINE];
+
 /** Sample Call Back class inheriting SensorCallback, 
     associated with the hall effect sensor
  */
@@ -33,34 +34,33 @@ class hallSampleCallback : public SensorCallback{
     */
     virtual void dataIn(double v){
       int sock = 0, conn_status;
-      //if(v != INIT){
-            auto time_now = chrono::system_clock::now();
-            time_t timestamp = chrono::system_clock::to_time_t(time_now);
-            printf("Velocity: %f m/s\n", v);
-            cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
-	    string data = to_string(v) + ", " + to_string(timestamp);
-	    const void *buffer_data = data.c_str();
-	    /** Send sensor readings to app */
-	    struct sockaddr_in server_addr;
-	    char buffer[2048] = {0};
-	    sock = socket (AF_INET, SOCK_STREAM, 0);
-	    if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0){
-	      printf("\nInvalid address/ Address not supported \n");
-	    }
-	    server_addr.sin_family = AF_INET;
-	    server_addr.sin_port = htons(PORT_HALL);
-	    conn_status = connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
-	    if(conn_status < 0){
-	      perror("ERROR connecting");
-	    }
-	    else {
-	      send(sock, buffer_data, sizeof v, 0);
-	      printf("HALL: Velocity sent\n");
-	      close(sock);
-	    }
-	    // }
+      auto time_now = chrono::system_clock::now();
+      time_t timestamp = chrono::system_clock::to_time_t(time_now);
+      printf("Velocity: %f m/s\n", v);
+      cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      string data = to_string(v) + ", " + to_string(timestamp);
+      const void *buffer_data = data.c_str();
+      /** Send sensor readings to app */
+      struct sockaddr_in server_addr;
+      char buffer[2048] = {0};
+      sock = socket (AF_INET, SOCK_STREAM, 0);
+      if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0){
+	  printf("\nInvalid address/ Address not supported \n");
+      }
+      server_addr.sin_family = AF_INET;
+      server_addr.sin_port = htons(PORT_HALL);
+      conn_status = connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
+      if(conn_status < 0){
+	   perror("ERROR connecting\n");
+      }
+      else {
+	   send(sock, buffer_data, sizeof v, 0);
+	   //printf("HALL: Velocity sent\n");
+	   close(sock);
+      }
     }
 };
+
 /** Sample Call Back class inheriting SensorCallback, 
     associated with the sonar sensor
  */
@@ -84,10 +84,7 @@ class sonarSampleCallback : public SensorCallback{
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 	if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
 	  printf("\nInvalid address/ Address not supported \n");
-	} // Address for huwaei phone
-	/*if(inet_pton(AF_INET, "100.81.12.118", &server_addr.sin_addr) <= 0){
-	  printf("\nInvalid address/ Address not supported\n");
-	  }*/ //Address for macbook
+	}
 	server_addr.sin_family = AF_INET;
 	server_addr.sin_port = htons(PORT_SONAR);
 	conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
@@ -96,7 +93,7 @@ class sonarSampleCallback : public SensorCallback{
 	}
         else {
 	  send(sock, buffer_data, sizeof distance, 0);
-	  printf("SONAR: Distance sent\n");
+	  //printf("SONAR: Distance sent\n");
 	  close(sock);
 	  }
     }
@@ -104,6 +101,7 @@ class sonarSampleCallback : public SensorCallback{
 
 int main(int argc, char *argv[]){
   /** Get Phone address from UDP broadcast message*/
+  cout << "Awaiting mobile connection..." << endl;
     int sockfd;
     char buffer[MAXLINE];
     struct sockaddr_in serv_addr;
@@ -115,11 +113,9 @@ int main(int argc, char *argv[]){
     bind(sockfd, (const struct sockaddr *)&serv_addr,sizeof(serv_addr));
     int n;
     socklen_t len;
-    cout << serv_addr.sin_addr.s_addr << endl;
     n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&serv_addr, &len);
     buffer[n] = '\0';
     strcpy(hostIp, buffer);
-    cout << "BUFFER UDP IP:" << buffer << endl;
     close(sockfd);
     const int HALL = 0;
     const int SONAR = 1;
