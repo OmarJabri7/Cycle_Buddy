@@ -1,0 +1,172 @@
+\hypertarget{classSensor}{}\doxysection{Sensor Class Reference}
+\label{classSensor}\index{Sensor@{Sensor}}
+
+
+{\ttfamily \#include $<$sensors\+\_\+lib.\+h$>$}
+
+
+
+Collaboration diagram for Sensor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{classSensor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSensor_acae0f6f3b42d935a2c816d593d20f20f}{Sensor}} (int $\ast$pin\+In, int $\ast$pin\+Out)
+\item 
+void \mbox{\hyperlink{classSensor_a4ce1fa9c068da52565399b0992164d0e}{set\+Call\+Back}} (\mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}} $\ast$cb)
+\item 
+void \mbox{\hyperlink{classSensor_a6159d4e8944167e4052c7dafee3a4125}{start}} (int $\ast$pin\+In, int $\ast$pin\+Out, const int sensor\+Type)
+\item 
+void \mbox{\hyperlink{classSensor_a9634418f5e4af71e659a08dc4c5f4716}{stop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classSensor_a912fdb6c72ae18115b5faf8dac9886b4}{run\+\_\+hall}} (\mbox{\hyperlink{classSensor}{Sensor}} $\ast$sensor, int $\ast$pin\+In, int $\ast$pin\+Out)
+\item 
+static void \mbox{\hyperlink{classSensor_a083a7259934a7b667af80acbce6a628e}{run\+\_\+sonar}} (\mbox{\hyperlink{classSensor}{Sensor}} $\ast$sensor, int $\ast$pin\+In, int $\ast$pin\+Out)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::thread $\ast$ \mbox{\hyperlink{classSensor_ae62fb266b3c31510d13eca6404505dee}{sensor\+Thread}} = N\+U\+LL
+\item 
+int \mbox{\hyperlink{classSensor_ae85d8e0aace2b85381dcc7632aba3381}{running}} = 0
+\item 
+\mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}} $\ast$ \mbox{\hyperlink{classSensor_a3787e8b888ea37ae31143a2ee44b6952}{sensor\+Cb}} = N\+U\+LL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract \mbox{\hyperlink{classSensor}{Sensor}} Class that creates instances of each sensor used in the system. \begin{DoxyAuthor}{Author}
+Omar Jabri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSensor_acae0f6f3b42d935a2c816d593d20f20f}\label{classSensor_acae0f6f3b42d935a2c816d593d20f20f}} 
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{Sensor()}{Sensor()}}
+{\footnotesize\ttfamily Sensor\+::\+Sensor (\begin{DoxyParamCaption}\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out }\end{DoxyParamCaption})}
+
+public functions/values accessible from threads. Default \mbox{\hyperlink{classSensor}{Sensor}} Constructor 
+\begin{DoxyParams}{Parameters}
+{\em pin\+In} & -\/ Input Pin number of the raspberry pi G\+P\+IO extracted from the sensors. \\
+\hline
+{\em pin\+Out} & -\/ Output Pin number of the raspberry pi G\+P\+IO writing to the sensors. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSensor_a912fdb6c72ae18115b5faf8dac9886b4}\label{classSensor_a912fdb6c72ae18115b5faf8dac9886b4}} 
+\index{Sensor@{Sensor}!run\_hall@{run\_hall}}
+\index{run\_hall@{run\_hall}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{run\_hall()}{run\_hall()}}
+{\footnotesize\ttfamily void Sensor\+::run\+\_\+hall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensor}{Sensor}} $\ast$}]{sensor,  }\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classSensor_a912fdb6c72ae18115b5faf8dac9886b4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSensor_a083a7259934a7b667af80acbce6a628e}\label{classSensor_a083a7259934a7b667af80acbce6a628e}} 
+\index{Sensor@{Sensor}!run\_sonar@{run\_sonar}}
+\index{run\_sonar@{run\_sonar}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{run\_sonar()}{run\_sonar()}}
+{\footnotesize\ttfamily void Sensor\+::run\+\_\+sonar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensor}{Sensor}} $\ast$}]{sensor,  }\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classSensor_a083a7259934a7b667af80acbce6a628e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSensor_a4ce1fa9c068da52565399b0992164d0e}\label{classSensor_a4ce1fa9c068da52565399b0992164d0e}} 
+\index{Sensor@{Sensor}!setCallBack@{setCallBack}}
+\index{setCallBack@{setCallBack}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{setCallBack()}{setCallBack()}}
+{\footnotesize\ttfamily void Sensor\+::set\+Call\+Back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Function that allows threads to set Callbacks to their assigned functions. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & -\/ call back object to call data\+In function for each thread. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classSensor_a4ce1fa9c068da52565399b0992164d0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSensor_a6159d4e8944167e4052c7dafee3a4125}\label{classSensor_a6159d4e8944167e4052c7dafee3a4125}} 
+\index{Sensor@{Sensor}!start@{start}}
+\index{start@{start}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Sensor\+::start (\begin{DoxyParamCaption}\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out,  }\item[{const int}]{sensor\+Type }\end{DoxyParamCaption})}
+
+Start threads 
+\begin{DoxyParams}{Parameters}
+{\em sensor\+Type} & -\/ Integer id of which sensor is executing the particular thread. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classSensor_a6159d4e8944167e4052c7dafee3a4125_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSensor_a9634418f5e4af71e659a08dc4c5f4716}\label{classSensor_a9634418f5e4af71e659a08dc4c5f4716}} 
+\index{Sensor@{Sensor}!stop@{stop}}
+\index{stop@{stop}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Sensor\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop threads. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classSensor_a9634418f5e4af71e659a08dc4c5f4716_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{classSensor_ae85d8e0aace2b85381dcc7632aba3381}\label{classSensor_ae85d8e0aace2b85381dcc7632aba3381}} 
+\index{Sensor@{Sensor}!running@{running}}
+\index{running@{running}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily int Sensor\+::running = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSensor_a3787e8b888ea37ae31143a2ee44b6952}\label{classSensor_a3787e8b888ea37ae31143a2ee44b6952}} 
+\index{Sensor@{Sensor}!sensorCb@{sensorCb}}
+\index{sensorCb@{sensorCb}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{sensorCb}{sensorCb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}}$\ast$ Sensor\+::sensor\+Cb = N\+U\+LL\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSensor_ae62fb266b3c31510d13eca6404505dee}\label{classSensor_ae62fb266b3c31510d13eca6404505dee}} 
+\index{Sensor@{Sensor}!sensorThread@{sensorThread}}
+\index{sensorThread@{sensorThread}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{sensorThread}{sensorThread}}
+{\footnotesize\ttfamily std\+::thread$\ast$ Sensor\+::sensor\+Thread = N\+U\+LL\hspace{0.3cm}{\ttfamily [private]}}
+
+Private values 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{sensors__lib_8h}{sensors\+\_\+lib.\+h}}\item 
+src/\mbox{\hyperlink{sensors_8cpp}{sensors.\+cpp}}\end{DoxyCompactItemize}
