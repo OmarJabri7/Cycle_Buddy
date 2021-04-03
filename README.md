@@ -8,8 +8,9 @@
     To keep people can ride bike more safely on the road.
     <br />
     <br />
-    Please follow our youtube channel   
-    @[CycleBuddy](https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw)
+    Please follow our youtube channel  
+    <br />
+    @[Cycle Buddy](https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw)
     <br />
 </div>
 
