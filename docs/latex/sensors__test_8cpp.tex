@@ -1,0 +1,114 @@
+\hypertarget{sensors__test_8cpp}{}\doxysection{src/sensors\+\_\+test.cpp File Reference}
+\label{sensors__test_8cpp}\index{src/sensors\_test.cpp@{src/sensors\_test.cpp}}
+{\ttfamily \#include \char`\"{}sensors\+\_\+lib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fast\+\_\+cgi\+\_\+web\+\_\+api.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$wiring\+Pi.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$jsoncpp/json/json.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for sensors\+\_\+test.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sensors__test_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classhallSampleCallback}{hall\+Sample\+Callback}}
+\item 
+class \mbox{\hyperlink{classsonarSampleCallback}{sonar\+Sample\+Callback}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sensors__test_8cpp_ae7823322548dd52b728287a4c2ed5e81}{\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+S\+\_\+\+D\+E\+F\+I\+N\+ES}}
+\item 
+\#define \mbox{\hyperlink{sensors__test_8cpp_a288981d6a274d699b49ba82f0efb23be}{P\+O\+R\+T\+\_\+\+S\+O\+N\+AR}}~8080
+\item 
+\#define \mbox{\hyperlink{sensors__test_8cpp_a5472508ded18bbbac21b90631b9d9df8}{P\+O\+R\+T\+\_\+\+H\+A\+LL}}~6000
+\item 
+\#define \mbox{\hyperlink{sensors__test_8cpp_ab32e7394def201e0c8e33ff98eae73a9}{P\+O\+R\+T\+\_\+\+U\+DP}}~8888
+\item 
+\#define \mbox{\hyperlink{sensors__test_8cpp_a3e937c42922f7601edb17b747602c471}{M\+A\+X\+L\+I\+NE}}~1024
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sensors__test_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{sensors__test_8cpp_a31f52b549cf317b8f52300b256840b74}{host\+Ip}} \mbox{[}\mbox{\hyperlink{sensors__test_8cpp_a3e937c42922f7601edb17b747602c471}{M\+A\+X\+L\+I\+NE}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sensors__test_8cpp_ae7823322548dd52b728287a4c2ed5e81}\label{sensors__test_8cpp_ae7823322548dd52b728287a4c2ed5e81}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!\_USE\_MATHS\_DEFINES@{\_USE\_MATHS\_DEFINES}}
+\index{\_USE\_MATHS\_DEFINES@{\_USE\_MATHS\_DEFINES}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{\_USE\_MATHS\_DEFINES}{\_USE\_MATHS\_DEFINES}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+S\+\_\+\+D\+E\+F\+I\+N\+ES}
+
+\mbox{\Hypertarget{sensors__test_8cpp_a3e937c42922f7601edb17b747602c471}\label{sensors__test_8cpp_a3e937c42922f7601edb17b747602c471}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!MAXLINE@{MAXLINE}}
+\index{MAXLINE@{MAXLINE}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{MAXLINE}{MAXLINE}}
+{\footnotesize\ttfamily \#define M\+A\+X\+L\+I\+NE~1024}
+
+\mbox{\Hypertarget{sensors__test_8cpp_a5472508ded18bbbac21b90631b9d9df8}\label{sensors__test_8cpp_a5472508ded18bbbac21b90631b9d9df8}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!PORT\_HALL@{PORT\_HALL}}
+\index{PORT\_HALL@{PORT\_HALL}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{PORT\_HALL}{PORT\_HALL}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+H\+A\+LL~6000}
+
+\mbox{\Hypertarget{sensors__test_8cpp_a288981d6a274d699b49ba82f0efb23be}\label{sensors__test_8cpp_a288981d6a274d699b49ba82f0efb23be}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!PORT\_SONAR@{PORT\_SONAR}}
+\index{PORT\_SONAR@{PORT\_SONAR}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{PORT\_SONAR}{PORT\_SONAR}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+S\+O\+N\+AR~8080}
+
+\mbox{\Hypertarget{sensors__test_8cpp_ab32e7394def201e0c8e33ff98eae73a9}\label{sensors__test_8cpp_ab32e7394def201e0c8e33ff98eae73a9}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!PORT\_UDP@{PORT\_UDP}}
+\index{PORT\_UDP@{PORT\_UDP}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{PORT\_UDP}{PORT\_UDP}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+U\+DP~8888}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sensors__test_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{sensors__test_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!main@{main}}
+\index{main@{main}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Get Phone address from U\+DP broadcast messageHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{sensors__test_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{sensors__test_8cpp_a31f52b549cf317b8f52300b256840b74}\label{sensors__test_8cpp_a31f52b549cf317b8f52300b256840b74}} 
+\index{sensors\_test.cpp@{sensors\_test.cpp}!hostIp@{hostIp}}
+\index{hostIp@{hostIp}!sensors\_test.cpp@{sensors\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{hostIp}{hostIp}}
+{\footnotesize\ttfamily char host\+Ip\mbox{[}\mbox{\hyperlink{sensors__test_8cpp_a3e937c42922f7601edb17b747602c471}{M\+A\+X\+L\+I\+NE}}\mbox{]}}
+
