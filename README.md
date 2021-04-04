@@ -3,7 +3,7 @@
   <a href="https://github.com/OmarJabri7/Cycle_Buddy">
     <img src="https://github.com/Yifan-Xie/Image/blob/Cycle_Buddy/pictures/Logo.png" alt="Logo" >
   </a>
-  
+    <a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
   <p align="center">
     To keep people can ride bike more safely on the road.
     <br />
@@ -35,7 +35,7 @@
 ## About
 Cycle Buddy is System that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements.
 <br />
-@[doxygen about the project](https://omarjabri7.github.io/Cycle_Buddy/)
+[doxygen about the project](https://omarjabri7.github.io/Cycle_Buddy/)
 <br />
 <div align="center"> 
 <br />  
@@ -45,6 +45,9 @@ Cycle Buddy is System that detects danger levels in bikers relative to drivers. 
 * [VNC]
 
 * [Putty]
+
+* [Android Studio] 
+ 
 <br />
 
 ### Hardware
@@ -65,10 +68,11 @@ Cycle Buddy is System that detects danger levels in bikers relative to drivers. 
 #### 6. Output the results
 
 ### Threads of Sensors 
+4 threads: Two for ultrasonic sensors, one for hall sensor, the rest for Pi camera.
 
 <!-- Getting Started -->
 ## Packages
-Cmake, OpenCv, WiringPi
+Cmake, OpenCv, WiringPi, Openalpr
 
 <!-- Usage -->
 ## Usage
@@ -87,7 +91,7 @@ Please follow these necessary steps: <br/>
 
 <!-- Contributing -->
 ## Contributing
-How to contribute the project.
+This is an open source project, therefore, just fork it and build up the project according to the README.md in every document.
 
 <!-- License -->
 ## License
@@ -95,11 +99,15 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 <!-- Contact Info -->
 ## Contact
-Omar @[Omar Jabri](https://github.com/OmarJabri7)
+
+Omar Jabri - [@Omar Jabri](https://github.com/OmarJabri7)
 <br />
-Chang @[Chang Liu](https://github.com/Cliu1993)
+
+Chang Liu - [@Chang Liu](https://github.com/Cliu1993)
 <br />
-Yifan @[Yifan Xie](https://github.com/Yifan-Xie)
+
+Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
 <br />
-[Project address](https://github.com/OmarJabri7/Cycle_Buddy)
+
+Project address [Project address](https://github.com/OmarJabri7/Cycle_Buddy)
 
