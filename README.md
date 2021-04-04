@@ -3,6 +3,8 @@
   <a href="https://github.com/OmarJabri7/Cycle_Buddy">
     <img src="https://github.com/Yifan-Xie/Image/blob/Cycle_Buddy/pictures/Logo.png" alt="Logo" >
   </a>
+    <br />
+    <br />
     <a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
   <p align="center">
     To keep people can ride bike more safely on the road.
@@ -109,5 +111,5 @@ Chang Liu - [@Chang Liu](https://github.com/Cliu1993)
 Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
 <br />
 
-Project address [Project address](https://github.com/OmarJabri7/Cycle_Buddy)
+Project address [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
 
