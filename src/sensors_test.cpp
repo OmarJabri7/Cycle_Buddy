@@ -17,12 +17,15 @@
 #include <math.h>
 #include <cstdio>
 #include <mutex>
+#include <raspicam/raspicam.h>
 using namespace std;
 
 #define PORT_SONAR 8080
 #define PORT_HALL 6000
 #define PORT_UDP 8888
 #define MAXLINE 1024
+#define DT 4// distance threshold
+#define VT 8// velocity threshold
 char hostIp[MAXLINE];
 /** Set old distance to calculate the derivative and get velocity */
 volatile float old_distance = 0;
@@ -46,7 +49,7 @@ class hallSampleCallback : public SensorCallback{
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
       printf("Velocity: %f m/s\n", v);
       cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
-      if(upcoming_car == 1 && v >= 8 && bike_flag == 0){
+      if(upcoming_car == 1 && v >= VT && bike_flag == 0){
           mtx.lock();
           bike_flag = 1;
           mtx.unlock();
@@ -85,9 +88,9 @@ class sonarDistanceSampleCallback : public SensorCallback{
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
         printf("Distance: %f cm\n", t/58);
-        cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+        // cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
         double distance = t/58;
-        if(upcoming_car == 1 && distance <= 100 && distance_flag == 0){
+        if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
           mtx.lock();
           distance_flag = 1;
           mtx.unlock();
@@ -117,18 +120,16 @@ class sonarDistanceSampleCallback : public SensorCallback{
 
   class sonarVelocitySampleCallback : public SensorCallback {
         virtual void dataIn(double t){
-          float v = (old_distance - (t/58))/10; //speed of incoming item
-          if(v >= 1){
+          float v = abs((old_distance - (t/58))); //speed of incoming item
               auto time_now = chrono::system_clock::now();
               time_t timestamp = chrono::system_clock::to_time_t(time_now);
               printf("CAR VELOCITY: %f m/s\n", v);
-              cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
-              if(upcoming_car == 1 && v >= 10 && velocity_flag == 0){
+              // cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
+              if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
                 mtx.lock();
                 velocity_flag = 1;
                 mtx.unlock();
               }
-          }
           old_distance = t/58;
         }
   };
@@ -171,6 +172,43 @@ int main(int argc, char *argv[]){
     sonarSensorOne->start(&pinInSonarOne, &pinOutSonarOne, SONAR);
     sonarSensorTwo->start(&pinInSonarTwo, &pinOutSonarTwo, SONAR);
     hallEffectSensor->start(&pinInHall, &pinOutHall, HALL);
+    raspicam::RaspiCam Camera;
+    if(!Camera.open()){
+      cerr << "Error opening camera" << endl;
+    }
+    cout << "###### Stabilizing camera... #######" << endl;
+    sleep(3);
+    cout << "###### Camera configured ######" << endl;
+    while(1){
+      cout << distance_flag << velocity_flag << endl;
+      if(distance_flag == 1 && velocity_flag == 1){
+        cout << "####### CAPTURING IMAGE #######" << endl;
+        Camera.grab();
+        //allocate memory
+        unsigned char *data=new unsigned char[  Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB )];
+        //extract the image in rgb format
+        Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB );//get camera image
+        //save
+        ofstream outFile ( "img.jpg",ios::binary );
+        outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
+        outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
+        cout<<"Image saved at img.jpg"<<endl;
+        //free resrources    
+        delete data;
+        mtx.lock();
+        upcoming_car = 0;
+        mtx.unlock();
+        // Wait for other car...
+        sleep(5);
+        // Capture now
+        mtx.lock();
+        distance_flag = 0;
+        bike_flag = 0;
+        velocity_flag = 0;
+        upcoming_car = 1;
+        mtx.unlock();
+        }
+    }
     getchar();
     sonarSensorOne->stop();
     sonarSensorTwo->stop();
