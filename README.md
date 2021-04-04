@@ -82,7 +82,14 @@ Cycle Buddy is System that detects danger levels in bikers relative to drivers. 
 
 <!-- Getting Started -->
 ## Packages
-Cmake, OpenCv, WiringPi, Openalpr
+Cmake, WiringPi, Openalpr
+
+<!-- Installations -->
+## Packages Installations
+1- WiringPi:<br>
+`sudo apt-get install wiringpi`<br/>
+2- ALPR: <br>
+`sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
 
 <!-- Usage -->
 ## Usage
