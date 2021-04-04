@@ -10,9 +10,9 @@
     To keep people can ride bike more safely on the road.
     <br />
     <br />
-    Please follow our youtube channel  
-    <br />
-    @[Cycle Buddy](https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw)
+    <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/YouTube-logo.jpg"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><img height=40 src="Images/Facebook-logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><img height=40 src="Images/twitter-logo.jpg"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
 </div>
 
