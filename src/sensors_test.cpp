@@ -88,7 +88,7 @@ class sonarDistanceSampleCallback : public SensorCallback{
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
         printf("Distance: %f cm\n", t/58);
-        // cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+        cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
         double distance = t/58;
         if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
           mtx.lock();
@@ -121,15 +121,15 @@ class sonarDistanceSampleCallback : public SensorCallback{
   class sonarVelocitySampleCallback : public SensorCallback {
         virtual void dataIn(double t){
           float v = abs((old_distance - (t/58))); //speed of incoming item
-              auto time_now = chrono::system_clock::now();
-              time_t timestamp = chrono::system_clock::to_time_t(time_now);
-              printf("CAR VELOCITY: %f m/s\n", v);
-              // cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
-              if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
-                mtx.lock();
-                velocity_flag = 1;
-                mtx.unlock();
-              }
+          auto time_now = chrono::system_clock::now();
+          time_t timestamp = chrono::system_clock::to_time_t(time_now);
+          printf("CAR VELOCITY: %f m/s\n", v);
+          cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
+          if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
+            mtx.lock();
+            velocity_flag = 1;
+            mtx.unlock();
+          }
           old_distance = t/58;
         }
   };
@@ -180,7 +180,6 @@ int main(int argc, char *argv[]){
     sleep(3);
     cout << "###### Camera configured ######" << endl;
     while(1){
-      cout << distance_flag << velocity_flag << endl;
       if(distance_flag == 1 && velocity_flag == 1){
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
