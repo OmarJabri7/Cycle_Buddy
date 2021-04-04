@@ -168,14 +168,14 @@ int main(int argc, char *argv[]){
     sonarSensorOne->setCallBack(&sonarCallbackOne);
     sonarSensorTwo->setCallBack(&sonarCallbackTwo);
     hallEffectSensor->setCallBack(&hallCallback);
-    // sonarSensorOne->start(&pinInSonarOne, &pinOutSonarOne, SONAR);
+    sonarSensorOne->start(&pinInSonarOne, &pinOutSonarOne, SONAR);
     sonarSensorTwo->start(&pinInSonarTwo, &pinOutSonarTwo, SONAR);
     hallEffectSensor->start(&pinInHall, &pinOutHall, HALL);
     getchar();
-    // sonarSensorOne->stop();
+    sonarSensorOne->stop();
     sonarSensorTwo->stop();
     hallEffectSensor->stop();
-    // delete sonarSensorOne;
+    delete sonarSensorOne;
     delete sonarSensorTwo;
     delete hallEffectSensor;
     return 0;
