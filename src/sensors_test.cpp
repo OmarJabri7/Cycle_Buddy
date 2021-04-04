@@ -18,6 +18,12 @@
 #include <cstdio>
 #include <mutex>
 #include <raspicam/raspicam.h>
+#include <memory>
+#include "pstream.h"
+#include <stdexcept>
+#include <string>
+#include <array>
+#include <regex>
 using namespace std;
 
 #define PORT_SONAR 8080
@@ -134,6 +140,31 @@ class sonarDistanceSampleCallback : public SensorCallback{
         }
   };
 
+   string getLicensePlate(){
+      redi::ipstream proc("./simple_bash.sh", redi::pstreams::pstdout | redi::pstreams::pstderr);
+      string line;
+      string result = "";
+      int counter = 0;
+      while (std::getline(proc.out(), line)){
+          if(counter == 1){
+              result+=line + "\n";
+          }
+          counter++;
+      }
+      if(result == ""){
+        return "No license plate found.";
+      }
+      else {
+        regex pattern("[A-Za-z0-9]+[A-Za-z]");
+        smatch match;
+        regex_search(result, match, pattern);
+        string best_result = "";
+        for (auto x : match)
+            best_result+=x;
+        return best_result;
+    }
+   }
+
 int main(int argc, char *argv[]){
   /** Get Phone address from UDP broadcast message*/
   cout << "Awaiting mobile connection..." << endl;
@@ -192,7 +223,10 @@ int main(int argc, char *argv[]){
         outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
         outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
         cout<<"Image saved at img.jpg"<<endl;
-        //free resrources    
+        //free resrources
+        string res = getLicensePlate();
+        cout << res << endl;
+        exit(0);
         delete data;
         mtx.lock();
         upcoming_car = 0;
