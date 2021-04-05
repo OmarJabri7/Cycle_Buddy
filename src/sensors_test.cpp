@@ -29,9 +29,10 @@ using namespace std;
 #define PORT_SONAR 8080
 #define PORT_HALL 6000
 #define PORT_UDP 8888
+#define PORT_IMG 6060
 #define MAXLINE 1024
-#define DT 4// distance threshold
-#define VT 8// velocity threshold
+#define DT 50 // distance threshold
+#define VT 8 // velocity threshold
 char hostIp[MAXLINE];
 /** Set old distance to calculate the derivative and get velocity */
 volatile float old_distance = 0;
@@ -126,7 +127,7 @@ class sonarDistanceSampleCallback : public SensorCallback{
 
   class sonarVelocitySampleCallback : public SensorCallback {
         virtual void dataIn(double t){
-          float v = abs((old_distance - (t/58))); //speed of incoming item
+          float v = abs((old_distance - (t/58))/50); //speed of incoming item
           auto time_now = chrono::system_clock::now();
           time_t timestamp = chrono::system_clock::to_time_t(time_now);
           printf("CAR VELOCITY: %f m/s\n", v);
@@ -167,7 +168,7 @@ class sonarDistanceSampleCallback : public SensorCallback{
 
 int main(int argc, char *argv[]){
   /** Get Phone address from UDP broadcast message*/
-  cout << "Awaiting mobile connection..." << endl;
+    cout << "Awaiting mobile connection..." << endl;
     int sockfd;
     char buffer[MAXLINE];
     struct sockaddr_in serv_addr;
@@ -217,7 +218,7 @@ int main(int argc, char *argv[]){
         //allocate memory
         unsigned char *data=new unsigned char[  Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB )];
         //extract the image in rgb format
-        Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB );//get camera image
+        Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB ); //get camera image
         //save
         ofstream outFile ( "img.jpg",ios::binary );
         outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
@@ -226,7 +227,6 @@ int main(int argc, char *argv[]){
         //free resrources
         string res = getLicensePlate();
         cout << res << endl;
-        exit(0);
         delete data;
         mtx.lock();
         upcoming_car = 0;

@@ -8,9 +8,11 @@ include_directories(.)
 include_directories(src)
 
 find_library(wiringPi_LIB wiringPi)
+find_package(raspicam REQUIRED)
 
 add_executable(Cycle_Buddy 
             src/sensors_test.cpp
             src/sensors.cpp)
 
 target_link_libraries(Cycle_Buddy ${wiringPi_LIB})
+target_link_libraries(Cycle_Buddy ${raspicam_LIBS})

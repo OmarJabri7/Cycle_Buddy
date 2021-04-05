@@ -1,3 +1,3 @@
 #!/bin/bash
 
-alpr -c eu img.jpeg
+alpr -c gb ../img.jpg
