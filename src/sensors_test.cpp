@@ -12,7 +12,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <arpa/inet.h>
-#include <jsoncpp/json/json.h>
+#include <nlohmann/json.hpp>
 #define _USE_MATHS_DEFINES
 #include <math.h>
 #include <cstdio>
@@ -25,17 +25,19 @@
 #include <array>
 #include <regex>
 using namespace std;
+using json = nlohmann::json;
 
 #define PORT_SONAR 8080
 #define PORT_HALL 6000
 #define PORT_UDP 8888
 #define PORT_IMG 6060
 #define MAXLINE 1024
+#define DATASIZE 128
 #define DT 50 // distance threshold
 #define VT 8 // velocity threshold
 char hostIp[MAXLINE];
 /** Set old distance to calculate the derivative and get velocity */
-volatile float old_distance = 0;
+volatile double old_distance = 0;
 volatile int upcoming_car = 1;
 volatile int distance_flag = 0;
 volatile int bike_flag = 0;
@@ -54,18 +56,22 @@ class hallSampleCallback : public SensorCallback{
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
-      printf("Velocity: %f m/s\n", v);
+      printf("Bike Velocity: %f m/s\n", v);
       cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      char time_data[20];
+      strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
       if(upcoming_car == 1 && v >= VT && bike_flag == 0){
           mtx.lock();
           bike_flag = 1;
           mtx.unlock();
       }
-      string data = to_string(v) + "|" + to_string(timestamp);
-      const void *buffer_data = data.c_str();
+      json json_data;
+      json_data["data"] = v;
+      json_data["timestamp"] = timestamp;
+      string data = json_data.dump();
+      const char *buffer_data = data.c_str();
       /** Send sensor readings to app */
       struct sockaddr_in server_addr;
-      char buffer[2048] = {0};
       sock = socket (AF_INET, SOCK_STREAM, 0);
       if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0){
 	  printf("\nInvalid address/ Address not supported \n");
@@ -77,7 +83,7 @@ class hallSampleCallback : public SensorCallback{
 	   perror("ERROR connecting\n");
       }
       else {
-	   send(sock, buffer_data, sizeof v, 0);
+	   send(sock, buffer_data, strlen(buffer_data), 0);
 	   close(sock);
       }
     }
@@ -94,20 +100,24 @@ class sonarDistanceSampleCallback : public SensorCallback{
     virtual void dataIn(double t){
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
-        printf("Distance: %f cm\n", t/58);
+        printf("Car Distance: %f cm\n", t/58);
         cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
-        double distance = t/58;
+	char time_data[20];
+	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
+	double distance = t/58;
         if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
           mtx.lock();
           distance_flag = 1;
           mtx.unlock();
         }
-        string data = to_string(distance) + "|" + to_string(timestamp);
-        const void *buffer_data = data.c_str();
+	json json_data;
+	json_data["data"] = distance;
+	json_data["timestamp"] = timestamp;
+        string data = json_data.dump();
+        const char *buffer_data = data.c_str();
         /** Send sensor readings to app */
         int sock = 0, conn_status;
         struct sockaddr_in server_addr;
-        char buffer[2048] = {0};
         sock = socket(AF_INET, SOCK_STREAM, 0);
         if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
           printf("\nInvalid address/ Address not supported \n");
@@ -118,27 +128,29 @@ class sonarDistanceSampleCallback : public SensorCallback{
         if(conn_status < 0){
           perror("ERROR connecting\n");
         }
-              else {
-          send(sock, buffer_data, sizeof distance, 0);
+        else {
+	  send(sock, buffer_data, strlen(buffer_data), 0);
           close(sock);
           }
-          }
+       }
   };
 
   class sonarVelocitySampleCallback : public SensorCallback {
         virtual void dataIn(double t){
-          float v = abs((old_distance - (t/58))/50); //speed of incoming item
-          auto time_now = chrono::system_clock::now();
-          time_t timestamp = chrono::system_clock::to_time_t(time_now);
-          printf("CAR VELOCITY: %f m/s\n", v);
-          cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
-          if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
-            mtx.lock();
-            velocity_flag = 1;
-            mtx.unlock();
-          }
-          old_distance = t/58;
-        }
+           double v = abs((old_distance - (t/58))/50); //speed of incoming item
+           auto time_now = chrono::system_clock::now();
+           time_t timestamp = chrono::system_clock::to_time_t(time_now);
+           printf("Car Velocity: %f m/s\n", v);
+           cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
+           if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
+             mtx.lock();
+             velocity_flag = 1;
+             mtx.unlock();
+            }
+	    mtx.lock();
+            old_distance = t/58;
+	    mtx.unlock();
+	  }
   };
 
    string getLicensePlate(){
@@ -204,12 +216,12 @@ int main(int argc, char *argv[]){
     sonarSensorOne->start(&pinInSonarOne, &pinOutSonarOne, SONAR);
     sonarSensorTwo->start(&pinInSonarTwo, &pinOutSonarTwo, SONAR);
     hallEffectSensor->start(&pinInHall, &pinOutHall, HALL);
-    raspicam::RaspiCam Camera;
+    /*raspicam::RaspiCam Camera;
     if(!Camera.open()){
       cerr << "Error opening camera" << endl;
     }
     cout << "###### Stabilizing camera... #######" << endl;
-    sleep(3);
+    //sleep(3);
     cout << "###### Camera configured ######" << endl;
     while(1){
       if(distance_flag == 1 && velocity_flag == 1){
@@ -232,7 +244,7 @@ int main(int argc, char *argv[]){
         upcoming_car = 0;
         mtx.unlock();
         // Wait for other car...
-        sleep(5);
+	sleep(5);
         // Capture now
         mtx.lock();
         distance_flag = 0;
@@ -242,6 +254,7 @@ int main(int argc, char *argv[]){
         mtx.unlock();
         }
     }
+    */
     getchar();
     sonarSensorOne->stop();
     sonarSensorTwo->stop();
