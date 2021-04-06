@@ -137,7 +137,7 @@ class sonarDistanceSampleCallback : public SensorCallback{
 
   class sonarVelocitySampleCallback : public SensorCallback {
         virtual void dataIn(double t){
-           double v = abs((old_distance - (t/58))/50); //speed of incoming item
+           double v = abs((old_distance - (t/58))/10); //speed of incoming item
            auto time_now = chrono::system_clock::now();
            time_t timestamp = chrono::system_clock::to_time_t(time_now);
            printf("Car Velocity: %f m/s\n", v);
