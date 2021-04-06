@@ -28,11 +28,11 @@ using namespace std;
 using json = nlohmann::json;
 
 #define PORT_SONAR 8080
+#define PORT_SONAR_VEL 7070
 #define PORT_HALL 6000
 #define PORT_UDP 8888
 #define PORT_IMG 6060
 #define MAXLINE 1024
-#define DATASIZE 128
 #define DT 50 // distance threshold
 #define VT 8 // velocity threshold
 char hostIp[MAXLINE];
@@ -144,12 +144,34 @@ class sonarDistanceSampleCallback : public SensorCallback{
            cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
            if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
              mtx.lock();
-             velocity_flag = 1;
+               velocity_flag = 1;
              mtx.unlock();
             }
-	    mtx.lock();
-            old_distance = t/58;
-	    mtx.unlock();
+	    json json_data;
+	    json_data["data"] = v;
+	    json_data["timestamp"] = timestamp;
+            string data = json_data.dump();
+            const char *buffer_data = data.c_str();
+            /** Send sensor readings to app */
+            int sock = 0, conn_status;
+            struct sockaddr_in server_addr;
+            sock = socket(AF_INET, SOCK_STREAM, 0);
+            if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
+               printf("\nInvalid address/ Address not supported \n");
+            }
+            server_addr.sin_family = AF_INET;
+            server_addr.sin_port = htons(PORT_SONAR_VEL);
+            conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
+            if(conn_status < 0){
+               perror("ERROR connecting\n");
+            }
+            else {
+	        send(sock, buffer_data, strlen(buffer_data), 0);
+                close(sock);
+             }
+	    //mtx.lock();
+              old_distance = t/58;
+	    //mtx.unlock();
 	  }
   };
 
