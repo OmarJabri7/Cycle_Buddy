@@ -53,23 +53,34 @@ void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
     double interval = 0;
     int triggeredCounter = 0;
     double vel = 0.0;
+    bool isInterrupt = false;
     while(hallEffect->running){
-      if(digitalRead(*pinIn) == 1 && ((micros()/1000000.0 - timeDetected >= 2.5))){
-            triggeredCounter++;
+      if(digitalRead(*pinIn) == 1 && triggeredCounter >= 1){// && ((micros()/1000000.0 - timeDetected >= 2.5))){
+	if((micros()/1000000.0 - timeDetected >= 2.5)){
+	    triggeredCounter++;
+	    isInterrupt = false;
             interval = micros()/1000000.0 - timeDetected;
             vel = abs((2*pi*wheelRadius)/interval);
             timeDetected = micros()/1000000.0;
             if(hallEffect->sensorCb){
-                hallEffect->sensorCb->dataIn(vel);
+	      hallEffect->sensorCb->dataIn(vel,isInterrupt);
             }
         }
+	else{
+	  if(hallEffect->sensorCb){
+	    isInterrupt = true;
+	    hallEffect->sensorCb->dataIn(vel,isInterrupt);
+	  }
+	}
+      }
       else if(triggeredCounter == 0){
 	triggeredCounter++;
 	timeDetected = micros()/1000000.0;
+	isInterrupt = false;
 	  if(hallEffect->sensorCb){
-	    hallEffect->sensorCb->dataIn(vel);
+	    hallEffect->sensorCb->dataIn(vel,isInterrupt);
 	  }
-        }
+	}
     }
     exit(0);
 }

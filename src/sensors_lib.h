@@ -20,7 +20,7 @@ class SensorCallback{
      */
     /** @param data - data (type double) returned from the different sensors.
      */
-        virtual void dataIn(double data) = 0;
+  virtual void dataIn(double data, bool isInterrupt = false) = 0;
 };
 /** Abstract Sensor Class that creates instances of each sensor used in the system.
     @author Omar Jabri
