@@ -58,18 +58,18 @@ class hallSampleCallback : public SensorCallback{
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
       mtx.lock();
-      printf("Bike Velocity: %f m/s\n", v);
-      cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      //printf("Bike Velocity: %f m/s\n", v);
+      cout << "TIMESTAMP HALL BIKE: " << ctime(&timestamp) << endl;
       mtx.unlock();
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-      mtx.lock();
+      /*mtx.lock();
       if(upcoming_car == 1 && v >= VT && bike_flag == 0){
 	//mtx.lock();
           bike_flag = 1;
           //mtx.unlock();
 	  }
-	  mtx.unlock();
+	  mtx.unlock();*/
       json json_data;
       json_data["data"] = v;
       json_data["timestamp"] = timestamp;
@@ -107,19 +107,19 @@ class sonarDistanceSampleCallback : public SensorCallback{
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	mtx.lock();
-        printf("Car Distance: %f cm\n", t/58);
-        cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+        //printf("Car Distance: %f cm\n", t/58);
+        cout << "TIMESTAMP CAR DISTANCE: " << ctime(&timestamp) << endl;
 	mtx.unlock();
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	double distance = t/58;
-	mtx.lock();
+	/*mtx.lock();
         if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
           //mtx.lock();
           distance_flag = 1;
           //mtx.unlock();
 	  }
-	  mtx.unlock();
+	  mtx.unlock();*/
 	      json json_data;
 	      json_data["data"] = distance;
 	      json_data["timestamp"] = timestamp;
@@ -147,20 +147,22 @@ class sonarDistanceSampleCallback : public SensorCallback{
 
   class sonarVelocitySampleCallback : public SensorCallback {
     virtual void dataIn(double t, bool isInterrupt = false){
+      //mtx.lock();
            double v = abs((old_distance - (t/58))/10); //speed of incoming item
-           auto time_now = chrono::system_clock::now();
+	   //mtx.unlock();
+	   auto time_now = chrono::system_clock::now();
            time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	   mtx.lock();
-           printf("Car Velocity: %f m/s\n", v);
-           cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
+           //printf("Car Velocity: %f m/s\n", v);
+           cout << "TIMESTAMP CAR VELOCITY: " << ctime(&timestamp) << endl;
 	   mtx.unlock();
-	   mtx.lock();
-	   if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
+	   //mtx.lock();
+	   /* if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
              //mtx.lock();
              velocity_flag = 1;
              //mtx.unlock();
 	     }
-	   mtx.unlock();
+	     mtx.unlock();*/
 	    json json_data;
 	      json_data["data"] = v;
 	      json_data["timestamp"] = timestamp;
