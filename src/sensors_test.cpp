@@ -34,7 +34,7 @@ using json = nlohmann::json;
 #define PORT_IMG 6060
 #define MAXLINE 1024
 #define DT 50 // distance threshold
-#define VT 8 // velocity threshold
+#define VT 3 // velocity threshold
 char hostIp[MAXLINE];
 /** Set old distance to calculate the derivative and get velocity */
 volatile double old_distance = 0;
@@ -57,15 +57,19 @@ class hallSampleCallback : public SensorCallback{
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
+      mtx.lock();
       printf("Bike Velocity: %f m/s\n", v);
       cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      mtx.unlock();
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-      /*if(upcoming_car == 1 && v >= VT && bike_flag == 0){
-          mtx.lock();
+      mtx.lock();
+      if(upcoming_car == 1 && v >= VT && bike_flag == 0){
+	//mtx.lock();
           bike_flag = 1;
-          mtx.unlock();
-	  }*/
+          //mtx.unlock();
+	  }
+	  mtx.unlock();
       json json_data;
       json_data["data"] = v;
       json_data["timestamp"] = timestamp;
@@ -102,16 +106,20 @@ class sonarDistanceSampleCallback : public SensorCallback{
   virtual void dataIn(double t, bool isInterrupt = false){
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
+	mtx.lock();
         printf("Car Distance: %f cm\n", t/58);
         cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+	mtx.unlock();
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	double distance = t/58;
-        /*if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
-          mtx.lock();
+	mtx.lock();
+        if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
+          //mtx.lock();
           distance_flag = 1;
-          mtx.unlock();
-	  }*/
+          //mtx.unlock();
+	  }
+	  mtx.unlock();
 	      json json_data;
 	      json_data["data"] = distance;
 	      json_data["timestamp"] = timestamp;
@@ -142,13 +150,17 @@ class sonarDistanceSampleCallback : public SensorCallback{
            double v = abs((old_distance - (t/58))/10); //speed of incoming item
            auto time_now = chrono::system_clock::now();
            time_t timestamp = chrono::system_clock::to_time_t(time_now);
+	   mtx.lock();
            printf("Car Velocity: %f m/s\n", v);
            cout << "TIMESTAMP VEL SONAR: " << ctime(&timestamp) << endl;
-           /*if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
-             mtx.lock();
+	   mtx.unlock();
+	   mtx.lock();
+	   if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
+             //mtx.lock();
              velocity_flag = 1;
-             mtx.unlock();
-	     }*/
+             //mtx.unlock();
+	     }
+	   mtx.unlock();
 	    json json_data;
 	      json_data["data"] = v;
 	      json_data["timestamp"] = timestamp;
@@ -240,14 +252,15 @@ int main(int argc, char *argv[]){
     sonarSensorOne->start(&pinInSonarOne, &pinOutSonarOne, SONAR);
     sonarSensorTwo->start(&pinInSonarTwo, &pinOutSonarTwo, SONAR);
     hallEffectSensor->start(&pinInHall, &pinOutHall, HALL);
-    /* raspicam::RaspiCam Camera;
+    /*raspicam::RaspiCam Camera;
     if(!Camera.open()){
       cerr << "Error opening camera" << endl;
     }
     cout << "###### Stabilizing camera... #######" << endl;
-    sleep(3);
+    // sleep(3);
     cout << "###### Camera configured ######" << endl;
     while(1){
+      mtx.lock();
       if(distance_flag == 1 && velocity_flag == 1){
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
@@ -264,20 +277,21 @@ int main(int argc, char *argv[]){
         string res = getLicensePlate();
         cout << res << endl;
         delete data;
-        mtx.lock();
+        //mtx.lock();
         upcoming_car = 0;
-        mtx.unlock();
+        //mtx.unlock();
         // Wait for other car...
-	sleep(5);
+	//sleep(5);
         // Capture now
-        mtx.lock();
+        //mtx.lock();
         distance_flag = 0;
         bike_flag = 0;
         velocity_flag = 0;
         upcoming_car = 1;
-        mtx.unlock();
+        //mtx.unlock();
         }
-	}*/
+      mtx.unlock();
+      }*/
     getchar();
     sonarSensorOne->stop();
     sonarSensorTwo->stop();
