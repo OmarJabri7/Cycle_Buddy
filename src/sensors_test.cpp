@@ -24,6 +24,7 @@
 #include <string>
 #include <array>
 #include <regex>
+#include <future>
 using namespace std;
 using json = nlohmann::json;
 
@@ -31,7 +32,7 @@ using json = nlohmann::json;
 #define PORT_SONAR_VEL 7070
 #define PORT_HALL 6000
 #define PORT_UDP 8888
-#define PORT_IMG 6060
+#define PORT_IMG 4070
 #define MAXLINE 1024
 #define DT 50 // distance threshold
 #define VT 10 // velocity threshold
@@ -174,17 +175,25 @@ class sonarDistanceSampleCallback : public SensorCallback{
        }
   };
 
-   string getLicensePlate(){
-      redi::ipstream proc("./simple_bash.sh", redi::pstreams::pstdout | redi::pstreams::pstderr);
-      string line;
+   string getLicensePlate(string res){
+      //redi::ipstream proc("./simple_bash.sh", redi::pstreams::pstdout | redi::pstreams::pstderr);
+      istringstream f(res);
+      string line; 
       string result = "";
-      int counter = 0;
-      while (std::getline(proc.out(), line)){
+      int counter = 0;   
+      while (std::getline(f, line)) {
+	if(counter == 1){
+        result+=line + "\n";
+      }
+      counter++;
+      }
+      cout << "RESULT" << result << endl;
+      /*while (std::getline(proc.out(), line)){
           if(counter == 1){
               result+=line + "\n";
           }
           counter++;
-      }
+      }*/
       if(result == ""){
         return "No license plate found.";
       }
@@ -198,6 +207,19 @@ class sonarDistanceSampleCallback : public SensorCallback{
         return best_result;
     }
    }
+   
+   std::string exec(const char* cmd) {
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+    return result;
+}
 
 int main(int argc, char *argv[]){
   /** Get Phone address from UDP broadcast message*/
@@ -246,9 +268,9 @@ int main(int argc, char *argv[]){
     cout << "###### Camera configured ######" << endl;
     while(true){
      // if(distance_flag == 1 && velocity_flag == 1){
-     if(conds.car_distance <= DT && (abs(conds.car_velocity - conds.bike_velocity) <= VT)){
-     //if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
-	mtx.lock();
+     //if(conds.car_distance <= DT && (abs(conds.car_velocity - conds.bike_velocity) <= VT)){
+     if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
+        mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
         //allocate memory
@@ -256,14 +278,41 @@ int main(int argc, char *argv[]){
         //extract the image in rgb format
         Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB ); //get camera image
         //save
-        ofstream outFile ( "img.jpg",ios::binary );
+        ofstream outFile ( "src/img.png",ios::binary );
         outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
         outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
-        cout<<"Image saved at img.jpg"<<endl;
+        cout<<"Image saved at src/img.png"<<endl;
         //free resrources
-        string res = getLicensePlate();
-        cout << res << endl;
+	//future<string> ret = async(&getLicensePlate);
+	//string res = ret.get();
+	string res = exec("alpr -c gb src/img.jpg");
+        string car_plate = getLicensePlate(res);
+        cout << car_plate << endl;
         delete data;
+	json json_data;
+	json_data["car_plate"] = car_plate;
+	json_data["car_distance"] = conds.car_distance;
+	json_data["car_velocity"] = conds.car_velocity;
+	json_data["bike_velocity"] = conds.bike_velocity;
+        string result_data = json_data.dump();
+        const char *buffer_data = result_data.c_str();
+        /** Send sensor readings to app */
+        int sock = 0, conn_status;
+        struct sockaddr_in server_addr;
+        sock = socket(AF_INET, SOCK_STREAM, 0);
+        if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
+          printf("\nInvalid address/ Address not supported \n");
+        }
+        server_addr.sin_family = AF_INET;
+        server_addr.sin_port = htons(PORT_IMG);
+        conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
+        if(conn_status < 0){
+          perror("ERROR connecting\n");
+        }
+        else {
+	  send(sock, buffer_data, strlen(buffer_data), 0);
+          close(sock);
+	}
 	mtx.unlock();
 	//mtx.lock();
         //upcoming_car = 0;
