@@ -48,28 +48,46 @@ void Sensor::run_sonar(Sensor* sonar, int *pinIn, int *pinOut){
 void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
     hallEffect->running = 1;
     double timeDetected = 0;
-    int wheelRadius = 10;
+    int wheelRadius = 25; // in cm
     double pi = M_PI;
     double interval = 0;
     int triggeredCounter = 0;
     double vel = 0.0;
+    bool isInterrupt = false;
     while(hallEffect->running){
-      if(digitalRead(*pinIn) == 1 && ((micros()/1000000.0 - timeDetected >= 2.5))){
-            triggeredCounter++;
+      //delay(500);
+      if(digitalRead(*pinIn) == 1 && triggeredCounter >= 1){// && ((micros()/1000000.0 - timeDetected >= 2.5))){
+	if((micros()/1000000.0 - timeDetected >= 0.5)){
+	    triggeredCounter++;
+	    isInterrupt = false;
             interval = micros()/1000000.0 - timeDetected;
             vel = abs((2*pi*wheelRadius)/interval);
             timeDetected = micros()/1000000.0;
             if(hallEffect->sensorCb){
-                hallEffect->sensorCb->dataIn(vel);
+	      hallEffect->sensorCb->dataIn(vel,isInterrupt);
             }
         }
-      else if(triggeredCounter == 0){
+	else{
+	  if(hallEffect->sensorCb){
+	    isInterrupt = true;
+	    hallEffect->sensorCb->dataIn(vel,isInterrupt);
+	  }
+	}
+      }
+      else if(triggeredCounter == 0 && digitalRead(*pinIn) == 1){
 	triggeredCounter++;
 	timeDetected = micros()/1000000.0;
+	isInterrupt = false;
 	  if(hallEffect->sensorCb){
-	    hallEffect->sensorCb->dataIn(vel);
+	    hallEffect->sensorCb->dataIn(vel,isInterrupt);
 	  }
-        }
+	}
+	else if(digitalRead(*pinIn) == 0){
+	    //cout << vel << endl;
+	    if(hallEffect->sensorCb){
+		hallEffect->sensorCb->dataIn(vel,true);
+	    }
+	}
     }
     exit(0);
 }
