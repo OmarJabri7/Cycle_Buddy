@@ -34,7 +34,7 @@ using json = nlohmann::json;
 #define PORT_IMG 6060
 #define MAXLINE 1024
 #define DT 50 // distance threshold
-#define VT 30 // velocity threshold
+#define VT 10 // velocity threshold
 char hostIp[MAXLINE];
 /** Set old distance to calculate the derivative and get velocity */
 volatile double old_distance = 0;
@@ -72,7 +72,7 @@ class hallSampleCallback : public SensorCallback{
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
       //mtx.lock();
       //printf("Bike Velocity: %f m/s\n", v);
-      cout << "TIMESTAMP HALL BIKE: " << ctime(&timestamp) << endl;
+      cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
       //mtx.unlock();
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
@@ -135,7 +135,7 @@ class sonarDistanceSampleCallback : public SensorCallback{
 	//mtx.lock();
         //printf("Car Distance: %f cm\n", t/58);
 	//printf("Car Velocity: %f m/s\n", v);
-        cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+	cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
 	//mtx.unlock();
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
@@ -244,9 +244,10 @@ int main(int argc, char *argv[]){
     }
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
-    while(1){
+    while(true){
      // if(distance_flag == 1 && velocity_flag == 1){
      if(conds.car_distance <= DT && (abs(conds.car_velocity - conds.bike_velocity) <= VT)){
+     //if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
 	mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
@@ -263,6 +264,7 @@ int main(int argc, char *argv[]){
         string res = getLicensePlate();
         cout << res << endl;
         delete data;
+	mtx.unlock();
 	//mtx.lock();
         //upcoming_car = 0;
 	//mtx.unlock();

@@ -55,7 +55,7 @@ void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
     double vel = 0.0;
     bool isInterrupt = false;
     while(hallEffect->running){
-      //delay(700);
+      //delay(500);
       if(digitalRead(*pinIn) == 1 && triggeredCounter >= 1){// && ((micros()/1000000.0 - timeDetected >= 2.5))){
 	if((micros()/1000000.0 - timeDetected >= 0.5)){
 	    triggeredCounter++;
@@ -81,6 +81,12 @@ void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
 	  if(hallEffect->sensorCb){
 	    hallEffect->sensorCb->dataIn(vel,isInterrupt);
 	  }
+	}
+	else if(digitalRead(*pinIn) == 0){
+	    //cout << vel << endl;
+	    if(hallEffect->sensorCb){
+		hallEffect->sensorCb->dataIn(vel,true);
+	    }
 	}
     }
     exit(0);
