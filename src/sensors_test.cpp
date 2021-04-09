@@ -65,17 +65,19 @@ class hallSampleCallback : public SensorCallback{
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
-      mtx.lock();
+      //mtx.lock();
       //printf("Bike Velocity: %f m/s\n", v);
       cout << "TIMESTAMP HALL BIKE: " << ctime(&timestamp) << endl;
-      mtx.unlock();
+      //mtx.unlock();
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-      mtx.lock();
+      //mtx.lock();
       if(upcoming_car == 1 && v >= VT && bike_flag == 0){
+	mtx.lock();
 	bike_flag = 1;
+	mtx.unlock();
       }
-      mtx.unlock();
+      //mtx.unlock();
       json json_data;
       json_data["distance"] = (double)-1.0;
       json_data["velocity"] = v;
@@ -120,21 +122,21 @@ class sonarDistanceSampleCallback : public SensorCallback{
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	double distance = t/58;
 	double v = abs((old_distance - (distance))/10); //speed of incoming item
-	mtx.lock();
+	//mtx.lock();
         //printf("Car Distance: %f cm\n", t/58);
 	//printf("Car Velocity: %f m/s\n", v);
         cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
-	mtx.unlock();
+	//mtx.unlock();
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-	mtx.lock();
-	if(upcoming_car == 1 && (distance <= DT && v <= VT)&& (distance_flag == 0 && velocity_flag == 0)){
-	  //mtx.lock();
+	//mtx.lock();
+	if(upcoming_car == 1 && (distance <= DT && v <= VT) && (distance_flag == 0 && velocity_flag == 0)){
+	  mtx.lock();
 	  distance_flag = 1;
 	  velocity_flag = 1;
-	  //mtx.unlock();
+	  mtx.unlock();
 	}
-	mtx.unlock();
+	//mtx.unlock();
 	json json_data;
 	json_data["distance"] = distance;
 	json_data["velocity"] = v;
@@ -234,6 +236,7 @@ int main(int argc, char *argv[]){
     cout << "###### Camera configured ######" << endl;
     while(1){
       if(distance_flag == 1 && velocity_flag == 1){
+	mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
         //allocate memory
@@ -249,12 +252,12 @@ int main(int argc, char *argv[]){
         string res = getLicensePlate();
         cout << res << endl;
         delete data;
-	mtx.lock();
+	//mtx.lock();
         upcoming_car = 0;
-	mtx.unlock();
+	//mtx.unlock();
 	//Wait for another car
-	sleep(5);
-	mtx.lock();
+	//sleep(5);
+	//mtx.lock();
         distance_flag = 0;
         bike_flag = 0;
         velocity_flag = 0;
