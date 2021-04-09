@@ -63,27 +63,14 @@ class hallSampleCallback : public SensorCallback{
     /** @param v - velocity of bicycle wheel reading from hall sensor
     */
   virtual void dataIn(double v, bool isInterrupt = false){
-    /*if(interrupt == 1){
-	this_thread::sleep_for(chrono::seconds(5));
-    }*/
     conds.bike_velocity = v;
     if(isInterrupt == false){
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
-      //mtx.lock();
-      //printf("Bike Velocity: %f m/s\n", v);
       cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
-      //mtx.unlock();
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-      //mtx.lock();
-      /*if(upcoming_car == 1 && v >= VT && bike_flag == 0){
-	mtx.lock();
-	bike_flag = 1;
-	mtx.unlock();
-      }*/
-      //mtx.unlock();
       json json_data;
       json_data["distance"] = (double)-1.0;
       json_data["velocity"] = v;
@@ -124,30 +111,15 @@ class sonarDistanceSampleCallback : public SensorCallback{
     /** @param t - time of echo heading t obstacle and coming back as reading from sonar sensor
     */
   virtual void dataIn(double t, bool isInterrupt = false){
-	/*if(interrupt == 1){
-	    this_thread::sleep_for(chrono::seconds(5));
-	}*/
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	double distance = t/58;
 	double v = abs((old_distance - (distance)))/50; //speed of incoming item
 	conds.car_distance = distance;
 	conds.car_velocity = v;
-	//mtx.lock();
-        //printf("Car Distance: %f cm\n", t/58);
-	//printf("Car Velocity: %f m/s\n", v);
 	cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
-	//mtx.unlock();
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-	//mtx.lock();
-	/*if(upcoming_car == 1 && (distance <= DT && v <= VT) && (distance_flag == 0 && velocity_flag == 0)){
-	  mtx.lock();
-	  distance_flag = 1;
-	  velocity_flag = 1;
-	  mtx.unlock();
-	}*/
-	//mtx.unlock();
 	json json_data;
 	json_data["distance"] = distance;
 	json_data["velocity"] = v;
@@ -176,7 +148,6 @@ class sonarDistanceSampleCallback : public SensorCallback{
   };
 
    string getLicensePlate(string res){
-      //redi::ipstream proc("./simple_bash.sh", redi::pstreams::pstdout | redi::pstreams::pstderr);
       istringstream f(res);
       string line; 
       string result = "";
@@ -188,12 +159,6 @@ class sonarDistanceSampleCallback : public SensorCallback{
       counter++;
       }
       cout << "RESULT" << result << endl;
-      /*while (std::getline(proc.out(), line)){
-          if(counter == 1){
-              result+=line + "\n";
-          }
-          counter++;
-      }*/
       if(result == ""){
         return "No license plate found.";
       }
@@ -239,9 +204,6 @@ int main(int argc, char *argv[]){
     buffer[n] = '\0';
     strcpy(hostIp, buffer);
     close(sockfd);
-    //conds.distance_flag = 0;
-    //conds.bike_flag = 0;
-    //conds.velocity_flag = 0;
     const int HALL = 0;
     const int SONAR = 1;
     int pinInHall = 1;
@@ -267,8 +229,6 @@ int main(int argc, char *argv[]){
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
     while(true){
-     // if(distance_flag == 1 && velocity_flag == 1){
-     //if(conds.car_distance <= DT && (abs(conds.car_velocity - conds.bike_velocity) <= VT)){
      if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
         mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
@@ -282,9 +242,6 @@ int main(int argc, char *argv[]){
         outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
         outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
         cout<<"Image saved at src/img.png"<<endl;
-        //free resrources
-	//future<string> ret = async(&getLicensePlate);
-	//string res = ret.get();
 	string res = exec("alpr -c gb src/img.jpg");
         string car_plate = getLicensePlate(res);
         cout << car_plate << endl;
@@ -314,19 +271,6 @@ int main(int argc, char *argv[]){
           close(sock);
 	}
 	mtx.unlock();
-	//mtx.lock();
-        //upcoming_car = 0;
-	//mtx.unlock();
-	//Wait for another car
-	/*interrupt = 1;
-	sleep(5);
-	interrupt = 0;
-	//mtx.lock();
-        distance_flag = 0;
-        bike_flag = 0;
-        velocity_flag = 0;
-        upcoming_car = 1;
-	mtx.unlock();*/
         }
       }
     getchar();
