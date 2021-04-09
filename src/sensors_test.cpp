@@ -34,7 +34,7 @@ using json = nlohmann::json;
 #define PORT_IMG 6060
 #define MAXLINE 1024
 #define DT 50 // distance threshold
-#define VT 3 // velocity threshold
+#define VT 30 // velocity threshold
 char hostIp[MAXLINE];
 /** Set old distance to calculate the derivative and get velocity */
 volatile double old_distance = 0;
@@ -46,9 +46,9 @@ volatile int interrupt = 0;
 std::mutex mtx;
 
 struct conditions {
-  int distance_flag;
-  int bike_flag;
-  int velocity_flag;
+  double car_distance;
+  double car_velocity;
+  double bike_velocity;
 };
 
 volatile conditions conds;
@@ -65,6 +65,7 @@ class hallSampleCallback : public SensorCallback{
     /*if(interrupt == 1){
 	this_thread::sleep_for(chrono::seconds(5));
     }*/
+    conds.bike_velocity = v;
     if(isInterrupt == false){
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
@@ -76,11 +77,11 @@ class hallSampleCallback : public SensorCallback{
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
       //mtx.lock();
-      if(upcoming_car == 1 && v >= VT && bike_flag == 0){
+      /*if(upcoming_car == 1 && v >= VT && bike_flag == 0){
 	mtx.lock();
 	bike_flag = 1;
 	mtx.unlock();
-      }
+      }*/
       //mtx.unlock();
       json json_data;
       json_data["distance"] = (double)-1.0;
@@ -128,7 +129,9 @@ class sonarDistanceSampleCallback : public SensorCallback{
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	double distance = t/58;
-	double v = abs((old_distance - (distance))/10); //speed of incoming item
+	double v = abs((old_distance - (distance)))/50; //speed of incoming item
+	conds.car_distance = distance;
+	conds.car_velocity = v;
 	//mtx.lock();
         //printf("Car Distance: %f cm\n", t/58);
 	//printf("Car Velocity: %f m/s\n", v);
@@ -137,12 +140,12 @@ class sonarDistanceSampleCallback : public SensorCallback{
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	//mtx.lock();
-	if(upcoming_car == 1 && (distance <= DT && v <= VT) && (distance_flag == 0 && velocity_flag == 0)){
+	/*if(upcoming_car == 1 && (distance <= DT && v <= VT) && (distance_flag == 0 && velocity_flag == 0)){
 	  mtx.lock();
 	  distance_flag = 1;
 	  velocity_flag = 1;
 	  mtx.unlock();
-	}
+	}*/
 	//mtx.unlock();
 	json json_data;
 	json_data["distance"] = distance;
@@ -214,9 +217,9 @@ int main(int argc, char *argv[]){
     buffer[n] = '\0';
     strcpy(hostIp, buffer);
     close(sockfd);
-    conds.distance_flag = 0;
-    conds.bike_flag = 0;
-    conds.velocity_flag = 0;
+    //conds.distance_flag = 0;
+    //conds.bike_flag = 0;
+    //conds.velocity_flag = 0;
     const int HALL = 0;
     const int SONAR = 1;
     int pinInHall = 1;
@@ -242,7 +245,8 @@ int main(int argc, char *argv[]){
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
     while(1){
-      if(distance_flag == 1 && velocity_flag == 1){
+     // if(distance_flag == 1 && velocity_flag == 1){
+     if(conds.car_distance <= DT && (abs(conds.car_velocity - conds.bike_velocity) <= VT)){
 	mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
@@ -260,10 +264,10 @@ int main(int argc, char *argv[]){
         cout << res << endl;
         delete data;
 	//mtx.lock();
-        upcoming_car = 0;
+        //upcoming_car = 0;
 	//mtx.unlock();
 	//Wait for another car
-	interrupt = 1;
+	/*interrupt = 1;
 	sleep(5);
 	interrupt = 0;
 	//mtx.lock();
@@ -271,7 +275,7 @@ int main(int argc, char *argv[]){
         bike_flag = 0;
         velocity_flag = 0;
         upcoming_car = 1;
-	mtx.unlock();
+	mtx.unlock();*/
         }
       }
     getchar();

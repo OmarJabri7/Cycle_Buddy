@@ -48,7 +48,7 @@ void Sensor::run_sonar(Sensor* sonar, int *pinIn, int *pinOut){
 void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
     hallEffect->running = 1;
     double timeDetected = 0;
-    int wheelRadius = 5;
+    int wheelRadius = 25; // in cm
     double pi = M_PI;
     double interval = 0;
     int triggeredCounter = 0;
