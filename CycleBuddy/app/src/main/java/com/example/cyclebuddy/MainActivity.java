@@ -28,6 +28,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -68,19 +69,25 @@ import java.util.concurrent.Executors;
 
         ServerThread serverThreadSonarTwo = null;
 
+        ResultsThread resultsThread = null;
+
         private LineChart distance_sonar_chart;
 
         private LineChart vel_chart;
 
         private LineChart vel_sonar_chart;
 
-        TextView connectionStatus;
+        TextView carPlate;
+        TextView carDistance;
+        TextView carVelocity;
+        TextView bikeVelocity;
+        TextView timeStamp;
 
         public static final int SERVERPORT_SONAR_DIST = 8080;
 
         public static final int SERVERPORT_HALL = 6000;
 
-//        public static final int SERVERPORT_SONAR_VEL = 7070;
+        public static final int RESULTS_PORT = 4070;
 
         public static final int BROADCASTPORT = 8888;
 
@@ -92,7 +99,11 @@ import java.util.concurrent.Executors;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             connectBtn = (Button) findViewById(R.id.connectBtn);
-            connectionStatus = (TextView) findViewById(R.id.connectionStatus);
+            carPlate = (TextView) findViewById(R.id.carPlate);
+            carDistance = (TextView) findViewById(R.id.carDistance);
+            carVelocity = (TextView) findViewById(R.id.carVelocity);
+            bikeVelocity = (TextView) findViewById(R.id.bikeVelocity);
+//            timeStamp = (TextView) findViewById(R.id.timestamp);
             //Sonar 1
             distance_sonar_chart = (LineChart) findViewById(R.id.distance_chart);
 //            distance_sonar_chart.getDescription().setEnabled(true);
@@ -168,6 +179,11 @@ import java.util.concurrent.Executors;
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+            try {
+                this.resultsThread = new ResultsThread(RESULTS_PORT,2);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
 //            try {
 //                this.serverThreadSonarTwo = new ServerThread(SERVERPORT_SONAR_VEL,
 //                        "SONAR_VELOCITY",
@@ -178,6 +194,7 @@ import java.util.concurrent.Executors;
             new Thread(this.serverThreadSonarOne).start();
             new Thread(this.serverThreadHall).start();
             new Thread(this.serverThreadSonarTwo).start();
+            new Thread(this.resultsThread).start();
         }
 
         @Override
@@ -214,9 +231,9 @@ import java.util.concurrent.Executors;
                 DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, getBroadcastAddress(), BROADCASTPORT);
                 socket.send(sendPacket);
                 System.out.println(getClass().getName() + "Broadcast packet sent to: " + getBroadcastAddress().getHostAddress());
-                connectionStatus.setText("Connected");
+//                connectionStatus.setText("Connected");
             } catch (IOException e) {
-                connectionStatus.setText("Not connected");
+//                connectionStatus.setText("Not connected");
                 Log.e("broadcastError", "IOException: " + e.getMessage());
             }
         }
@@ -394,6 +411,64 @@ import java.util.concurrent.Executors;
                         e.printStackTrace();
                     }
                     addEntry(String.valueOf(sensor_distance),String.valueOf(sensor_velocity), timestamp, this.sensorType);
+                }
+            }
+        }
+        class ResultsThread implements Runnable {
+            ServerSocket serverSocket;
+            private final ExecutorService pool;
+
+            public ResultsThread(int port, int poolSize) throws IOException {
+                this.serverSocket = new ServerSocket(port);
+                pool = Executors.newFixedThreadPool(poolSize);
+            }
+
+            public void run() {
+                Socket socket = null;
+                try {
+                    for (; ; ) {
+                        pool.execute(new Handler(serverSocket.accept()));
+                    }
+                } catch (IOException e) {
+                    pool.shutdown();
+                    e.printStackTrace();
+                }
+            }
+
+            class Handler implements Runnable {
+                private final Socket socket;
+
+                Handler(Socket socket) {
+                    this.socket = socket;
+                }
+
+                public void run() {
+                    // read and service request on socket
+                    BufferedReader input = null;
+                    try {
+                        input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    String data = null;
+                    double car_distance = 0;
+                    double car_velocity = 0;
+                    double bike_velocity = 0;
+                    String car_plate = "";
+                    try {
+                        data = input.readLine();
+                        JSONObject json_data = new JSONObject(data);
+                        car_distance = (double) json_data.get("car_distance");
+                        car_velocity = (double) json_data.get("car_velocity");
+                        bike_velocity = (double) json_data.get("bike_velocity");
+                        car_plate = (String) json_data.get("car_plate");
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                    carPlate.setText("Car Plate: " + String.valueOf(car_plate));
+                    carDistance.setText("Car Distance: " + String.valueOf(car_distance));
+                    carVelocity.setText("Car Velocity: " + String.valueOf(car_velocity));
+                    bikeVelocity.setText("Bike Velocity: " + String.valueOf(bike_velocity));
                 }
             }
         }

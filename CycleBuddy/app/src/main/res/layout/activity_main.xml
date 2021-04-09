@@ -40,8 +40,34 @@
         android:text="Connect" />
 
     <TextView
+        android:text="Results:"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/connectionStatus"/>
+        android:textColor="@color/black"
+        android:id="@+id/carPlate"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:id="@+id/carDistance"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:id="@+id/carVelocity"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:id="@+id/bikeVelocity"/>
 </LinearLayout>
 </ScrollView>
