@@ -48,15 +48,16 @@ void Sensor::run_sonar(Sensor* sonar, int *pinIn, int *pinOut){
 void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
     hallEffect->running = 1;
     double timeDetected = 0;
-    int wheelRadius = 10;
+    int wheelRadius = 5;
     double pi = M_PI;
     double interval = 0;
     int triggeredCounter = 0;
     double vel = 0.0;
     bool isInterrupt = false;
     while(hallEffect->running){
+      //delay(700);
       if(digitalRead(*pinIn) == 1 && triggeredCounter >= 1){// && ((micros()/1000000.0 - timeDetected >= 2.5))){
-	if((micros()/1000000.0 - timeDetected >= 2.5)){
+	if((micros()/1000000.0 - timeDetected >= 0.5)){
 	    triggeredCounter++;
 	    isInterrupt = false;
             interval = micros()/1000000.0 - timeDetected;
@@ -73,7 +74,7 @@ void Sensor::run_hall(Sensor* hallEffect, int *pinIn, int *pinOut){
 	  }
 	}
       }
-      else if(triggeredCounter == 0){
+      else if(triggeredCounter == 0 && digitalRead(*pinIn) == 1){
 	triggeredCounter++;
 	timeDetected = micros()/1000000.0;
 	isInterrupt = false;

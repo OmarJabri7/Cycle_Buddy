@@ -27,7 +27,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-#define PORT_SONAR 8080
+#define DATA_PORT 8080
 #define PORT_SONAR_VEL 7070
 #define PORT_HALL 6000
 #define PORT_UDP 8888
@@ -44,13 +44,13 @@ volatile int bike_flag = 0;
 volatile int velocity_flag = 0;
 std::mutex mtx;
 
-struct conditions {
-  int distance_flag;
-  int bike_flag;
-  int velocity_flag;
+struct data {
+  double bike_velocity;
+  double car_distance;
+  double car_velocity;
 };
 
-volatile conditions conds;
+volatile data sensor_data;
 
 /** Sample Call Back class inheriting SensorCallback, 
     associated with the hall effect sensor
@@ -71,34 +71,10 @@ class hallSampleCallback : public SensorCallback{
       mtx.unlock();
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
-      mtx.lock();
-      if(upcoming_car == 1 && v >= VT && bike_flag == 0){
-	bike_flag = 1;
-      }
-      mtx.unlock();
-      json json_data;
-      json_data["data"] = v;
-      json_data["timestamp"] = time_data;
-      string data = json_data.dump();
-      const char *buffer_data = data.c_str();
-      /** Send sensor readings to app */
-      struct sockaddr_in server_addr;
-      sock = socket (AF_INET, SOCK_STREAM, 0);
-      if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0){
-	  printf("\nInvalid address/ Address not supported \n");
-      }
-      server_addr.sin_family = AF_INET;
-      server_addr.sin_port = htons(PORT_HALL);
-      conn_status = connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
-      if(conn_status < 0){
-	   perror("ERROR connecting\n");
-      }
-      else {
-	   send(sock, buffer_data, strlen(buffer_data), 0);
-	   close(sock);
-      }
+      sensor_data.bike_velocity = v;
     }
     else{
+      sensor_data.bike_velocity = v;
       if(upcoming_car == 1 && v >= VT && bike_flag == 0){
 	bike_flag = 1;
       }
@@ -124,77 +100,36 @@ class sonarDistanceSampleCallback : public SensorCallback{
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	double distance = t/58;
-	double v = abs((old_distance - (distance))/10); //speed of incoming item
+	sensor_data.car_distance = distance;
 	mtx.lock();
 	if(upcoming_car == 1 && distance <= DT && distance_flag == 0){
 	  distance_flag = 1;
-	}
+	  }
 	mtx.unlock();
-	json json_data;
-	json_data["data"] = distance;
-	json_data["timestamp"] = time_data;
-        string data = json_data.dump();
-        const char *buffer_data = data.c_str();
-        /** Send sensor readings to app */
-        int sock = 0, conn_status;
-        struct sockaddr_in server_addr;
-        sock = socket(AF_INET, SOCK_STREAM, 0);
-        if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
-          printf("\nInvalid address/ Address not supported \n");
-        }
-        server_addr.sin_family = AF_INET;
-        server_addr.sin_port = htons(PORT_SONAR);
-        conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
-        if(conn_status < 0){
-          perror("ERROR connecting\n");
-        }
-        else {
-	  send(sock, buffer_data, strlen(buffer_data), 0);
-          close(sock);
-          }
-	old_distance = t/58;
        }
   };
 
   class sonarVelocitySampleCallback : public SensorCallback {
     virtual void dataIn(double t, bool isInterrupt = false){
-	double v = abs((old_distance - (t/58))/50); //speed of incoming item
-	auto time_now = chrono::system_clock::now();
-	time_t timestamp = chrono::system_clock::to_time_t(time_now);
-	mtx.lock();
-	printf("Car Velocity: %f m/s\n", v);
-	cout << "TIMESTAMP CAR VELOCITY: " << ctime(&timestamp) << endl;
-	mtx.unlock();
-	char time_data[20];
-	strftime(time_data,20,"%H:%M:%S",localtime(&timestamp));
-	mtx.lock();
-	if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
-	    velocity_flag = 1;
-	    }
-	mtx.unlock();
-	json json_data;
-	json_data["data"] = v;
-	json_data["timestamp"] = time_data;
-        string data = json_data.dump();
-        const char *buffer_data = data.c_str();
+           double v = abs((old_distance - (t/58))/10); //speed of incoming item
+	   sensor_data.car_velocity = v;
+	   auto time_now = chrono::system_clock::now();
+           time_t timestamp = chrono::system_clock::to_time_t(time_now);
+	   mtx.lock();
+           printf("Car Velocity: %f m/s\n", v);
+           cout << "TIMESTAMP CAR VELOCITY: " << ctime(&timestamp) << endl;
+	   mtx.unlock();
+	   char time_data[20];
+	   strftime(time_data,20,"%H:%M:%S",localtime(&timestamp));
+	   mtx.lock();
+	   if(upcoming_car == 1 && v >= VT && velocity_flag == 0){
+	     velocity_flag = 1;
+	     }
+	   mtx.unlock();
         /** Send sensor readings to app */
-	int sock = 0, conn_status;
-        struct sockaddr_in server_addr;
-        sock = socket(AF_INET, SOCK_STREAM, 0);
-        if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
-          printf("\nInvalid address/ Address not supported \n");
-        }
-        server_addr.sin_family = AF_INET;
-        server_addr.sin_port = htons(PORT_SONAR_VEL);
-        conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
-        if(conn_status < 0){
-          perror("ERROR connecting\n");
-        }
-        else {
-	        send(sock, buffer_data, strlen(buffer_data), 0);
-          close(sock);
-          }
-	old_distance = t/58;
+	    mtx.lock();
+            old_distance = t/58;
+	    mtx.unlock();
 	  }
   };
 
@@ -241,9 +176,9 @@ int main(int argc, char *argv[]){
     buffer[n] = '\0';
     strcpy(hostIp, buffer);
     close(sockfd);
-    conds.distance_flag = 0;
-    conds.bike_flag = 0;
-    conds.velocity_flag = 0;
+    sensor_data.bike_velocity = 0;
+    sensor_data.car_distance = 0;
+    sensor_data.car_velocity = 0;
     const int HALL = 0;
     const int SONAR = 1;
     int pinInHall = 1;
@@ -253,26 +188,57 @@ int main(int argc, char *argv[]){
     int pinInSonarTwo = 10;
     int pinOutSonarTwo = 11;
     Sensor* sonarSensorOne = new Sensor(&pinInSonarOne, &pinOutSonarOne);
-    //Sensor* sonarSensorTwo = new Sensor(&pinInSonarTwo, &pinOutSonarTwo);
+    Sensor* sonarSensorTwo = new Sensor(&pinInSonarTwo, &pinOutSonarTwo);
     Sensor* hallEffectSensor = new Sensor(&pinInHall,&pinOutHall);
     sonarDistanceSampleCallback sonarCallbackOne;
-    //sonarVelocitySampleCallback sonarCallbackTwo;
+    sonarVelocitySampleCallback sonarCallbackTwo;
     hallSampleCallback hallCallback;
     sonarSensorOne->setCallBack(&sonarCallbackOne);
-    //sonarSensorTwo->setCallBack(&sonarCallbackTwo);
+    sonarSensorTwo->setCallBack(&sonarCallbackTwo);
     hallEffectSensor->setCallBack(&hallCallback);
     sonarSensorOne->start(&pinInSonarOne, &pinOutSonarOne, SONAR);
-    //sonarSensorTwo->start(&pinInSonarTwo, &pinOutSonarTwo, SONAR);
+    sonarSensorTwo->start(&pinInSonarTwo, &pinOutSonarTwo, SONAR);
     hallEffectSensor->start(&pinInHall, &pinOutHall, HALL);
     raspicam::RaspiCam Camera;
     if(!Camera.open()){
       cerr << "Error opening camera" << endl;
     }
     cout << "###### Stabilizing camera... #######" << endl;
+    // sleep(3);
     cout << "###### Camera configured ######" << endl;
     while(1){
-      //mtx.lock();
-      if(distance_flag == 1){ //&& velocity_flag == 1){
+      //send data
+      json json_data;
+      json hall;
+      json sonarOne;
+      json sonarTwo;
+      hall["data"] = sensor_data.bike_velocity;
+      sonarOne["data"] = sensor_data.car_distance;
+      sonarTwo["data"] = sensor_data.car_velocity;
+      json_data["hall"] = hall;
+      json_data["sonarOne"] = sonarOne;
+      json_data["sonarTwo"] = sonarTwo;
+      string data = json_data.dump();
+      const char *buffer_data = data.c_str();
+      int sock = 0, conn_status;
+      struct sockaddr_in server_addr;
+      sock = socket(AF_INET, SOCK_STREAM, 0);
+      if(inet_pton(AF_INET, hostIp, &server_addr.sin_addr) <= 0) {
+	printf("\nInvalid address/ Address not supported \n");
+      }
+      server_addr.sin_family = AF_INET;
+      server_addr.sin_port = htons(DATA_PORT);
+      conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
+      if(conn_status < 0){
+	perror("ERROR connecting\n");
+      }
+      else {
+	  send(sock, buffer_data, strlen(buffer_data), 0);
+	  close(sock);
+      }
+      //check for car plate
+      /*mtx.lock();
+      if(distance_flag == 1 && velocity_flag == 1){
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
         //allocate memory
@@ -288,26 +254,27 @@ int main(int argc, char *argv[]){
         string res = getLicensePlate();
         cout << res << endl;
         delete data;
-	mtx.lock();
+        //mtx.lock();
         upcoming_car = 0;
-	mtx.unlock();
-	//Wait for another car
-	sleep(5);
-	mtx.lock();
+        //mtx.unlock();
+        // Wait for other car...
+	//sleep(5);
+        // Capture now
+        //mtx.lock();
         distance_flag = 0;
         bike_flag = 0;
         velocity_flag = 0;
         upcoming_car = 1;
-	mtx.unlock();
+        //mtx.unlock();
         }
-      //mtx.unlock();
+      mtx.unlock();*/
       }
     getchar();
     sonarSensorOne->stop();
-    //sonarSensorTwo->stop();
+    sonarSensorTwo->stop();
     hallEffectSensor->stop();
     delete sonarSensorOne;
-    //delete sonarSensorTwo;
+    delete sonarSensorTwo;
     delete hallEffectSensor;
     return 0;
 }
