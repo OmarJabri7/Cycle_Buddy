@@ -42,6 +42,7 @@ volatile int upcoming_car = 1;
 volatile int distance_flag = 0;
 volatile int bike_flag = 0;
 volatile int velocity_flag = 0;
+volatile int interrupt = 0;
 std::mutex mtx;
 
 struct conditions {
@@ -61,6 +62,9 @@ class hallSampleCallback : public SensorCallback{
     /** @param v - velocity of bicycle wheel reading from hall sensor
     */
   virtual void dataIn(double v, bool isInterrupt = false){
+    /*if(interrupt == 1){
+	this_thread::sleep_for(chrono::seconds(5));
+    }*/
     if(isInterrupt == false){
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
@@ -118,6 +122,9 @@ class sonarDistanceSampleCallback : public SensorCallback{
     /** @param t - time of echo heading t obstacle and coming back as reading from sonar sensor
     */
   virtual void dataIn(double t, bool isInterrupt = false){
+	/*if(interrupt == 1){
+	    this_thread::sleep_for(chrono::seconds(5));
+	}*/
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	double distance = t/58;
@@ -256,7 +263,9 @@ int main(int argc, char *argv[]){
         upcoming_car = 0;
 	//mtx.unlock();
 	//Wait for another car
-	//sleep(5);
+	interrupt = 1;
+	sleep(5);
+	interrupt = 0;
 	//mtx.lock();
         distance_flag = 0;
         bike_flag = 0;
