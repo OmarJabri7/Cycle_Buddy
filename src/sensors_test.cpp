@@ -68,7 +68,7 @@ class hallSampleCallback : public SensorCallback{
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
-      cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      //cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
       json json_data;
@@ -114,10 +114,10 @@ class sonarDistanceSampleCallback : public SensorCallback{
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	double distance = t/58;
-	double v = abs((old_distance - (distance)))/50; //speed of incoming item
+	double v = abs((old_distance - (distance)))/10; //speed of incoming item
 	conds.car_distance = distance;
 	conds.car_velocity = v;
-	cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+	//cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	json json_data;
@@ -229,7 +229,13 @@ int main(int argc, char *argv[]){
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
     while(true){
+      double car_distance = 0;
+      double car_velocity = 0;
+      double bike_velocity = 0;
      if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
+        car_distance = conds.car_distance;
+	car_velocity = conds.car_velocity;
+	bike_velocity = conds.bike_velocity;
         mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
@@ -248,9 +254,9 @@ int main(int argc, char *argv[]){
         delete data;
 	json json_data;
 	json_data["car_plate"] = car_plate;
-	json_data["car_distance"] = conds.car_distance;
-	json_data["car_velocity"] = conds.car_velocity;
-	json_data["bike_velocity"] = conds.bike_velocity;
+	json_data["car_distance"] = car_distance;
+	json_data["car_velocity"] = car_velocity;
+	json_data["bike_velocity"] = bike_velocity;
         string result_data = json_data.dump();
         const char *buffer_data = result_data.c_str();
         /** Send sensor readings to app */
@@ -277,10 +283,6 @@ int main(int argc, char *argv[]){
     sonarSensorOne->stop();
     hallEffectSensor->stop();
     printf("Done");
-    //cout << "Started at: " << ctime(&timestamp_start) << endl;
-    auto end = chrono::system_clock::now();
-    time_t timestamp_end = chrono::system_clock::to_time_t(end);
-    cout << "Ended at: " << timestamp_end << endl;
     delete sonarSensorOne;
     delete hallEffectSensor;
     return 0;
