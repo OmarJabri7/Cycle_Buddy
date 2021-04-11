@@ -228,11 +228,13 @@ int main(int argc, char *argv[]){
     }
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
+    int captureCount = 0;
     while(true){
       double car_distance = 0;
       double car_velocity = 0;
       double bike_velocity = 0;
      if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
+	captureCount++;
         car_distance = conds.car_distance;
 	car_velocity = conds.car_velocity;
 	bike_velocity = conds.bike_velocity;
@@ -244,13 +246,14 @@ int main(int argc, char *argv[]){
         //extract the image in rgb format
         Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB ); //get camera image
         //save
-        ofstream outFile ( "src/img.png",ios::binary );
+        ofstream outFile ( "src/img.jpg",ios::binary );
         outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
         outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
-        cout<<"Image saved at src/img.png"<<endl;
+        cout<<"Image saved at src/img.jpg"<<endl;
 	string res = exec("alpr -c gb src/img.jpg");
+	cout << "Capture No. " << captureCount << endl;
         string car_plate = getLicensePlate(res);
-        cout << car_plate << endl;
+        //cout << car_plate << endl;
         delete data;
 	json json_data;
 	json_data["car_plate"] = car_plate;
