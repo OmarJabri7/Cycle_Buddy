@@ -32,7 +32,8 @@ using json = nlohmann::json;
 #define PORT_SONAR_VEL 7070
 #define PORT_HALL 6000
 #define PORT_UDP 8888
-#define PORT_IMG 4070
+#define PORT_DATA 4070
+#define PORT_IMG 6969
 #define MAXLINE 1024
 #define DT 50 // distance threshold
 #define VT 10 // velocity threshold
@@ -68,7 +69,7 @@ class hallSampleCallback : public SensorCallback{
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
-      cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      //cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
       json json_data;
@@ -114,10 +115,10 @@ class sonarDistanceSampleCallback : public SensorCallback{
         auto time_now = chrono::system_clock::now();
         time_t timestamp = chrono::system_clock::to_time_t(time_now);
 	double distance = t/58;
-	double v = abs((old_distance - (distance)))/50; //speed of incoming item
+	double v = abs((old_distance - (distance)))/10; //speed of incoming item
 	conds.car_distance = distance;
 	conds.car_velocity = v;
-	cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+	//cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	json json_data;
@@ -228,8 +229,16 @@ int main(int argc, char *argv[]){
     }
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
+    int captureCount = 0;
     while(true){
+      double car_distance = 0;
+      double car_velocity = 0;
+      double bike_velocity = 0;
      if(conds.car_distance <= DT && conds.car_velocity >= VT && conds.bike_velocity >= VT){
+	captureCount++;
+        car_distance = conds.car_distance;
+	car_velocity = conds.car_velocity;
+	bike_velocity = conds.bike_velocity;
         mtx.lock();
         cout << "####### CAPTURING IMAGE #######" << endl;
         Camera.grab();
@@ -238,19 +247,49 @@ int main(int argc, char *argv[]){
         //extract the image in rgb format
         Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB ); //get camera image
         //save
-        ofstream outFile ( "src/img.png",ios::binary );
+        ofstream outFile ( "src/img.jpg",ios::binary );
         outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
         outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
-        cout<<"Image saved at src/img.png"<<endl;
+        cout<<"Image saved at src/img.jpg"<<endl;
 	string res = exec("alpr -c gb src/img.jpg");
+	cout << "Capture No. " << captureCount << endl;
         string car_plate = getLicensePlate(res);
-        cout << car_plate << endl;
         delete data;
+	//Send Image
+	/*FILE *picture;
+	picture = fopen("src/img.jpg", "r");
+	int size;
+	fseek(picture, 0, SEEK_END);
+	size = ftell(picture);
+	fseek(picture, 0, SEEK_SET);
+        /*int sock_img = 0, conn_status_img;
+        struct sockaddr_in server_addr_img;
+        sock_img = socket(AF_INET, SOCK_STREAM, 0);
+        if(inet_pton(AF_INET, hostIp, &server_addr_img.sin_addr) <= 0) {
+          printf("\nInvalid address/ Address not supported \n");
+        }
+        server_addr_img.sin_family = AF_INET;
+        server_addr_img.sin_port = htons(PORT_IMG);
+        conn_status_img = connect(sock_img,(struct sockaddr *)&server_addr_img, sizeof(server_addr_img));
+        if(conn_status_img < 0){
+          perror("ERROR connecting\n");
+        }
+        else {
+	  //write(sock_img,&size,sizeof(size));
+	  char send_buffer[size];
+	  while(!feof(picture)) {
+	    fread(send_buffer, 1, sizeof(send_buffer), picture);
+	    write(sock_img, send_buffer, sizeof(send_buffer));
+	    bzero(send_buffer, sizeof(send_buffer));
+	  }
+          close(sock_img);
+	}*/
+	//Send Data
 	json json_data;
 	json_data["car_plate"] = car_plate;
-	json_data["car_distance"] = conds.car_distance;
-	json_data["car_velocity"] = conds.car_velocity;
-	json_data["bike_velocity"] = conds.bike_velocity;
+	json_data["car_distance"] = car_distance;
+	json_data["car_velocity"] = car_velocity;
+	json_data["bike_velocity"] = bike_velocity;
         string result_data = json_data.dump();
         const char *buffer_data = result_data.c_str();
         /** Send sensor readings to app */
@@ -261,7 +300,7 @@ int main(int argc, char *argv[]){
           printf("\nInvalid address/ Address not supported \n");
         }
         server_addr.sin_family = AF_INET;
-        server_addr.sin_port = htons(PORT_IMG);
+        server_addr.sin_port = htons(PORT_DATA);
         conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
         if(conn_status < 0){
           perror("ERROR connecting\n");
@@ -277,10 +316,6 @@ int main(int argc, char *argv[]){
     sonarSensorOne->stop();
     hallEffectSensor->stop();
     printf("Done");
-    //cout << "Started at: " << ctime(&timestamp_start) << endl;
-    auto end = chrono::system_clock::now();
-    time_t timestamp_end = chrono::system_clock::to_time_t(end);
-    cout << "Ended at: " << timestamp_end << endl;
     delete sonarSensorOne;
     delete hallEffectSensor;
     return 0;
