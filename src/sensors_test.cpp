@@ -32,7 +32,8 @@ using json = nlohmann::json;
 #define PORT_SONAR_VEL 7070
 #define PORT_HALL 6000
 #define PORT_UDP 8888
-#define PORT_IMG 4070
+#define PORT_DATA 4070
+#define PORT_IMG 6969
 #define MAXLINE 1024
 #define DT 50 // distance threshold
 #define VT 10 // velocity threshold
@@ -253,8 +254,37 @@ int main(int argc, char *argv[]){
 	string res = exec("alpr -c gb src/img.jpg");
 	cout << "Capture No. " << captureCount << endl;
         string car_plate = getLicensePlate(res);
-        //cout << car_plate << endl;
         delete data;
+	//Send Image
+	/*FILE *picture;
+	picture = fopen("src/img.jpg", "r");
+	int size;
+	fseek(picture, 0, SEEK_END);
+	size = ftell(picture);
+	fseek(picture, 0, SEEK_SET);
+        /*int sock_img = 0, conn_status_img;
+        struct sockaddr_in server_addr_img;
+        sock_img = socket(AF_INET, SOCK_STREAM, 0);
+        if(inet_pton(AF_INET, hostIp, &server_addr_img.sin_addr) <= 0) {
+          printf("\nInvalid address/ Address not supported \n");
+        }
+        server_addr_img.sin_family = AF_INET;
+        server_addr_img.sin_port = htons(PORT_IMG);
+        conn_status_img = connect(sock_img,(struct sockaddr *)&server_addr_img, sizeof(server_addr_img));
+        if(conn_status_img < 0){
+          perror("ERROR connecting\n");
+        }
+        else {
+	  //write(sock_img,&size,sizeof(size));
+	  char send_buffer[size];
+	  while(!feof(picture)) {
+	    fread(send_buffer, 1, sizeof(send_buffer), picture);
+	    write(sock_img, send_buffer, sizeof(send_buffer));
+	    bzero(send_buffer, sizeof(send_buffer));
+	  }
+          close(sock_img);
+	}*/
+	//Send Data
 	json json_data;
 	json_data["car_plate"] = car_plate;
 	json_data["car_distance"] = car_distance;
@@ -270,7 +300,7 @@ int main(int argc, char *argv[]){
           printf("\nInvalid address/ Address not supported \n");
         }
         server_addr.sin_family = AF_INET;
-        server_addr.sin_port = htons(PORT_IMG);
+        server_addr.sin_port = htons(PORT_DATA);
         conn_status = connect(sock,(struct sockaddr *)&server_addr, sizeof(server_addr));
         if(conn_status < 0){
           perror("ERROR connecting\n");
