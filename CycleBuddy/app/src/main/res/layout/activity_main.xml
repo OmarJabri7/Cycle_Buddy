@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -46,11 +46,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+<!--    <TextView-->
+<!--        android:id="@+id/img_link"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:autoLink="web"-->
+<!--        android:textColor="@color/design_default_color_primary_dark"-->
+<!--        android:text=""/>-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="30dp"
+        android:maxHeight="30dp"
+        android:id="@+id/plateImg"/>
+
     <TextView
+        android:id="@+id/carPlate"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/black"
-        android:id="@+id/carPlate"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/black" />
 
     <TextView
         android:layout_width="match_parent"
@@ -69,5 +84,17 @@
         android:layout_height="match_parent"
         android:textColor="@color/black"
         android:id="@+id/bikeVelocity"/>
+    <TextView
+        android:textColor="@color/black"
+        android:text="Enter plate here for car information:"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:text="https://vehicleenquiry.service.gov.uk/"/>
 </LinearLayout>
 </ScrollView>
