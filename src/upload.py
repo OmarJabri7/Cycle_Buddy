@@ -1,7 +1,7 @@
 import pyrebase
 from PIL import Image
 img = Image.open("src/img.jpg")
-img.save("src/img.ppm")
+img.save("src/img.jpeg")
 config = {"apiKey": "AIzaSyCwYWvvDBfqsazPMXNhRIRX0HJ7RIsEH_c",
           "authDomain":"cyclebuddy-17c84.firebaseapp.com",
           "databaseURL": "https://cyclebuddy-17c84-default-rtdb.firebaseio.com/",
@@ -10,4 +10,4 @@ config = {"apiKey": "AIzaSyCwYWvvDBfqsazPMXNhRIRX0HJ7RIsEH_c",
           "messagingSenderId":"703404260627"}
 firebase = pyrebase.initialize_app(config)
 storage = firebase.storage()
-storage.child("images/img.ppm").put("src/img.ppm")
+storage.child("images/img.jpeg").put("src/img.jpeg")

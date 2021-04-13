@@ -230,7 +230,6 @@ int main(int argc, char *argv[]){
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
     int captureCount = 0;
-    //Py_Initialize();
     while(true){
       double car_distance = 0;
       double car_velocity = 0;
@@ -258,10 +257,6 @@ int main(int argc, char *argv[]){
 	cout << "RESULT: " << car_plate << endl;
         delete data;
 	exec("python3 src/upload.py");
-	//char filename[] = "src/upload.py";
-	//FILE* fp;
-	//fp = _Py_fopen(filename, "r");
-	//PyRun_SimpleFile(fp, filename);
 	//Send Data
 	json json_data;
 	json_data["car_plate"] = car_plate;
