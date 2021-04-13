@@ -15,6 +15,7 @@
 #include <nlohmann/json.hpp>
 #define _USE_MATHS_DEFINES
 #include <math.h>
+#include <Python.h>
 #include <cstdio>
 #include <mutex>
 #include <raspicam/raspicam.h>
@@ -159,7 +160,6 @@ class sonarDistanceSampleCallback : public SensorCallback{
       }
       counter++;
       }
-      cout << "RESULT" << result << endl;
       if(result == ""){
         return "No license plate found.";
       }
@@ -230,6 +230,7 @@ int main(int argc, char *argv[]){
     cout << "###### Stabilizing camera... #######" << endl;
     cout << "###### Camera configured ######" << endl;
     int captureCount = 0;
+    //Py_Initialize();
     while(true){
       double car_distance = 0;
       double car_velocity = 0;
@@ -254,36 +255,13 @@ int main(int argc, char *argv[]){
 	string res = exec("alpr -c gb src/img.jpg");
 	cout << "Capture No. " << captureCount << endl;
         string car_plate = getLicensePlate(res);
+	cout << "RESULT: " << car_plate << endl;
         delete data;
-	//Send Image
-	/*FILE *picture;
-	picture = fopen("src/img.jpg", "r");
-	int size;
-	fseek(picture, 0, SEEK_END);
-	size = ftell(picture);
-	fseek(picture, 0, SEEK_SET);
-        /*int sock_img = 0, conn_status_img;
-        struct sockaddr_in server_addr_img;
-        sock_img = socket(AF_INET, SOCK_STREAM, 0);
-        if(inet_pton(AF_INET, hostIp, &server_addr_img.sin_addr) <= 0) {
-          printf("\nInvalid address/ Address not supported \n");
-        }
-        server_addr_img.sin_family = AF_INET;
-        server_addr_img.sin_port = htons(PORT_IMG);
-        conn_status_img = connect(sock_img,(struct sockaddr *)&server_addr_img, sizeof(server_addr_img));
-        if(conn_status_img < 0){
-          perror("ERROR connecting\n");
-        }
-        else {
-	  //write(sock_img,&size,sizeof(size));
-	  char send_buffer[size];
-	  while(!feof(picture)) {
-	    fread(send_buffer, 1, sizeof(send_buffer), picture);
-	    write(sock_img, send_buffer, sizeof(send_buffer));
-	    bzero(send_buffer, sizeof(send_buffer));
-	  }
-          close(sock_img);
-	}*/
+	exec("python3 src/upload.py");
+	//char filename[] = "src/upload.py";
+	//FILE* fp;
+	//fp = _Py_fopen(filename, "r");
+	//PyRun_SimpleFile(fp, filename);
 	//Send Data
 	json json_data;
 	json_data["car_plate"] = car_plate;
