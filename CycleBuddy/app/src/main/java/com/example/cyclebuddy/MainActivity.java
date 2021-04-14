@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -31,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -43,6 +45,8 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -125,6 +129,8 @@ import java.util.concurrent.Executors;
 
         ResultsThread resultsThread = null;
 
+        Uri imgUri;
+
 //        ImageThread imgThread = null;
 
         private LineChart distance_sonar_chart;
@@ -138,6 +144,7 @@ import java.util.concurrent.Executors;
         TextView carVelocity;
         TextView bikeVelocity;
         ImageView plateImg;
+        TextView user;
 
         public static final int SERVERPORT_SONAR_DIST = 8080;
 
@@ -154,6 +161,7 @@ import java.util.concurrent.Executors;
         public static final int IMG_PORT = 6969;
 
         public static DatabaseReference mDatabase;
+
         FirebaseStorage storage;
 
         public static Button connectBtn;
@@ -168,13 +176,26 @@ import java.util.concurrent.Executors;
         @Override
         protected void onResume() {
             super.onResume();
-            prefs = getSharedPreferences("data",0);
+            prefs = getApplicationContext().getSharedPreferences("latest_data",0);
             if(prefs.contains("car_plate")){
-                imgLink.setText(prefs.getString("img_link",""));
+                Glide.with(this).load(String.valueOf(prefs.getString("img_link",""))).placeholder(R.mipmap.ic_launcher).into(plateImg);
                 carPlate.setText("Car Plate: " + prefs.getString("car_plate",""));
-                carDistance.setText("Car Distance: " + prefs.getFloat("car_distance",0));
-                carVelocity.setText("Car Velocity " + prefs.getFloat("car_velocity",0));
-                bikeVelocity.setText("Bike Velocity: " + prefs.getFloat("bike_velocity",0));
+                carDistance.setText("Car Distance: " + String.valueOf(prefs.getFloat("car_distance",0)));
+                carVelocity.setText("Car Velocity " + String.valueOf(prefs.getFloat("car_velocity",0)));
+                bikeVelocity.setText("Bike Velocity: " + String.valueOf(prefs.getFloat("bike_velocity",0)));
+            }
+        }
+
+        @Override
+        protected void onStart() {
+            super.onStart();
+            prefs = getApplicationContext().getSharedPreferences("latest_data", 0);
+            if (prefs.contains("car_plate")) {
+                Glide.with(this).load(String.valueOf(prefs.getString("img_link", ""))).placeholder(R.mipmap.ic_launcher).into(plateImg);
+                carPlate.setText("Car Plate: " + prefs.getString("car_plate", ""));
+                carDistance.setText("Car Distance: " + String.valueOf(prefs.getFloat("car_distance", 0)));
+                carVelocity.setText("Car Velocity " + String.valueOf(prefs.getFloat("car_velocity", 0)));
+                bikeVelocity.setText("Bike Velocity: " + String.valueOf(prefs.getFloat("bike_velocity", 0)));
             }
         }
 
@@ -183,24 +204,20 @@ import java.util.concurrent.Executors;
 
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            String myUrl = "https://github.com/bumptech/glide/raw/master/static/glide_logo.png";
             connectBtn = (Button) findViewById(R.id.connectBtn);
             // Create a storage reference from our app
+//            imgUri = null;
+            Intent intent = getIntent();
+            FirebaseUser fb_user = FirebaseAuth.getInstance().getCurrentUser();
+//            FirebaseUser value = (FirebaseUser) intent.getSerializableExtra("user");
+            user = findViewById(R.id.user);
+            user.setText("Welcome User: " + fb_user.getEmail());
+            imgLink = findViewById(R.id.img_link);
             storage = FirebaseStorage.getInstance("gs://cyclebuddy-17c84.appspot.com");
             storageRef = storage.getReference();
             carPlate = (TextView) findViewById(R.id.carPlate);
             carDistance = (TextView) findViewById(R.id.carDistance);
-//            imgLink = (TextView) findViewById(R.id.img_link);
-            prefs = getSharedPreferences("data",0);
-            if(prefs.contains("car_plate")){
-                imgLink.setText(prefs.getString("img_link",""));
-                carPlate.setText("Car Plate: " + prefs.getString("car_plate",""));
-                carDistance.setText("Car Distance: " + prefs.getFloat("car_distance",0));
-                carVelocity.setText("Car Velocity " + prefs.getFloat("car_velocity",0));
-                bikeVelocity.setText("Bike Velocity: " + prefs.getFloat("bike_velocity",0));
-            }
-            //TextView link = (TextView) findViewById(R.id.link);
-            //link.setMovementMethod(LinkMovementMethod.getInstance());
+            prefs = getApplicationContext().getSharedPreferences("latest_data",0);
             carVelocity = (TextView) findViewById(R.id.carVelocity);
             bikeVelocity = (TextView) findViewById(R.id.bikeVelocity);
             plateImg = (ImageView) findViewById(R.id.plateImg);
@@ -363,10 +380,9 @@ import java.util.concurrent.Executors;
             cal.setTimeInMillis(time * 1000);
             String date = DateFormat.format("HH:MM:SS", cal).toString();
             return date;
-//            return String.valueOf(sdf.format(new Date(Long.parseLong(String.valueOf(value)))));
         }
 
-        public void writeNewCar(String cp,double cd, double cv, double bv) {
+        public void writeNewCar(String cp,double cd, double cv, double bv, Uri uri) {
             Car car = new Car(cp, cd,cv, bv);
             final int min = 0;
             final int max = 1000;
@@ -376,6 +392,7 @@ import java.util.concurrent.Executors;
             map.put("Car Distance",String.valueOf(car.car_distance));
             map.put("Car Velocity",String.valueOf(car.car_velocity));
             map.put("Bike Velocity",String.valueOf(car.bike_velocity));
+            map.put("Image URL", String.valueOf(String.valueOf(uri)));
             mDatabase.child("Cars").push().setValue(map);
         }
 
@@ -399,7 +416,6 @@ import java.util.concurrent.Executors;
                 Paint p = chart1.getPaint(Chart.PAINT_DESCRIPTION);
                 p.setColor(1);
                 chart1.getDescription().setTextSize(16f);
-//                chart1.getDescription().setPosition(0f,1f);
                 chart1.setData(data);
                 chart1.moveViewToX((set.getEntryCount()));
                 chart1.setVisibleXRangeMaximum(10);
@@ -421,7 +437,6 @@ import java.util.concurrent.Executors;
                     chart2.setMaxVisibleValueCount(150);
                     chart2.getDescription().setText(timestamp);
                     chart2.getDescription().setTextSize(16f);
-//                    chart2.getDescription().setPosition(0f,1f);
                     chart2.setData(data2);
                     chart2.moveViewToX((set.getEntryCount()));
                     chart2.setVisibleXRangeMaximum(10);
@@ -430,7 +445,7 @@ import java.util.concurrent.Executors;
                     right.setAxisMinimum(0);
                 }
             }
-            else{
+            else {
                 LineChart chart3 = vel_chart;
                 LineData data = chart3.getData();
                 if (data != null) {
@@ -446,7 +461,6 @@ import java.util.concurrent.Executors;
                     chart3.setMaxVisibleValueCount(150);
                     chart3.getDescription().setText(timestamp);
                     chart3.getDescription().setTextSize(16f);
-//                    chart3.getDescription().setPosition(0f,1f);
                     chart3.setData(data);
                     chart3.moveViewToX((set.getEntryCount()));
                     chart3.setVisibleXRangeMaximum(10);
@@ -537,6 +551,7 @@ import java.util.concurrent.Executors;
                 }
             }
         }
+
         class ResultsThread implements Runnable {
             ServerSocket serverSocket;
             private final ExecutorService pool;
@@ -607,19 +622,12 @@ import java.util.concurrent.Executors;
                 // ImageView in your Activity
                 // Download directly from StorageReference using Glide
                 // (See MyAppGlideModule for Loader registration)
-//                    Glide.with(getApplicationContext()).load(imagesRef).into(plateImg);
-//                    writeNewCar(car_plate,car_distance,car_velocity,bike_velocity);
-
-                    gsReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                   gsReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             // Got the download URL for 'users/me/profile.png'
-//                            imgLink.setText(String.valueOf(uri));
-//                            e.putString("img_link",String.valueOf(uri));
+                            imgUri = uri;
                             Glide.with(MainActivity.this).load(String.valueOf(uri)).placeholder(R.mipmap.ic_launcher).into(plateImg);
-                            //Glide.with(getApplicationContext()).load(String.valueOf(uri)).into(plateImg);
-                            //plateImg.setImageURI(uri);
-                           //Toast.makeText(getApplicationContext(), String.valueOf(uri), Toast.LENGTH_LONG).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -627,17 +635,11 @@ import java.util.concurrent.Executors;
                             // Handle any errors
                         }
                     });
+                   e.putString("img_link",String.valueOf(imgUri));
+                   e.commit();
+                   e.apply();
+                   writeNewCar(car_plate,car_distance,car_velocity,bike_velocity,imgUri);
                 }
-            }
-        }
-
-        public static Drawable LoadImageFromWebOperations(String url) {
-            try {
-                InputStream is = (InputStream) new URL(url).getContent();
-                Drawable d = Drawable.createFromStream(is, "src name");
-                return d;
-            } catch (Exception e) {
-                return null;
             }
         }
 

@@ -14,6 +14,12 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:id="@+id/user"/>
+
     <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
         android:layout_height="250sp"
@@ -46,19 +52,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/img_link"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:autoLink="web"-->
-<!--        android:textColor="@color/design_default_color_primary_dark"-->
-<!--        android:text=""/>-->
-
-    <ImageView
+    <TextView
+        android:id="@+id/img_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="30dp"
-        android:maxHeight="30dp"
+        android:autoLink="web"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:text=""/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
         android:id="@+id/plateImg"/>
 
     <TextView
