@@ -112,10 +112,22 @@ Cmake, WiringPi, Openalpr
 
 <!-- Installations -->
 ## Packages Installations
+Before updating any packages run the following:<br>
+`sudo apt-get update && upgrade`<br>
 1- WiringPi:<br>
 `sudo apt-get install wiringpi`<br/>
 2- ALPR: <br>
 `sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
+3- Nlohmann JSON: <br>
+`sudo apt-get install -y nlohmann-json-dev`<br>
+If the above method does not work, please try the following:<br>
+a.`git clone https://github.com/nlohmann/json.git`<br>
+b.`cd json`<br>
+c.`mkdir build`<br>
+d.`cd build`<br>
+e.`cmake ..`<br>
+f.`make`<br>
+g.`make install`
 
 <!-- Usage -->
 ## Usage
