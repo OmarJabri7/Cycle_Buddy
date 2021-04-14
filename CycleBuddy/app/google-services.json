@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "703404260627",
+    "firebase_url": "https://cyclebuddy-17c84-default-rtdb.firebaseio.com",
+    "project_id": "cyclebuddy-17c84",
+    "storage_bucket": "cyclebuddy-17c84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703404260627:android:3ac1682c48e8691aa82ee6",
+        "android_client_info": {
+          "package_name": "com.example.cyclebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703404260627-knbh0tr0hikh0pnobkh4grcbaqqsik03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwYWvvDBfqsazPMXNhRIRX0HJ7RIsEH_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703404260627-knbh0tr0hikh0pnobkh4grcbaqqsik03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
