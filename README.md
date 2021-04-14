@@ -1,39 +1,36 @@
-<h2 align="center">Cycle Buddy</h2>  
+<h2 align="center">UofG_Robotics_TDP</h2>  
 <p align="center">
-  <a href="https://github.com/OmarJabri7/Cycle_Buddy">
-    <img src="https://github.com/Yifan-Xie/Image/blob/Cycle_Buddy/pictures/Logo.png" alt="Logo" >
+  <a href="https://github.com/szgula/UofG_Robotics_TDP">
+    <img src="https://github.com/Yifan-Xie/Image/blob/Robotic-TDP/pictures/Robotic_TDP.png" alt="Logo" >
   </a>
-    <br />
-    <br />
-    <a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
+  
   <p align="center">
-    To keep people can ride bike more safely on the road.
+    Robotics Team Design Project at University of Glasgow
     <br />
     <br />
-    <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/youtube_social_circle_red.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href=""><img height=40 src="Images/f_logo_RGB-Blue_1024.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href=""><img height=40 src="Images/2021%20Twitter%20logo%20-%20blue.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><img height=40 src="Images/Log/youtube_social_icon_red.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><img height=40 src="Images/Log/f_logo_RGB-Blue_1024.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><img height=40 src="Images/Log/2021%20Twitter%20logo%20-%20blue.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
-
+  
 <div align="center">
   
-[![Contributors](https://img.shields.io/github/contributors/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/graphs/contributors)
-[![Forks](https://img.shields.io/github/forks/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/network/members)
-[![Stars](https://img.shields.io/github/stars/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/stargazers)
-[![Issues](https://img.shields.io/github/issues/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/issues)
-[![License](https://img.shields.io/github/license/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/blob/main/LICENSE)
+[![Contributors](https://img.shields.io/github/contributors/szgula/UofG_Robotics_TDP.svg?style=for-the-badge)](https://github.com/szgula/UofG_Robotics_TDP/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/szgula/UofG_Robotics_TDP.svg?style=for-the-badge)](https://github.com/szgula/UofG_Robotics_TDP/network/members)
+[![Stars](https://img.shields.io/github/stars/szgula/UofG_Robotics_TDP.svg?style=for-the-badge)](https://github.com/szgula/UofG_Robotics_TDP/stargazers)
+[![Issues](https://img.shields.io/github/issues/szgula/UofG_Robotics_TDP.svg?style=for-the-badge)](https://github.com/szgula/UofG_Robotics_TDP/issues)
+[![License](https://img.shields.io/github/license/szgula/UofG_Robotics_TDP.svg?style=for-the-badge)](https://github.com/szgula/UofG_Robotics_TDP/blob/main/LICENSE)
 </div>
-  
+
 <!-- TOC -->
 <details open="open">
   <summary><h2 style="display: inline-block">Contents</h2></summary>
   <ol>
-    <li><a href="#about">About</a>
-    <li><a href="#software">Software</a></li>
-    <li><a href="#hardware">Hardware</a></li>       
-    </li>
+    <li><a href="#Robocup ROS Workspace Basics">Robocup ROS Workspace Basics</a></li>
+    <li><a href="#Run the game master and game simulator">Run the game master and game simulator</a></li>
+    <li><a href="#Configure the PyCharm development environment">Configure the PyCharm development environment</a></li>   
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#Packages">Packages</a>
+    <li><a href="#Packages">Packages</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -41,128 +38,123 @@
   </ol>
 </details>
 
-<!-- Project descirption -->
-## About
-We are a group of the Real Time Embedded Programing Project in the University of Glasgow. Our project, Cycle Buddy, is a system that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements.
-
-<br />
-[doxygen about the project](https://omarjabri7.github.io/Cycle_Buddy/)
-<br />
+## Robocup ROS Workspace Basics
+1. Head to robocup_ws (workspace):   
+`cd robocup_ws`  
+2. Build dependencies and packages:  
+`catkin_make`  
+3. Source the project so that ROS can locate all packages:  
+`source devel/setup.bash`  
+4. Once in **/src**, run:  
+`roslaunch robocup_gazebo robocup_world.launch`  
 <div align="center"> 
 <br />  
 </div>
 
-### Software
-
-#### Necessary:
-* [Android Studio] (**Mobile Phone Application**) <br>: 
-Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get the real-time information from the raspberry pi, such as car distance, car velocity and bike velocity.
- 
-* [Visual Studio 2019] (**Raspberry pi threads**) :
-Visual Studio 2019 has the latest features to bring real-time collaboration so it is convenient for us to wirte C++ code for ther project.
-
-* [firebase] (**Real time database**) :
-Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app. It manages our data and stores our license plate numbers which are from Pi camera.
-
-*[Cmake] (**Build up the full project**) :
-CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of our choice.
-
-*[Doxygen] (**document generation tool**) : 
-Doxygen is a document generation tool that extracts documents from code, organizes them, and outputs them into beautiful documents (HTML, PDF, RTF, etc.).
-With the Doxygen tool, programmers can write code directly in the document, no longer need to write a separate document for a function of the code, thus keeping the document and code as consistent as possible.
-
-#### Optional: 
-*[Putty]：
-Find the ip address of raspberry pi simply. 
-
-*[VNC]: (Other Remote Desktop Services are also fine) 
-Use ssh services to log in the raspberry pi so that we do not need to use HDMI or screen to connect to the raspberry pi. It is also convenient to use UI to code in raspberry pi.
- 
+## Run the game master and game simulator
+1. source the base ROS
+2. catkin_make the workspace
+3. source workspace build
+4. using ros launch:
+    - go to workspace dir
+    -  ```roslaunch GameEngine game.launch```
+5. Or using ros run:
+    - go to workspace dir
+    - ```rosmaster```
+    - ```rosrun GameEngine game_master.py```
+    - ```rosrun GameEngine game_simulator.py```
+    
 <br />
 
-### Hardware
-#### Main device:
-*[Raspberry Pi 3 Model B +] 
-The Raspberry Pi 3 Model B is the earliest model of the third-generation Raspberry Pi.
+## Configure the PyCharm development environment
 
-#### Sensors:
-*[Hall sensor]
+### Add alias 
+1.For ROS
+2. For PyCharm
 
-*[Ultrasonic sensor]
+### PyCharm - setting the project
+1. In Pycharm open project with UofG_Robotics_TDP as a source folder
+2. ``file -> Settings -> Project: UofG_Robotics_TDP -> Project Structure``
+3. Right click on ```robotcap_ws``` folder and click on ```source```
 
-*[Pi camera]
+### Pre-requirements 
+1. Install PyCharm
+2. Create an alias to Pycharm 
+3. Create an alias to main ROS source
 
-<br />
+### Setup
+1. Source base ROS
+2. from same terminal launch PyCharm
+3. Create a virtual environemtn (call it: ```.venv```)
+4. Create launch configuration
+    - change the launch directory to GameEngine
+    
+...to be continue
+
+1) git clone
+2) git checkout speccific branch
+3) source base ROS ```source /opt/ros/__vrsion__/setup.bash```
+4) cd robotcup
+5) catkin_make
+6) source devel/setup.bash
+7) cd ../
+8) sudo pip3 install -r requirements.txt (if pip3 is not working install it)
+9) cd robotcup
+10) roslaunch GameEngine game.launch
+
+
+### How to test:
+Simple ros launch:
+
+```roslaunch GameEngine game.launch```
+
+ros launch with the ball init position at x = 1, y = 2 in world coordinate system 
+
+```roslaunch GameEngine game.launch simulator_args:="--ball_pos 1 2"```
+
+ros launch with the ball init position at x = 1, y = 2 (in world coordinate system) and vel x = 0 y = 0.4
+
+```roslaunch GameEngine game.launch simulator_args:="--ball_pos 0.5 0.5 --ball_vel 0 0.4"```
+
+ros launch with team 1 at new positions: player1_x, player1_y, player2_x, player2_y, ... , player5_y
+
+```roslaunch GameEngine game.launch simulator_args:="--team_1_init_pos -2 2 -2 -2 2 1 2 -1 -4 0"```
+
 
 ## Roadmap
-### Process of license plate recognition
-#### 1. Image capture
-#### 2. Image prepreocessing
-#### 3. License plate location
-#### 4. License plate location character segmentation
-#### 5. Character recognition 
-#### 6. Output the results
-
-### Threads of Sensors 
-4 threads: Two for ultrasonic sensors, one for hall sensor, the rest for Pi camera.
+The step to finish the project.
 
 <!-- Getting Started -->
 ## Packages
-Cmake, WiringPi, Openalpr
-
-<!-- Installations -->
-## Packages Installations
-Before updating any packages run the following:<br>
-`sudo apt-get update && upgrade`<br>
-1- WiringPi:<br>
-`sudo apt-get install wiringpi`<br/>
-2- ALPR: <br>
-`sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
-3- Nlohmann JSON: <br>
-`sudo apt-get install -y nlohmann-json-dev`<br>
-If the above method does not work, please try the following:<br>
-a.`git clone https://github.com/nlohmann/json.git`<br>
-b.`cd json`<br>
-c.`mkdir build`<br>
-d.`cd build`<br>
-e.`cmake ..`<br>
-f.`make`<br>
-g.`make install`
+In ```requirement.txt```
 
 <!-- Usage -->
 ## Usage
-This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.<br/>
-Please follow these necessary steps: <br/>
-1. Clone the project with: <br/>
-`git clone https://github.com/OmarJabri7/Cycle_Buddy.git`<br/>
-2. Change directorites and relocate in Cycle_Buddy project: <br/>
-`cd Cycle_Buddy`<br/>
-3. Link the necessary executables and libraries using CMake: <br/>
-`cmake .`<br/>
-4. Build the project using make: <br/>
-`make`<br/>
-5. Run the test file labeled Cycle_Buddy: <br/>
-`./Cycle_Buddy`<br/>
+The method to use it.
 
 <!-- Contributing -->
 ## Contributing
-This is an open source project, therefore, just fork it and build up the project according to the README.md in every document.
+How to contribute the project.
 
 <!-- License -->
 ## License
-Distributed under the GPL-3.0 License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- Contact Info -->
 ## Contact
-
-Omar Jabri - [@Omar Jabri](https://github.com/OmarJabri7)
+Szymon  @[Szymon](https://github.com/szgula)
 <br />
-
-Chang Liu - [@Chang Liu](https://github.com/Cliu1993)
 <br />
-
-Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
+Feng  @[Feng](https://github.com/fengfengFinn)
 <br />
-
-Project address [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
-
+<br />
+Omar  @[Omar](https://github.com/OmarJabri7)
+<br />
+<br />
+Yifan  @[Yifan](https://github.com/Yifan-Xie)
+<br />
+<br />
+Shrey @[Shrey](https://github.com/shreyExp)
+<br />
+<br />
+Project address @[Project address](https://github.com/szgula/UofG_Robotics_TDP)
