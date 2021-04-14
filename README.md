@@ -55,13 +55,13 @@ We are a group of the Real Time Embedded Programing Project in the University of
 ### Software
 
 #### Necessary:
-*[Android Studio] (**Mobile Phone Application**) :
+* [Android Studio] (**Mobile Phone Application**) <br>: 
 Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get the real-time information from the raspberry pi, such as car distance, car velocity and bike velocity.
  
-*[Visual Studio 2019] (**Raspberry pi threads**) :
+* [Visual Studio 2019] (**Raspberry pi threads**) :
 Visual Studio 2019 has the latest features to bring real-time collaboration so it is convenient for us to wirte C++ code for ther project.
 
-*[firebase] (**Real time database**) :
+* [firebase] (**Real time database**) :
 Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app. It manages our data and stores our license plate numbers which are from Pi camera.
 
 *[Cmake] (**Build up the full project**) :
