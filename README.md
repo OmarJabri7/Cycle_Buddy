@@ -43,7 +43,8 @@
 
 <!-- Project descirption -->
 ## About
-Cycle Buddy is System that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements.
+We are a group of the Real Time Embedded Programing Project in the University of Glasgow. Our project, Cycle Buddy, is a system that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements.
+
 <br />
 [doxygen about the project](https://omarjabri7.github.io/Cycle_Buddy/)
 <br />
@@ -52,21 +53,46 @@ Cycle Buddy is System that detects danger levels in bikers relative to drivers. 
 </div>
 
 ### Software
-* [VNC]
 
-* [Putty]
+#### Necessary:
+*[Android Studio] (**Mobile Phone Application**) :
+Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get the real-time information from the raspberry pi, such as car distance, car velocity and bike velocity.
+ 
+*[Visual Studio 2019] (**Raspberry pi threads**) :
+Visual Studio 2019 has the latest features to bring real-time collaboration so it is convenient for us to wirte C++ code for ther project.
 
-* [Android Studio] 
+*[firebase] (**Real time database**) :
+Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app. It manages our data and stores our license plate numbers which are from Pi camera.
+
+*[Cmake] (**Build up the full project**) :
+CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of our choice.
+
+*[Doxygen] (**document generation tool**) : 
+Doxygen is a document generation tool that extracts documents from code, organizes them, and outputs them into beautiful documents (HTML, PDF, RTF, etc.).
+With the Doxygen tool, programmers can write code directly in the document, no longer need to write a separate document for a function of the code, thus keeping the document and code as consistent as possible.
+
+#### Optional: 
+*[Putty]：
+Find the ip address of raspberry pi simply. 
+
+*[VNC]: (Other Remote Desktop Services are also fine) 
+Use ssh services to log in the raspberry pi so that we do not need to use HDMI or screen to connect to the raspberry pi. It is also convenient to use UI to code in raspberry pi.
  
 <br />
 
 ### Hardware
-* [Raspberry Pi 3 Model B +]
+#### Main device:
+*[Raspberry Pi 3 Model B +] 
+The Raspberry Pi 3 Model B is the earliest model of the third-generation Raspberry Pi.
 
-* [Sensors: Hall sensors, Ultrasonic sensors, Pi camera]
+#### Sensors:
+*[Hall sensor]
+
+*[Ultrasonic sensor]
+
+*[Pi camera]
 
 <br />
-
 
 ## Roadmap
 ### Process of license plate recognition
