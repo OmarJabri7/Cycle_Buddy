@@ -169,7 +169,7 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 ## Packages Installations
 Before install any packages, please run the following:<br>
 sudo apt-get update && upgrade<br>
-1. WiringPi:<br>
+1. [WiringPi](http://wiringpi.com/):<br>
    `sudo apt-get install wiringpi`<br/>
 
 2. [**OpenALPR**](https://github.com/openalpr/openalpr):  (Github page)<br>
