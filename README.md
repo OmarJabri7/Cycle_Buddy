@@ -167,25 +167,31 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 
 
 ## Packages Installations
+Before install any packages, please run the following:<br>
+sudo apt-get update && upgrade<br>
 1. WiringPi:<br>
    `sudo apt-get install wiringpi`<br/>
 
 2. [**OpenALPR**](https://github.com/openalpr/openalpr):  (Github page)<br>
    `sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
 
-3. [**JSON for API**](https://github.com/nlohmann/json):  (Github page)<br>
+3. [**JSON Library**](https://github.com/nlohmann/json):  (Github page)<br>
 
    `git clone https://github.com/nlohmann/json`<br>
+   If the above method does not work, please try the following:<br>
+   a.`git clone https://github.com/nlohmann/json.git`<br>
+   b.`cd json`<br>
+   c.`mkdir build`<br>
+   d.`cd build`<br>
+   e.`cmake ..`<br>
+   f.`make`<br>
+   g.`make install`
 
 4. [**Cmake**](https://cmake.org/) : (Website)<br>
 
    Click and download it from the website above.<br>
 
 5. Other Android application realted packages: <br>
-
-
-
-
 
 ## Usage
 This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.<br/>
