@@ -1,11 +1,16 @@
 <h2 align="center">Cycle Buddy</h2>  
 <p align="center">
   <a href="https://github.com/OmarJabri7/Cycle_Buddy">
+    <br />
+    <br />
+    <a href="https://yifan-xie.github.io/"><strong>Explore Our website»</strong></a>
+    <br />
+    <br />
     <img src="Images/Logo.png" alt="Logo" >
   </a>
     <br />
     <br />
-    <a href="https://yifan-xie.github.io/"><strong>Explore the doxygen»</strong></a>
+    <a href="https://yifan-xie.github.io/"><strong>Explore Our website»</strong></a>
     <br />
     <br />
     <a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
