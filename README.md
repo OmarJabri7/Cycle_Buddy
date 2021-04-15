@@ -176,8 +176,7 @@ sudo apt-get update && upgrade<br>
    `sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
 
 3. [**JSON Library**](https://github.com/nlohmann/json):  (Github page)<br>
-
-   `git clone https://github.com/nlohmann/json`<br>
+   `sudo apt-get install -y nlohmann-json-dev`<br>
    If the above method does not work, please try the following:<br>
    a.`git clone https://github.com/nlohmann/json.git`<br>
    b.`cd json`<br>
