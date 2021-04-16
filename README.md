@@ -212,8 +212,10 @@ For more <b>information</b>, please visit this link: https://www.youtube.com/wat
 ## Results & Real-Time Responsivness:
 1. The mp4 video below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:<br>
   <figure class="video_container">
-  <iframe src="Images/real-time-nature.mp4" frameborder="0" allowfullscreen="true"> </iframe>
-  </figure>
+  <video controls="true" allowfullscreen="true" poster="path/to/poster_image.png">
+    <source src="Images/real-time-nature.mp4" type="video/mp4">
+  </video>
+</figure>
 
 <!-- Contributing -->
 
