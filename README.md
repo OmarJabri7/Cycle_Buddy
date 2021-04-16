@@ -211,7 +211,8 @@ For more <b>information</b>, please visit this link: https://www.youtube.com/wat
 
 ## Results & Real-Time Responsivness:
 1. The GIF below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:<br>
-  ![](Images/GIFREALTIME.gif)
+  
+  <img src="Images/GIFREALTIME.gif" width="250" height="250"/>
 
 <!-- Contributing -->
 
