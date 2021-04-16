@@ -56,10 +56,8 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 The circuit of the system: 
 <p align="center">
-  <a href=""><img height=40 src="Images/MicrosoftTeams-image.png">
-
-
-
+  <a href=""><img  src="Images/MicrosoftTeams-image.png">
+  <br />
 
 ### Software
 
