@@ -212,7 +212,7 @@ Please follow these necessary steps: <br/>
 
 ## Results:
 1. The GIF below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
-  ![Images/](GIFREALTIME.gif)
+  ![](Images/GIFREALTIME.gif)
 
 <!-- Contributing -->
 
