@@ -70,7 +70,7 @@ class hallSampleCallback : public SensorCallback{
       int sock = 0, conn_status;
       auto time_now = chrono::system_clock::now();
       time_t timestamp = chrono::system_clock::to_time_t(time_now);
-      //cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
+      cout << "TIMESTAMP HALL: " << ctime(&timestamp) << endl;
       char time_data[20];
       strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
       json json_data;
@@ -119,7 +119,7 @@ class sonarDistanceSampleCallback : public SensorCallback{
 	double v = abs((old_distance - (distance)))/10; //speed of incoming item
 	conds.car_distance = distance;
 	conds.car_velocity = v;
-	//cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
+	cout << "TIMESTAMP SONAR: " << ctime(&timestamp) << endl;
 	char time_data[20];
 	strftime(time_data, 20, "%H:%M:%S",localtime(&timestamp));
 	json json_data;

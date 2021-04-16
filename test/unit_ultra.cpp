@@ -40,8 +40,8 @@ class sonarDistanceSampleCallback : public SensorCallback{
 int main(int argc, char *argv[]){
 
     const int SONAR = 1;
-    int pinInSonar = 5;
-    int pinOutSonar = 4;
+    int pinInSonar = 24;
+    int pinOutSonar = 23;
     Sensor* sonarSensor = new Sensor(&pinInSonar, &pinOutSonar);
     sonarDistanceSampleCallback sonarCallback;
     sonarSensor->setCallBack(&sonarCallback);

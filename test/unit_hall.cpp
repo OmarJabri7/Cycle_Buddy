@@ -41,20 +41,18 @@ class hallSampleCallback : public SensorCallback{
 
 int main(int argc, char *argv[]){
     const int HALL = 0;
-    int pinInHall = 21;
-    int pinOutHall = 1;
+    int pinInHall = 1;
+    int pinOutHall = 4;
     Sensor* hallEffectSensor = new Sensor(&pinInHall,&pinOutHall);
     hallSampleCallback hallCallback;
     hallEffectSensor->setCallBack(&hallCallback);
     hallEffectSensor->start(&pinInHall, &pinOutHall, HALL);
     while(1){
-        mtx.lock();
         if (test_flag == 10){
             cout<<"Unit test for 2Hz Hall-effect-sensor: 10 case required,"<<test_flag<<"Case received.........complete"<<endl;
             hallEffectSensor->stop();
             break;
         }
-        mtx.unlock();
     }
     hallEffectSensor->stop();   
     delete hallEffectSensor;    
