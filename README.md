@@ -54,7 +54,9 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 [**doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
-
+The circuit of the system: 
+<p align="center">
+  <a href=""><img height=40 src="Images/MicrosoftTeams-image.png">
 
 
 
