@@ -219,9 +219,9 @@ https://user-images.githubusercontent.com/35663665/115083703-b6767e00-9eff-11eb-
 
 2. The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it OpenAlpr API:
 <p align="center"><img width="400" height="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png" style="margin-right: 50px" title="Indoor test results"><img width="400" height="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png" title="Outdoor test results"></p>
-a. On the top, we have the results from the indoor testing, where the car plate is displayed on a phone screen.<br>
-b. On the bottom, we have the results from the outdoor testing, where the car plate is captured by the camera on the streets of Glasgow.<br>
-c. Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.<br>
+* On the left, we have the results from the indoor testing, where the car plate is displayed on a phone screen.<br>
+* On the right, we have the results from the outdoor testing, where the car plate is captured by the camera on the streets of Glasgow.<br>
+* Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.<br>
 <!-- Contributing -->
 
 ## Contributing
