@@ -17,8 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CycleBuddy"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".UserActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,3 +27,4 @@
     </application>
 
 </manifest>
+    <!--        <activity android:name=".UserActivity">-->
