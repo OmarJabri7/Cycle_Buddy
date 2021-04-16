@@ -212,6 +212,14 @@ For more <b>information</b>, please visit this link: https://www.youtube.com/wat
 ## Results & Real-Time Responsivness:
 1. The mp4 video below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:<br>
 
+
+https://user-images.githubusercontent.com/35663665/115083703-b6767e00-9eff-11eb-9815-4cbdc0df435f.mp4
+
+ It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
+
+2. The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it OpenAlpr API:
+<p float="left"><figure><img width="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png"><figcaption>Fig.1 - Indoor Testing Results.</figcaption></figure><figure><img width="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png"></figure></p>
+
 <!-- Contributing -->
 
 ## Contributing
