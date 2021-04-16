@@ -210,8 +210,10 @@ Please follow these necessary steps: <br/>
 For more <b>information</b>, please visit this link: https://www.youtube.com/watch?v=VLvaPXP31dk
 
 ## Results & Real-Time Responsivness:
-1. The GIF below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:<br>
-  ![](Images/rtg.gif)
+1. The mp4 video below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:<br>
+  <figure class="video_container">
+  <iframe src="Images/real-time-nature.mp4" frameborder="0" allowfullscreen="true"> </iframe>
+  </figure>
 
 <!-- Contributing -->
 
