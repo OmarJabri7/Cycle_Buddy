@@ -50,11 +50,11 @@
 <!-- Project descirption -->
 
 ## About
-We are a group of the Real Time Embedded Programing Project in the University of Glasgow.  Two members major in Robotics & Ai, one member majors in Electronic and Electrical Engineering. 
+We are a group of the Real-Time Embedded Programming Project in the University of Glasgow.  Two members major in Robotics & Ai, one member majors in Electronic and Electrical Engineering. 
 
-Our project, Cycle Buddy, is a system that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements. <br />
+Our project, Cycle Buddy, is a system that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act and responds by recognising the face/car plate of the driver in order to contact law enforcement. <br />
 
-[**doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
+[**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
 ### Circuit of Cycle Buddy: 
 
@@ -72,15 +72,15 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 ### Necessary:
 * [**Android Studio**](https://developer.android.com/studio)	(**Mobile Phone Application**) 
 
-  ​	Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get the real-time information from the raspberry pi, such as car distance, car velocity and bike velocity.
+  ​	Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get real-time information from the raspberry pi, such as car distance, car velocity, and bike velocity.
 
 * [**Visual Studio 2019**](https://visualstudio.microsoft.com/zh-hans/vs/)    (**Raspberry pi threads**) 
 
-  ​	Visual Studio 2019 has the latest features to bring real-time collaboration so it is convenient for us to wirte C++ code for ther project.
+  ​	Visual Studio 2019 has the latest features to bring real-time collaboration so it is convenient for us to write C++ code for their project.
 
 * [**Firebase**](https://firebase.google.com/)    (**Real time database**) 
 
-  ​	Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app. It manages our data and stores our license plate numbers which are from Pi camera.
+  ​	Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app. It manages our data and stores our license plate numbers which are from the Pi camera.
 
 * [**Cmake**](https://cmake.org/)    (**Build up the full project**) 
 
@@ -94,20 +94,20 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 *  [**OpenALPR - Automatic License Plate Recognition**](https://www.openalpr.com/) (**API**)
 
-  ​	This API can recoginize the license plate number directly from the picture, we find a gb (Great Britain, UK) lib trained model and use it.
+  ​	This API can recognize the license plate number directly from the picture, we find a GB (Great Britain, UK) lib trained model and use it.
 
 ### Optional: 
 * Putty
 
-  ​	Find the ip address of raspberry pi simply. 
+  ​	Find the IP address of raspberry pi simply. 
 
 * VNC (Other Remote Desktop Services are also fine) 
 
-  ​	Use ssh services to log in the raspberry pi so that we do not need to use HDMI or screen to connect to the raspberry pi. It is also convenient to use UI to code in raspberry pi.
+  ​	Use ssh services to log in to the raspberry pi so that we do not need to use HDMI or screen to connect to the raspberry pi. It is also convenient to use UI to code in raspberry pi.
 
 *  Typora 
 
-  ​	Edit markdown and Html files for doxygen and web page.
+  ​	Edit markdown and Html files for Doxygen and web page.
 
 * [**Search for the car information**](https://vehicleenquiry.service.gov.uk/?_ga=2.97692959.1629293611.1618412250-1021591735.1618412250)
 
@@ -121,24 +121,24 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 ### Main device:
 * [Raspberry Pi 3 Model B +](https://thepihut.com/products/raspberry-pi-3-model-b-plus?src=raspberrypi) (￡33.90, **1** is needed, not included)
 
-  ​	The Raspberry Pi 3 Model B is the earliest model of the third-generation Raspberry Pi. In our project, It can receive the real time signals of the GPIO from all the sensors and deal with the real - time data.
+  ​	The Raspberry Pi 3 Model B is the earliest model of the third-generation Raspberry Pi. In our project, It can receive the real-time signals of the GPIO from all the sensors and deal with the real-time data.
 
 ### Sensors:
 * [Hall sensor](https://www.amazon.co.uk/AZDelivery-Linear-Magnetic-Sensor-Arduino/dp/B07DPVTKBB/ref=sr_1_4_sspa?dchild=1&keywords=Hall+Effect+Sensor&qid=1618406619&sr=8-4-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV1lEMzJNSUE5S1A4JmVuY3J5cHRlZElkPUEwMjc5ODE1MTI4TUc5SFI1R0gxUSZlbmNyeXB0ZWRBZElkPUEwMDIzNjQwMTkzSk03UDI4WFdROSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) (￡4.49, **1** is needed)
 
-  ​	We use hall sensor to detect the velocity of the bike. The theory is to put the magnets On the axle of the bicycle wheel. Make sure the hall sensor is close to magnets enough so that it can detect the magnetic field when the bike runs.
+  ​	We use a hall sensor to detect the velocity of the bike. The theory is to put the magnets On the axle of the bicycle wheel. Make sure the hall sensor is close to magnets enough so that it can detect the magnetic field when the bike runs.
 
 * [Ultrasonic sensor](https://www.amazon.co.uk/HC-SR04-Ultrasonic-Distance-Measuring-Arduino/dp/B01DM8MRTS/ref=sr_1_7?dchild=1&keywords=Ultrasonic+Sensor&qid=1618407336&sr=8-7)（￡3.99,  **1** is needed)
 
-  ​	The Ultrasonic sensor is to detect the distance between the bicycle and car. Besides, according to the velocity of the bicycle, it can calulate the velocity of the car. 
+  ​	The Ultrasonic sensor is to detect the distance between the bicycle and car. Besides, according to the velocity of the bicycle, it can calculate the velocity of the car. 
 
 * [Pi camera](https://www.amazon.co.uk/dp/B07XBKC6H7/ref=cm_sw_r_u_apa_glt_fabc_74TKMY2AH1HFZ4SVKC7J) （￡10.99, **1** is needed) 
 
-  ​	The Pi camera is to capture the picture of  car, especially capture the license plate number of the car. We find a feasible location for the Pi camera so that the 
+  ​	The Pi camera is to capture the picture of the car, especially capture the license plate number of the car. We find a feasible location for the Pi camera so that the 
 
 ### Other auxiliary tools :
 
-* Male/Male, Female/Female and Male/Female wires ，magnets (appoximately ￡ 2.34)
+* Male/Male, Female/Female and Male/Female wires ，magnets (approximately ￡ 2.34)
 * GPIO Breakout Kit Expansion Board For Raspberry Pi 3 B+ (￡14.49)
 * Power supply for Raspberry Pi or Power bank. (￡ 13.56)
 
@@ -247,7 +247,7 @@ For more <b>information</b>, please visit this [**Youtube link**](https://www.yo
 <!-- Contributing -->
 
 ## Contributing
-This is an open source project, therefore, just fork it and build up the project according to the README.md in every document.
+This is an open-source project, therefore, just fork it and build up the project according to the README.md in every document.
 <br><br><br />
 
 
@@ -270,4 +270,3 @@ Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
 <br />
 
 Project address - [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
-
