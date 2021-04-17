@@ -20,7 +20,7 @@
 
 
 <div align="center">
-  
+
 [![Contributors](https://img.shields.io/github/contributors/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/graphs/contributors)
 [![Forks](https://img.shields.io/github/forks/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/network/members)
 [![Stars](https://img.shields.io/github/stars/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/stargazers)
@@ -45,6 +45,8 @@
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+
+
 <!-- Project descirption -->
 
 ## About
@@ -54,12 +56,16 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 [**doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
-The circuit of the system: 
+### Circuit of Cycle Buddy: 
+
 <p align="center">
   <img height = 400 src="Images/MicrosoftTeams-image.png">
   <br><br>    
   <b>Figure 1: Indoor circuit of Cycle Buddy</b>    
 </p>
+
+
+
 
 ### Software
 
@@ -88,9 +94,8 @@ The circuit of the system:
 
 *  [**OpenALPR - Automatic License Plate Recognition**](https://www.openalpr.com/) (**API**)
 
-  ​	This API can recoginize the license plate number directly from the picture, we find a gb (Great Britain, UK) lib trained model and use it. 
+  ​	This API can recoginize the license plate number directly from the picture, we find a gb (Great Britain, UK) lib trained model and use it.
 
-  
 
 #### Optional: 
 * Putty
@@ -140,7 +145,9 @@ The circuit of the system:
 
 
 
-**Overall**, it costs us ￡49.86 except the **Raspberry Pi 3 Model B +** for the project.
+​	**Overall**, it costs us ￡49.86 except the **Raspberry Pi 3 Model B +** for the project.
+
+
 
 
 
@@ -149,8 +156,12 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 
 
 
+
+
 ### Threads of Sensors 
 3 threads: One is for ultrasonic sensors, one for hall sensor, the  rest one is for Pi camera.
+
+
 
 
 
@@ -160,7 +171,8 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 * OpenALPR
 * JSON
 * Cmake
-* Other packages for Android application
+
+
 
 
 
@@ -190,46 +202,64 @@ sudo apt-get update && upgrade<br>
 
 
 
+
+
 ## Usage
 This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.<br/>
 Please follow these necessary steps: <br/>
 1. Clone the project with: <br/>
-  `git clone https://github.com/OmarJabri7/Cycle_Buddy.git`<br/>
+    `git clone https://github.com/OmarJabri7/Cycle_Buddy.git`<br/>
 2. Change directorites and relocate in Cycle_Buddy project: <br/>
-  `cd Cycle_Buddy`<br/>
+    `cd Cycle_Buddy`<br/>
 3. Link the necessary executables and libraries using CMake: <br/>
-  `cmake .`<br/>
+    `cmake .`<br/>
 4. Build the project using make: <br/>
-  `make`<br/>
+    `make`<br/>
 5. Generate Unit tests and check if all components pass:<br>
    `make test`<br>
 6. Run the test file labeled Cycle_Buddy: <br/>
-  `./Cycle_Buddy`<br/>
-For more <b>information</b>, please visit this link: https://www.youtube.com/watch?v=VLvaPXP31dk
+    `./Cycle_Buddy`<br/>
+For more <b>information</b>, please visit this [**Youtube link**](https://www.youtube.com/watch?v=VLvaPXP31dk)
+
+
+
+
 
 ## Results & Real-Time Responsivness:
-1. The mp4 video below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
-<br><br>
-https://user-images.githubusercontent.com/35663665/115083703-b6767e00-9eff-11eb-9815-4cbdc0df435f.mp4
-<br><br>
-It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
+1. The Gif below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
+
+  
+
+  ![jtd](Images/Real-time-nature.gif)
+
+  
+
+  It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
+
+  
 
 2. The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it using the OpenAlpr API:
-<br><br>
+  <br>
 <p align="center"><img width="400" height="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png" style="margin-right: 50px" title="Indoor test results"><img width="400" height="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png" title="Outdoor test results"></p>
 <br>
 
 * On the left, we have the results from the indoor testing, where the car plate is displayed on a phone screen.<br>
+
 * On the right, we have the results from the outdoor testing, where the car plate is captured by the camera on the streets of Glasgow.<br>
+
 * Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.<br>
 
+  
+
 <!-- Contributing -->
+
 ## Contributing
 This is an open source project, therefore, just fork it and build up the project according to the README.md in every document.
 
 
 
 <!-- License -->
+
 ## License
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
@@ -247,5 +277,5 @@ Chang Liu - [@Chang Liu](https://github.com/Cliu1993)
 Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
 <br />
 
-Project address [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
+Project address - [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
 
