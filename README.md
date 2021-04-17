@@ -223,7 +223,7 @@ For more <b>information</b>, please visit this [**Youtube link**](https://www.yo
 ## Results & Real-Time Responsivness:
 1. The Gif below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
   <p align="center">
-    <img height = 400 src="Images/Real-time-nature.gif">
+    <img height = 400 src="Images/real-time-nature.gif">
     <br><br>    
     <b>Figure 2: Real time demo</b>    
   </p>
