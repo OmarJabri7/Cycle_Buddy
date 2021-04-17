@@ -67,9 +67,9 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 
 
-### Software
+## Software
 
-#### Necessary:
+### Necessary:
 * [**Android Studio**](https://developer.android.com/studio)	(**Mobile Phone Application**) 
 
   ​	Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get the real-time information from the raspberry pi, such as car distance, car velocity and bike velocity.
@@ -97,7 +97,7 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
   ​	This API can recoginize the license plate number directly from the picture, we find a gb (Great Britain, UK) lib trained model and use it.
 
 
-#### Optional: 
+### Optional: 
 * Putty
 
   ​	Find the ip address of raspberry pi simply. 
@@ -118,13 +118,13 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 
 
-### Hardware
-#### Main device:
+## Hardware
+### Main device:
 * [Raspberry Pi 3 Model B +](https://thepihut.com/products/raspberry-pi-3-model-b-plus?src=raspberrypi) (￡33.90, **1** is needed, not included)
 
   ​	The Raspberry Pi 3 Model B is the earliest model of the third-generation Raspberry Pi. In our project, It can receive the real time signals of the GPIO from all the sensors and deal with the real - time data.
 
-#### Sensors:
+### Sensors:
 * [Hall sensor](https://www.amazon.co.uk/AZDelivery-Linear-Magnetic-Sensor-Arduino/dp/B07DPVTKBB/ref=sr_1_4_sspa?dchild=1&keywords=Hall+Effect+Sensor&qid=1618406619&sr=8-4-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV1lEMzJNSUE5S1A4JmVuY3J5cHRlZElkPUEwMjc5ODE1MTI4TUc5SFI1R0gxUSZlbmNyeXB0ZWRBZElkPUEwMDIzNjQwMTkzSk03UDI4WFdROSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) (￡4.49, **1** is needed)
 
   ​	We use hall sensor to detect the velocity of the bike. The theory is to put the magnets On the axle of the bicycle wheel. Make sure the hall sensor is close to magnets enough so that it can detect the magnetic field when the bike runs.
@@ -137,7 +137,7 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
   ​	The Pi camera is to capture the picture of  car, especially capture the license plate number of the car. We find a feasible location for the Pi camera so that the 
 
-#### Other auxiliary tools :
+### Other auxiliary tools :
 
 * Male/Male, Female/Female and Male/Female wires ，magnets (appoximately ￡ 2.34)
 * GPIO Breakout Kit Expansion Board For Raspberry Pi 3 B+ (￡14.49)
@@ -153,10 +153,6 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 ## Roadmap
 See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a list of proposed features (and known issues).
-
-
-
-
 
 ### Threads of Sensors 
 3 threads: One is for ultrasonic sensors, one for hall sensor, the  rest one is for Pi camera.
@@ -259,7 +255,6 @@ This is an open source project, therefore, just fork it and build up the project
 
 
 <!-- License -->
-
 ## License
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
