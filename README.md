@@ -63,7 +63,7 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
   <br><br>    
   <b>Figure 1: Indoor circuit of Cycle Buddy</b>    
 </p>
-<br><br />
+<br><br><br />
 
 
 
@@ -112,7 +112,7 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 * [**Search for the car information**](https://vehicleenquiry.service.gov.uk/?_ga=2.97692959.1629293611.1618412250-1021591735.1618412250)
 
   ​	Here is the government website to search for the car information, so when we get the license plate number, we can search for it here.
-<br><br />
+<br><br><br />
 
 
 
@@ -145,7 +145,7 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 
 ​	**Overall**, it costs us ￡49.86 except the **Raspberry Pi 3 Model B +** for the project.
-<br><br />
+<br><br><br />
 
 
 
@@ -155,7 +155,7 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 
 ### Threads of Sensors 
 3 threads: One is for ultrasonic sensors, one for hall sensor, the  rest one is for Pi camera.
-<br><br />
+<br><br><br />
 
 
 
@@ -166,7 +166,7 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 * OpenALPR
 * JSON
 * Cmake
-<br><br />
+<br><br><br />
 
 
 
@@ -193,8 +193,8 @@ sudo apt-get update && upgrade<br>
 
 5. [**Cmake**](https://cmake.org/) : (Website)<br>
 
-   Click and download it from the website above.<br>
-<br><br />
+   Click and download it from the website above.
+<br><br><br />
 
 
 
@@ -215,19 +215,18 @@ Please follow these necessary steps: <br/>
 6. Run the test file labeled Cycle_Buddy: <br/>
     `./Cycle_Buddy`<br/>
 For more <b>information</b>, please visit this [**Youtube link**](https://www.youtube.com/watch?v=VLvaPXP31dk)
-<br><br />
+<br><br><br />
 
 
 
 
 ## Results & Real-Time Responsivness:
 1. The Gif below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
-
-
-  ![jtd](Images/Real-time-nature.gif)
-
-  
-
+  <p align="center">
+    <img height = 400 src="Images/Real-time-nature.gif">
+    <br><br>    
+    <b>Figure 2: Real time demo</b>    
+  </p>
   It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
 
   
@@ -241,20 +240,20 @@ For more <b>information</b>, please visit this [**Youtube link**](https://www.yo
 
 * On the right, we have the results from the outdoor testing, where the car plate is captured by the camera on the streets of Glasgow.<br>
 
-* Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.<br>
-<br><br /> 
+* Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.
+<br><br><br /> 
 
 <!-- Contributing -->
 
 ## Contributing
 This is an open source project, therefore, just fork it and build up the project according to the README.md in every document.
-<br><br />
+<br><br><br />
 
 
 <!-- License -->
 ## License
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
-<br><br />
+<br><br><br />
 
 
 <!-- Contact Info -->
