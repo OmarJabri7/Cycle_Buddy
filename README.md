@@ -1,14 +1,14 @@
 <h2 align="center">Cycle Buddy</h2>  
 <p align="center">
   <a href="https://github.com/OmarJabri7/Cycle_Buddy">
-    <a href="https://yifan-xie.github.io/"><strong>Explore Our website»</strong></a>
+    ⭐️<a href="https://yifan-xie.github.io/"><strong>Explore Our website»</strong></a>
     <br />
     <br />
     <img src="Images/Logo.png" alt="Logo" >
   </a>
     <br />
     <br />
-    <a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
+    ⭐️<a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
   <p align="center">
     To keep people can ride bike more safely on the road.
     <br />
@@ -54,7 +54,7 @@ We are a group of the Real-Time Embedded Programming Project in the University o
 
 Our project, Cycle Buddy, is a system that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act and responds by recognising the face/car plate of the driver in order to contact law enforcement. <br />
 
-[**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
+⭐️ [**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
 ### Circuit of Cycle Buddy: 
 
@@ -260,13 +260,13 @@ Distributed under the GPL-3.0 License. See [`LICENSE`](https://github.com/OmarJa
 <!-- Contact Info -->
 ## Contact
 
-Omar Jabri - [@Omar Jabri](https://github.com/OmarJabri7)
+* Omar Jabri - [@Omar Jabri](https://github.com/OmarJabri7)
 <br />
 
-Chang Liu - [@Chang Liu](https://github.com/Cliu1993)
+* Chang Liu - [@Chang Liu](https://github.com/Cliu1993)
 <br />
 
-Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
+* Yifan Xie - [@Yifan Xie](https://github.com/Yifan-Xie)
 <br />
 
-Project address - [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
+⭐️ **Project address** - [@Project address](https://github.com/OmarJabri7/Cycle_Buddy)
