@@ -253,7 +253,7 @@ This is an open source project, therefore, just fork it and build up the project
 
 <!-- License -->
 ## License
-Distributed under the GPL-3.0 License. See `LICENSE` for more information.
+Distributed under the GPL-3.0 License. See [`LICENSE`](https://github.com/OmarJabri7/Cycle_Buddy/blob/main/LICENSE) for more information.
 <br><br><br />
 
 
