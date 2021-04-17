@@ -56,8 +56,10 @@ Our project, Cycle Buddy, is a system that detects danger levels in bikers relat
 
 The circuit of the system: 
 <p align="center">
-  <a href=""><img height = 400 src="Images/MicrosoftTeams-image.png">
-  <br />
+  <img height = 400 src="Images/MicrosoftTeams-image.png">
+  <br><br>    
+  <b>Figure 1: Indoor circuit of Cycle Buddy</b>    
+</p>
 
 ### Software
 
@@ -152,17 +154,13 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 
 
 
-
-
 ## Packages
 * WiringPi 
-
+* Raspicam
 * OpenALPR
 * JSON
 * Cmake
 * Other packages for Android application
-
-
 
 
 
@@ -171,11 +169,11 @@ Before install any packages, please run the following:<br>
 sudo apt-get update && upgrade<br>
 1. [**WiringPi**](http://wiringpi.com/):<br>
    `sudo apt-get install wiringpi`<br/>
-
-2. [**OpenALPR**](https://github.com/openalpr/openalpr):  (Github page)<br>
+2. [**Raspicam**](https://sourceforge.net/projects/raspicam/files/) : (For Pi camera)<br>
+    Download, build, make and install it.<br>
+3. [**OpenALPR**](https://github.com/openalpr/openalpr):  (Github page)<br>
    `sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
-
-3. [**JSON Library**](https://github.com/nlohmann/json):  (Github page)<br>
+4. [**JSON Library**](https://github.com/nlohmann/json):  (Github page)<br>
    `sudo apt-get install -y nlohmann-json-dev`<br>
    If the above method does not work, please try the following:<br>
    a.`git clone https://github.com/nlohmann/json.git`<br>
@@ -186,11 +184,11 @@ sudo apt-get update && upgrade<br>
    f.`make`<br>
    g.`make install`
 
-4. [**Cmake**](https://cmake.org/) : (Website)<br>
+5. [**Cmake**](https://cmake.org/) : (Website)<br>
 
    Click and download it from the website above.<br>
 
-5. Other Android application realted packages: <br>
+
 
 ## Usage
 This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.<br/>
@@ -210,34 +208,34 @@ Please follow these necessary steps: <br/>
 For more <b>information</b>, please visit this link: https://www.youtube.com/watch?v=VLvaPXP31dk
 
 ## Results & Real-Time Responsivness:
-1. The mp4 video below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:<br>
-
-
+1. The mp4 video below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
+<br><br>
 https://user-images.githubusercontent.com/35663665/115083703-b6767e00-9eff-11eb-9815-4cbdc0df435f.mp4
-
- It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
+<br><br>
+It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
 
 2. The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it using the OpenAlpr API:
+<br><br>
 <p align="center"><img width="400" height="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png" style="margin-right: 50px" title="Indoor test results"><img width="400" height="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png" title="Outdoor test results"></p>
+<br>
+
 * On the left, we have the results from the indoor testing, where the car plate is displayed on a phone screen.<br>
 * On the right, we have the results from the outdoor testing, where the car plate is captured by the camera on the streets of Glasgow.<br>
 * Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.<br>
-<!-- Contributing -->
 
+<!-- Contributing -->
 ## Contributing
 This is an open source project, therefore, just fork it and build up the project according to the README.md in every document.
 
 
 
 <!-- License -->
-
 ## License
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 
 
 <!-- Contact Info -->
-
 ## Contact
 
 Omar Jabri - [@Omar Jabri](https://github.com/OmarJabri7)
