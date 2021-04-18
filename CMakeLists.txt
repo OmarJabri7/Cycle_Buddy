@@ -23,15 +23,15 @@ add_executable(Cycle_Buddy
             src/main.cpp
             src/sensors.cpp)
 
-add_executable(test/Unit_test_hall 
+add_executable(Unit_test_hall 
             test/unit_hall.cpp
             src/sensors.cpp)
 
-add_executable(test/Unit_test_ultra 
+add_executable(Unit_test_ultra 
             test/unit_ultra.cpp
             src/sensors.cpp)
 
-add_executable(test/Unit_test_cam 
+add_executable(Unit_test_cam 
             test/unit_cam.cpp)
 
 target_link_libraries(Cycle_Buddy ${wiringPi_LIB})
