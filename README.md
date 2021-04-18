@@ -14,7 +14,7 @@
     <br />
     <br />
     <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/youtube_social_circle_red.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href=""><img height=40 src="Images/f_logo_RGB-Blue_1024.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://hackaday.io/project/179217-cycle-buddy"><img height=40 src="Images/hackaday.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a href=""><img height=40 src="Images/2021%20Twitter%20logo%20-%20blue.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
 
