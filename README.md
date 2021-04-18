@@ -40,6 +40,7 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#Packages">Packages</a>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#Results & Real-Time Responsivness"> Results & Real-Time Responsivness</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -50,9 +51,9 @@
 <!-- Project descirption -->
 
 ## About
-We are a group of the Real-Time Embedded Programming Project in the University of Glasgow.  Two members major in Robotics & Ai, one member majors in Electronic and Electrical Engineering. 
+We are a group of graduate students currently studying at University of Glasgow.  This is our course project for Real-Time Embedded Programming Project advised by Dr. Bernd Porr and Dr. Nicholas Bailey. For our team, two members major in Robotics & Ai, one member majors in Electronic and Electrical Engineering.<br>
 
-Our project, Cycle Buddy, is a system that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act and responds by recognising the face/car plate of the driver in order to contact law enforcement. <br />
+Our project, Cycle Buddy, is a system that detects cars that endanger the bikers on the road. Once the car overpasses our biker in a relative high speed and within a close distance, the system can detect this dangerous action and responds by capturing the car's photo and recognize its car plate number. Then it will send the id, the photo and the velocity& distance to the mobile application as long as the online database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcement to report the issue. <br />
 
 ⭐️ [**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
@@ -166,12 +167,9 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 * OpenALPR
 * JSON
 * Cmake
-<br><br><br />
+<br><br />
 
-
-
-
-## Packages Installations
+### Packages Installations
 Before install any packages, please run the following:<br>
 sudo apt-get update && upgrade<br>
 1. [**WiringPi**](http://wiringpi.com/):<br>
