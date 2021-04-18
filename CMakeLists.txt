@@ -20,8 +20,9 @@ find_library(wiringPi_LIB wiringPi)
 find_package(raspicam REQUIRED)
 
 add_executable(Cycle_Buddy 
-            src/sensors_test.cpp
+            src/main.cpp
             src/sensors.cpp)
+
 add_executable(Unit_test_hall 
             test/unit_hall.cpp
             src/sensors.cpp)
