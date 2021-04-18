@@ -250,7 +250,7 @@ For more <b>information</b>, please visit this [**Youtube link**](https://www.yo
   </p>
   
 * Notice how the car plate is equivalent (green square), alongside car distance, velocity and bike velocity (red square).
-
+<br><br><br />
 <!-- Contributing -->
 
 ## Contributing
