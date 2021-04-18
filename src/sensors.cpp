@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "sensors_lib.h"
+#include <iostream>
 using namespace std;
 
 Sensor::Sensor(int *pinIn, int *pinOut){
@@ -11,7 +12,6 @@ Sensor::Sensor(int *pinIn, int *pinOut){
         wiringPiSetup();
         pinMode(*pinIn,INPUT);
         pinMode(*pinOut,OUTPUT);
-        // wiringPiISR(pinIn, INT_EDGE_RISING, &handle); //Calls handle once pin edge is rising HIGH
     }
     catch(const char* error){
         cout << error << endl;
@@ -89,4 +89,5 @@ void Sensor::stop(){
         delete sensorThread;
         sensorThread = NULL;
     }
+	
 }
