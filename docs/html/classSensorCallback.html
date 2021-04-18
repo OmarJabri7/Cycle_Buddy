@@ -24,11 +24,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Cycle Buddy
-   &#160;<span id="projectnumber">Version 1.0</span>
    </div>
-   <div id="projectbrief">Cycle Buddy, Cycle Safe.</div>
   </td>
  </tr>
  </tbody>
@@ -96,9 +95,9 @@ Inheritance diagram for SensorCallback:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSensorCallback__inherit__graph.png" border="0" usemap="#SensorCallback_inherit__map" alt="Inheritance graph"/></div>
 <map name="SensorCallback_inherit__map" id="SensorCallback_inherit__map">
-<area shape="rect" title=" " alt="" coords="110,5,233,83"/>
+<area shape="rect" title=" " alt="" coords="98,5,221,83"/>
 <area shape="rect" href="classhallSampleCallback.html" title=" " alt="" coords="5,131,156,208"/>
-<area shape="rect" href="classsonarSampleCallback.html" title=" " alt="" coords="181,131,343,208"/>
+<area shape="rect" href="classsonarCallback.html" title=" " alt="" coords="181,131,295,208"/>
 </map>
 </div>
 <div class="dynheader">
@@ -112,15 +111,15 @@ Collaboration diagram for SensorCallback:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2566162e7e2dd3b6847febed8d2b500d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSensorCallback.html#a2566162e7e2dd3b6847febed8d2b500d">dataIn</a> (double data)=0</td></tr>
-<tr class="separator:a2566162e7e2dd3b6847febed8d2b500d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b896bfbc6395bcb87b5c25e859f3c97"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSensorCallback.html#a3b896bfbc6395bcb87b5c25e859f3c97">dataIn</a> (double data, bool isInterrupt=false)=0</td></tr>
+<tr class="separator:a3b896bfbc6395bcb87b5c25e859f3c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that allows sensors to return their readings using threading callbacks. </p><dl class="section author"><dt>Author</dt><dd>Omar Jabri </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>March 2020 </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2566162e7e2dd3b6847febed8d2b500d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2566162e7e2dd3b6847febed8d2b500d">&#9670;&nbsp;</a></span>dataIn()</h2>
+<a id="a3b896bfbc6395bcb87b5c25e859f3c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b896bfbc6395bcb87b5c25e859f3c97">&#9670;&nbsp;</a></span>dataIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,8 +131,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">virtual void SensorCallback::dataIn </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isInterrupt</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -149,12 +158,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classhallSampleCallback.html#a10d4c4b097910fa4d1971fa89600472b">hallSampleCallback</a>, and <a class="el" href="classsonarSampleCallback.html#a765072e4d06cac96da7fb11ee7f7c132">sonarSampleCallback</a>.</p>
+<p>Implemented in <a class="el" href="classhallSampleCallback.html#af4fde068d9129e8d5f9db33133b6f956">hallSampleCallback</a>, and <a class="el" href="classsonarCallback.html#a820e4ba30c1ebdeeb6267de3d9a5c767">sonarCallback</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d_icgraph.png" border="0" usemap="#classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d_icgraph" alt=""/></div>
-<map name="classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d_icgraph" id="classSensorCallback_a2566162e7e2dd3b6847febed8d2b500d_icgraph">
+<div class="center"><img src="classSensorCallback_a3b896bfbc6395bcb87b5c25e859f3c97_icgraph.png" border="0" usemap="#classSensorCallback_a3b896bfbc6395bcb87b5c25e859f3c97_icgraph" alt=""/></div>
+<map name="classSensorCallback_a3b896bfbc6395bcb87b5c25e859f3c97_icgraph" id="classSensorCallback_a3b896bfbc6395bcb87b5c25e859f3c97_icgraph">
 <area shape="rect" title=" " alt="" coords="192,31,363,57"/>
 <area shape="rect" href="classSensor.html#a912fdb6c72ae18115b5faf8dac9886b4" title=" " alt="" coords="11,5,138,32"/>
 <area shape="rect" href="classSensor.html#a083a7259934a7b667af80acbce6a628e" title=" " alt="" coords="5,56,144,83"/>

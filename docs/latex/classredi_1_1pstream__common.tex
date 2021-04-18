@@ -1,0 +1,333 @@
+\hypertarget{classredi_1_1pstream__common}{}\doxysection{redi\+::pstream\+\_\+common$<$ CharT, Traits $>$ Class Template Reference}
+\label{classredi_1_1pstream__common}\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+
+
+Class template for common base class.  
+
+
+
+
+{\ttfamily \#include $<$pstream.\+h$>$}
+
+
+
+Inheritance diagram for redi\+::pstream\+\_\+common$<$ CharT, Traits $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{classredi_1_1pstream__common__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for redi\+::pstream\+\_\+common$<$ CharT, Traits $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1pstream__common__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{classredi_1_1pstream__common_a6367d13ab7189f41639d486a78e27094}{close}} ()
+\item 
+bool \mbox{\hyperlink{classredi_1_1pstream__common_a8d5ec13821e09f4bb2ab5096721551a5}{is\+\_\+open}} () const
+\begin{DoxyCompactList}\small\item\em Report whether the stream\textquotesingle{}s buffer has been initialised. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classredi_1_1pstream__common_acc3ad87315e0bce58714314b303b4b53}{command}} () const
+\begin{DoxyCompactList}\small\item\em Return the command used to initialise the stream. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}} $\ast$ \mbox{\hyperlink{classredi_1_1pstream__common_a5414d5a3f3d91a9483d5c9128434db26}{rdbuf}} () const
+\begin{DoxyCompactList}\small\item\em Return a pointer to the stream buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classredi_1_1basic__pstreambuf}{basic\+\_\+pstreambuf}}$<$ CharT, Traits $>$ \mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}}
+\item 
+typedef std\+::basic\+\_\+ios$<$ CharT, Traits $>$ \mbox{\hyperlink{classredi_1_1pstream__common_a5ae303d294c1894676a97c7d576d76d9}{ios\+\_\+type}}
+\item 
+typedef \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pstreams\+::pmode}} \mbox{\hyperlink{classredi_1_1pstream__common_a1359431898a2484b3b33dc225cfc84e8}{pmode}}
+\item 
+typedef \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{pstreams\+::argv\+\_\+type}} \mbox{\hyperlink{classredi_1_1pstream__common_a292538074144e8d567ac6f09fc4c3f3b}{argv\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classredi_1_1pstream__common_a14266d3a2f7089ed99d5537a6a1d9831}{pstream\+\_\+common}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1pstream__common_a41a3cff7a8743a81b2d6e1e6051f3d30}{pstream\+\_\+common}} (const std\+::string \&cmd, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode)
+\begin{DoxyCompactList}\small\item\em Constructor that initialises the stream by starting a process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1pstream__common_a3dc6e49c84bf1b2b3ebbea92a9ee3f6b}{pstream\+\_\+common}} (const std\+::string \&file, const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&argv, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode)
+\begin{DoxyCompactList}\small\item\em Constructor that initialises the stream by starting a process. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classredi_1_1pstream__common_a78c3e085c582816ece1fb83fd4f4a652}{$\sim$pstream\+\_\+common}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}{do\+\_\+open}} (const std\+::string \&cmd, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode)
+\begin{DoxyCompactList}\small\item\em Start a process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}{do\+\_\+open}} (const std\+::string \&file, const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&argv, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode)
+\begin{DoxyCompactList}\small\item\em Start a process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classredi_1_1pstream__common_aa97d67284ce2fb39e26fa504d611b50c}{command\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The command used to start the process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}} \mbox{\hyperlink{classredi_1_1pstream__common_a59dd7e8a056e4e66d67f31c1ef0bfff4}{buf\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The stream buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename CharT, typename Traits = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$\newline
+class redi\+::pstream\+\_\+common$<$ Char\+T, Traits $>$}
+
+Class template for common base class. 
+
+Abstract Base Class providing common functionality for \mbox{\hyperlink{classredi_1_1basic__ipstream}{basic\+\_\+ipstream}}, \mbox{\hyperlink{classredi_1_1basic__opstream}{basic\+\_\+opstream}} and \mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}}. \mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}} manages the \mbox{\hyperlink{classredi_1_1basic__pstreambuf}{basic\+\_\+pstreambuf}} stream buffer that is used by the derived classes to initialise an iostream class. 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a292538074144e8d567ac6f09fc4c3f3b}\label{classredi_1_1pstream__common_a292538074144e8d567ac6f09fc4c3f3b}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!argv\_type@{argv\_type}}
+\index{argv\_type@{argv\_type}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{argv\_type}{argv\_type}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{pstreams\+::argv\+\_\+type}} \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classredi_1_1pstream__common_a5ae303d294c1894676a97c7d576d76d9}\label{classredi_1_1pstream__common_a5ae303d294c1894676a97c7d576d76d9}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!ios\_type@{ios\_type}}
+\index{ios\_type@{ios\_type}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{ios\_type}{ios\_type}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef std\+::basic\+\_\+ios$<$CharT, Traits$>$ \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1pstream__common_a5ae303d294c1894676a97c7d576d76d9}{ios\+\_\+type}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classredi_1_1pstream__common_a1359431898a2484b3b33dc225cfc84e8}\label{classredi_1_1pstream__common_a1359431898a2484b3b33dc225cfc84e8}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!pmode@{pmode}}
+\index{pmode@{pmode}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{pmode}{pmode}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pstreams\+::pmode}} \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}\label{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!streambuf\_type@{streambuf\_type}}
+\index{streambuf\_type@{streambuf\_type}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{streambuf\_type}{streambuf\_type}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef \mbox{\hyperlink{classredi_1_1basic__pstreambuf}{basic\+\_\+pstreambuf}}$<$CharT, Traits$>$ \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a14266d3a2f7089ed99d5537a6a1d9831}\label{classredi_1_1pstream__common_a14266d3a2f7089ed99d5537a6a1d9831}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!pstream\_common@{pstream\_common}}
+\index{pstream\_common@{pstream\_common}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{pstream\_common()}{pstream\_common()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::\mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Default constructor. 
+
+Creates an uninitialised stream. \mbox{\Hypertarget{classredi_1_1pstream__common_a41a3cff7a8743a81b2d6e1e6051f3d30}\label{classredi_1_1pstream__common_a41a3cff7a8743a81b2d6e1e6051f3d30}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!pstream\_common@{pstream\_common}}
+\index{pstream\_common@{pstream\_common}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{pstream\_common()}{pstream\_common()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::\mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cmd,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Constructor that initialises the stream by starting a process. 
+
+Initialises the stream buffer by calling do\+\_\+open( {\itshape command} , {\itshape mode} )
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & a string containing a shell command. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}{do\+\_\+open(const std\+::string\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a3dc6e49c84bf1b2b3ebbea92a9ee3f6b}\label{classredi_1_1pstream__common_a3dc6e49c84bf1b2b3ebbea92a9ee3f6b}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!pstream\_common@{pstream\_common}}
+\index{pstream\_common@{pstream\_common}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{pstream\_common()}{pstream\_common()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::\mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&}]{argv,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Constructor that initialises the stream by starting a process. 
+
+Initialises the stream buffer by calling do\+\_\+open( {\itshape file} , {\itshape argv} , {\itshape mode} )
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & a string containing the pathname of a program to execute. \\
+\hline
+{\em argv} & a vector of argument strings passed to the new program. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}{do\+\_\+open(const std\+::string\&, const argv\+\_\+type\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a78c3e085c582816ece1fb83fd4f4a652}\label{classredi_1_1pstream__common_a78c3e085c582816ece1fb83fd4f4a652}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!````~pstream\_common@{$\sim$pstream\_common}}
+\index{````~pstream\_common@{$\sim$pstream\_common}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$pstream\_common()}{~pstream\_common()}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::$\sim$\mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Pure virtual destructor. 
+
+This is a pure virtual function to make {\ttfamily \mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}}} abstract. Because it is the destructor it will be called by derived classes and so must be defined. It is also protected, to discourage use of the P\+Streams classes through pointers or references to the base class.
+
+\begin{DoxySeeAlso}{See also}
+If defining a pure virtual seems odd you should read \href{http://www.gotw.ca/gotw/031.htm}{\texttt{ http\+://www.\+gotw.\+ca/gotw/031.\+htm}} (and the rest of the site as well!) 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a6367d13ab7189f41639d486a78e27094}\label{classredi_1_1pstream__common_a6367d13ab7189f41639d486a78e27094}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!close@{close}}
+\index{close@{close}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::close\hspace{0.3cm}{\ttfamily [inline]}}
+
+Close the pipe, returning the program\textquotesingle{}s exit status, as pclose(3) does.
+
+Calls rdbuf-\/$>$\mbox{\hyperlink{classredi_1_1pstream__common_a6367d13ab7189f41639d486a78e27094}{close()}} and sets {\ttfamily failbit} on error. Returns process\textquotesingle{}s exit status, as pclose(3) does. \mbox{\Hypertarget{classredi_1_1pstream__common_acc3ad87315e0bce58714314b303b4b53}\label{classredi_1_1pstream__common_acc3ad87315e0bce58714314b303b4b53}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!command@{command}}
+\index{command@{command}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{command()}{command()}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+const std\+::string \& \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::command\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the command used to initialise the stream. 
+
+\begin{DoxyReturn}{Returns}
+a string containing the command used to initialise the stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}\label{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!do\_open@{do\_open}}
+\index{do\_open@{do\_open}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{do\_open()}{do\_open()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+void \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::do\+\_\+open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cmd,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Start a process. 
+
+Calls \mbox{\hyperlink{classredi_1_1pstream__common_a5414d5a3f3d91a9483d5c9128434db26}{rdbuf()}}-\/$>$open( {\itshape command} , {\itshape mode} ) and sets {\ttfamily failbit} on error.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & a string containing a shell command. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1basic__pstreambuf_ac91e4317d9e95b4551513a00e3d82996}{basic\+\_\+pstreambuf\+::open(const std\+::string\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}\label{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!do\_open@{do\_open}}
+\index{do\_open@{do\_open}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{do\_open()}{do\_open()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+void \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::do\+\_\+open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&}]{argv,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Start a process. 
+
+Calls \mbox{\hyperlink{classredi_1_1pstream__common_a5414d5a3f3d91a9483d5c9128434db26}{rdbuf()}}-\/$>$open( {\itshape file}, {\itshape argv}, {\itshape mode} ) and sets {\ttfamily failbit} on error.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & a string containing the pathname of a program to execute. \\
+\hline
+{\em argv} & a vector of argument strings passed to the new program. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1basic__pstreambuf_a2dd6e94de1a2fa0e9e4505934b246aec}{basic\+\_\+pstreambuf\+::open(const std\+::string\&, const argv\+\_\+type\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a8d5ec13821e09f4bb2ab5096721551a5}\label{classredi_1_1pstream__common_a8d5ec13821e09f4bb2ab5096721551a5}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{is\_open()}{is\_open()}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+bool \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::is\+\_\+open\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Report whether the stream\textquotesingle{}s buffer has been initialised. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classredi_1_1pstream__common_a5414d5a3f3d91a9483d5c9128434db26}{rdbuf()}}-\/$>$\mbox{\hyperlink{classredi_1_1pstream__common_a8d5ec13821e09f4bb2ab5096721551a5}{is\+\_\+open()}}. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1basic__pstreambuf_af28fab6dc978b25c92740400512a61bc}{basic\+\_\+pstreambuf\+::is\+\_\+open()}} 
+\end{DoxySeeAlso}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classredi_1_1pstream__common_a8d5ec13821e09f4bb2ab5096721551a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a5414d5a3f3d91a9483d5c9128434db26}\label{classredi_1_1pstream__common_a5414d5a3f3d91a9483d5c9128434db26}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!rdbuf@{rdbuf}}
+\index{rdbuf@{rdbuf}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{rdbuf()}{rdbuf()}}
+{\footnotesize\ttfamily template$<$typename C , typename T $>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}}$<$ C, T $>$\+::\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}} $\ast$ \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ C, T $>$\+::rdbuf\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a pointer to the stream buffer. 
+
+\begin{DoxyReturn}{Returns}
+a pointer to the private stream buffer member. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{classredi_1_1pstream__common_a59dd7e8a056e4e66d67f31c1ef0bfff4}\label{classredi_1_1pstream__common_a59dd7e8a056e4e66d67f31c1ef0bfff4}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!buf\_@{buf\_}}
+\index{buf\_@{buf\_}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{buf\_}{buf\_}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}} \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::buf\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The stream buffer. 
+
+\mbox{\Hypertarget{classredi_1_1pstream__common_aa97d67284ce2fb39e26fa504d611b50c}\label{classredi_1_1pstream__common_aa97d67284ce2fb39e26fa504d611b50c}} 
+\index{redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}!command\_@{command\_}}
+\index{command\_@{command\_}!redi::pstream\_common$<$ CharT, Traits $>$@{redi::pstream\_common$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{command\_}{command\_}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+std\+::string \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::command\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The command used to start the process. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{pstream_8h}{pstream.\+h}}\end{DoxyCompactItemize}

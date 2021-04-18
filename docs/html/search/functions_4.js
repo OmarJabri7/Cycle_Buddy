@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['sensor_45',['Sensor',['../classSensor.html#acae0f6f3b42d935a2c816d593d20f20f',1,'Sensor']]],
-  ['setcallback_46',['setCallBack',['../classSensor.html#a4ce1fa9c068da52565399b0992164d0e',1,'Sensor']]],
-  ['start_47',['start',['../classSensor.html#a6159d4e8944167e4052c7dafee3a4125',1,'Sensor']]],
-  ['stop_48',['stop',['../classSensor.html#a9634418f5e4af71e659a08dc4c5f4716',1,'Sensor']]]
+  ['fill_5fbuffer_216',['fill_buffer',['../classredi_1_1basic__pstreambuf.html#ac84fcdc04e6d81fc1118b21c4ba6e5b2',1,'redi::basic_pstreambuf']]],
+  ['fork_217',['fork',['../classredi_1_1basic__pstreambuf.html#a70a3b8c71fa2019eefff0ef6e8a92d5b',1,'redi::basic_pstreambuf']]]
 ];

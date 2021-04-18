@@ -24,11 +24,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Cycle Buddy
-   &#160;<span id="projectnumber">Version 1.0</span>
    </div>
-   <div id="projectbrief">Cycle Buddy, Cycle Safe.</div>
   </td>
  </tr>
  </tbody>
@@ -101,7 +100,7 @@ $(document).ready(function(){initNavTree('sensors__lib_8h_source.html',''); init
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classSensorCallback.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSensorCallback.html">SensorCallback</a>{</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSensorCallback.html#a2566162e7e2dd3b6847febed8d2b500d">dataIn</a>(<span class="keywordtype">double</span> data) = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSensorCallback.html#a3b896bfbc6395bcb87b5c25e859f3c97">dataIn</a>(<span class="keywordtype">double</span> data, <span class="keywordtype">bool</span> isInterrupt = <span class="keyword">false</span>) = 0;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
 <div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classSensor.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSensor.html">Sensor</a>{</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">public</span>:</div>
@@ -127,22 +126,19 @@ $(document).ready(function(){initNavTree('sensors__lib_8h_source.html',''); init
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassSensorCallback_html_a2566162e7e2dd3b6847febed8d2b500d"><div class="ttname"><a href="classSensorCallback.html#a2566162e7e2dd3b6847febed8d2b500d">SensorCallback::dataIn</a></div><div class="ttdeci">virtual void dataIn(double data)=0</div></div>
 <div class="ttc" id="aclassSensor_html_a4ce1fa9c068da52565399b0992164d0e"><div class="ttname"><a href="classSensor.html#a4ce1fa9c068da52565399b0992164d0e">Sensor::setCallBack</a></div><div class="ttdeci">void setCallBack(SensorCallback *cb)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:21</div></div>
-<div class="ttc" id="aclassSensor_html_a6159d4e8944167e4052c7dafee3a4125"><div class="ttname"><a href="classSensor.html#a6159d4e8944167e4052c7dafee3a4125">Sensor::start</a></div><div class="ttdeci">void start(int *pinIn, int *pinOut, const int sensorType)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:77</div></div>
+<div class="ttc" id="aclassSensor_html_a6159d4e8944167e4052c7dafee3a4125"><div class="ttname"><a href="classSensor.html#a6159d4e8944167e4052c7dafee3a4125">Sensor::start</a></div><div class="ttdeci">void start(int *pinIn, int *pinOut, const int sensorType)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:76</div></div>
 <div class="ttc" id="aclassSensor_html_ae85d8e0aace2b85381dcc7632aba3381"><div class="ttname"><a href="classSensor.html#ae85d8e0aace2b85381dcc7632aba3381">Sensor::running</a></div><div class="ttdeci">int running</div><div class="ttdef"><b>Definition:</b> sensors_lib.h:61</div></div>
 <div class="ttc" id="aclassSensor_html"><div class="ttname"><a href="classSensor.html">Sensor</a></div><div class="ttdef"><b>Definition:</b> sensors_lib.h:29</div></div>
-<div class="ttc" id="aPlate__Number_8cpp_html_a796b4d7e56c6f5a14a9cf2742c092f5e"><div class="ttname"><a href="Plate__Number_8cpp.html#a796b4d7e56c6f5a14a9cf2742c092f5e">ReSize</a></div><div class="ttdeci">Mat ReSize(Mat imgArr, int maxWidth, int maxHeight)</div><div class="ttdef"><b>Definition:</b> Plate_Number.cpp:14</div></div>
 <div class="ttc" id="aclassSensor_html_ae62fb266b3c31510d13eca6404505dee"><div class="ttname"><a href="classSensor.html#ae62fb266b3c31510d13eca6404505dee">Sensor::sensorThread</a></div><div class="ttdeci">std::thread * sensorThread</div><div class="ttdef"><b>Definition:</b> sensors_lib.h:59</div></div>
 <div class="ttc" id="aclassSensor_html_a912fdb6c72ae18115b5faf8dac9886b4"><div class="ttname"><a href="classSensor.html#a912fdb6c72ae18115b5faf8dac9886b4">Sensor::run_hall</a></div><div class="ttdeci">static void run_hall(Sensor *sensor, int *pinIn, int *pinOut)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:48</div></div>
-<div class="ttc" id="aPlate__Number_8cpp_html_aded08f63ca54b261105e7a098f2160b1"><div class="ttname"><a href="Plate__Number_8cpp.html#aded08f63ca54b261105e7a098f2160b1">ImgProcess</a></div><div class="ttdeci">Mat ImgProcess(Mat reSizeImg)</div><div class="ttdef"><b>Definition:</b> Plate_Number.cpp:30</div></div>
-<div class="ttc" id="aclassSensor_html_acae0f6f3b42d935a2c816d593d20f20f"><div class="ttname"><a href="classSensor.html#acae0f6f3b42d935a2c816d593d20f20f">Sensor::Sensor</a></div><div class="ttdeci">Sensor(int *pinIn, int *pinOut)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:9</div></div>
+<div class="ttc" id="aclassSensor_html_acae0f6f3b42d935a2c816d593d20f20f"><div class="ttname"><a href="classSensor.html#acae0f6f3b42d935a2c816d593d20f20f">Sensor::Sensor</a></div><div class="ttdeci">Sensor(int *pinIn, int *pinOut)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:10</div></div>
 <div class="ttc" id="asensors__lib_8h_html"><div class="ttname"><a href="sensors__lib_8h.html">sensors_lib.h</a></div></div>
 <div class="ttc" id="aclassSensor_html_a083a7259934a7b667af80acbce6a628e"><div class="ttname"><a href="classSensor.html#a083a7259934a7b667af80acbce6a628e">Sensor::run_sonar</a></div><div class="ttdeci">static void run_sonar(Sensor *sensor, int *pinIn, int *pinOut)</div><div class="ttdef"><b>Definition:</b> sensors.cpp:25</div></div>
-<div class="ttc" id="aclassSensor_html_a9634418f5e4af71e659a08dc4c5f4716"><div class="ttname"><a href="classSensor.html#a9634418f5e4af71e659a08dc4c5f4716">Sensor::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition:</b> sensors.cpp:86</div></div>
+<div class="ttc" id="aclassSensor_html_a9634418f5e4af71e659a08dc4c5f4716"><div class="ttname"><a href="classSensor.html#a9634418f5e4af71e659a08dc4c5f4716">Sensor::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition:</b> sensors.cpp:85</div></div>
 <div class="ttc" id="aclassSensor_html_a3787e8b888ea37ae31143a2ee44b6952"><div class="ttname"><a href="classSensor.html#a3787e8b888ea37ae31143a2ee44b6952">Sensor::sensorCb</a></div><div class="ttdeci">SensorCallback * sensorCb</div><div class="ttdef"><b>Definition:</b> sensors_lib.h:63</div></div>
-<div class="ttc" id="aPlate__Number_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="Plate__Number_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> Plate_Number.cpp:130</div></div>
 <div class="ttc" id="aclassSensorCallback_html"><div class="ttname"><a href="classSensorCallback.html">SensorCallback</a></div><div class="ttdef"><b>Definition:</b> sensors_lib.h:17</div></div>
+<div class="ttc" id="aclassSensorCallback_html_a3b896bfbc6395bcb87b5c25e859f3c97"><div class="ttname"><a href="classSensorCallback.html#a3b896bfbc6395bcb87b5c25e859f3c97">SensorCallback::dataIn</a></div><div class="ttdeci">virtual void dataIn(double data, bool isInterrupt=false)=0</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

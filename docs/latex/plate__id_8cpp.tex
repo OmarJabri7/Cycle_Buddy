@@ -1,0 +1,63 @@
+\hypertarget{plate__id_8cpp}{}\doxysection{src/plate\+\_\+id.cpp File Reference}
+\label{plate__id_8cpp}\index{src/plate\_id.cpp@{src/plate\_id.cpp}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\newline
+Include dependency graph for plate\+\_\+id.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plate__id_8cpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{plate__id_8cpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{plate__id_8cpp_a4f9e1ff664648b0e6537eb8e2c527260}{get\+License\+Plate}} (std\+::string res)
+\item 
+std\+::string \mbox{\hyperlink{plate__id_8cpp_a43b669bccb8bce8ea862a58a9dc116bd}{exec}} (const char $\ast$cmd)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{plate__id_8cpp_a43b669bccb8bce8ea862a58a9dc116bd}\label{plate__id_8cpp_a43b669bccb8bce8ea862a58a9dc116bd}} 
+\index{plate\_id.cpp@{plate\_id.cpp}!exec@{exec}}
+\index{exec@{exec}!plate\_id.cpp@{plate\_id.cpp}}
+\doxysubsubsection{\texorpdfstring{exec()}{exec()}}
+{\footnotesize\ttfamily std\+::string exec (\begin{DoxyParamCaption}\item[{const char $\ast$}]{cmd }\end{DoxyParamCaption})}
+
+function in camera thread to call for python script that used to upload the data to firebase. 
+\begin{DoxyParams}{Parameters}
+{\em cmd} & -\/ python cmd that calls for the python script. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{plate__id_8cpp_a43b669bccb8bce8ea862a58a9dc116bd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plate__id_8cpp_a4f9e1ff664648b0e6537eb8e2c527260}\label{plate__id_8cpp_a4f9e1ff664648b0e6537eb8e2c527260}} 
+\index{plate\_id.cpp@{plate\_id.cpp}!getLicensePlate@{getLicensePlate}}
+\index{getLicensePlate@{getLicensePlate}!plate\_id.cpp@{plate\_id.cpp}}
+\doxysubsubsection{\texorpdfstring{getLicensePlate()}{getLicensePlate()}}
+{\footnotesize\ttfamily std\+::string get\+License\+Plate (\begin{DoxyParamCaption}\item[{std\+::string}]{res }\end{DoxyParamCaption})}
+
+function used in camera thread to get car license plate. 
+\begin{DoxyParams}{Parameters}
+{\em res} & -\/ pattern recogniztion results from the online A\+PI \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plate__id_8cpp_a4f9e1ff664648b0e6537eb8e2c527260_icgraph}
+\end{center}
+\end{figure}

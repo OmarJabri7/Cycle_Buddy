@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cycle Buddy: Main Page</title>
+<title>Cycle Buddy: Project structure</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,11 +24,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Cycle Buddy
-   &#160;<span id="projectnumber">Version 1.0</span>
    </div>
-   <div id="projectbrief">Cycle Buddy, Cycle Safe.</div>
   </td>
  </tr>
  </tbody>
@@ -84,116 +83,30 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Cycle Buddy Documentation</div>  </div>
+<div class="title">Project structure </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2 align="center">Cycle Buddy</h2>
-<p align="center"><br  />
- </p>
-<p><a href="https://github.com/OmarJabri7/Cycle_Buddy"><img src="https://github.com/Yifan-Xie/Image/blob/Cycle_Buddy/pictures/Logo.png" alt="Logo" class="inline"/> </a></p>
-<p align="center"></p>
-<p>To keep people can ride bike more safely on the road. <br  />
- <br  />
- Please follow our youtube channel <br  />
- @CycleBuddy: <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw">https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw</a> <br  />
- </p>
-<p>&lt;details open="open"&gt; </p><h2 style="display: inline-block">Contents</h2>
-<ol>
-<li>
-<a href="#about">About</a> </li>
-<li>
-<a href="#software">Software</a> </li>
-<li>
-<a href="#hardware">Hardware</a> <br  />
-  </li>
-<li>
-<a href="#roadmap">Roadmap</a> </li>
-<li>
-<a href="#Packages">Packages</a> </li>
-<li>
-<a href="#usage">Usage</a> </li>
-<li>
-<a href="#contributing">Contributing</a> </li>
-<li>
-<a href="#license">License</a> </li>
-<li>
-<a href="#contact">Contact</a> </li>
-</ol>
-<p>&lt;/details&gt;</p>
-<h2><a class="anchor" id="autotoc_md0"></a>
-About</h2>
-<p>Cycle Buddy is System that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements. <br  />
- </p><div align="center"> <br  />
- <br  />
- </div><h3><a class="anchor" id="autotoc_md1"></a>
-Software</h3>
-<ul>
-<li>[VNC]</li>
-<li>[Putty] <br  />
-</li>
-</ul>
-<h3><a class="anchor" id="autotoc_md2"></a>
-Hardware</h3>
-<ul>
-<li>[Raspberry Pi 3 Model B +]</li>
-<li>[Sensors: Hall sensors, Ultrasonic sensors, Pi camera]</li>
-</ul>
-<p><br  />
-</p>
+<div class="textblock"><p>The project is composed by two separate sections, an embedded system developed with C++, and an android application developed with JavaScript. This part will focus on introducing the structure of the embedded system using C++.</p>
+<p>The embedded system can be separated into 4 part, they are in charge of connection, two types of sensors and the camera. Each part has its own cpp file:</p>
+<p>First the raspi system will establish connection with the mobile application. after connecting with the cellphone, the raspi system will then start three thread at the same time, each in charge of a unique hardware action for the system. The three hardware components are one hall-effect sensor, one ultrasonic radar and one Pi camera. The camera is in standby while the hall-effect sensor and ultrasonic radar refresh data in a frequency of 2Hz. Also, we use volatile variable and mutex locks to allow communication between the three-running thread</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Part A. app_connect.cpp.</h2>
+<p>The system would need to establish connection with the mobile application in order to start measurement. The function try_connect will be executed first in the main program, only when the connection successfully information returns form the phone application will the main program continue to next part.</p>
+<p>For the sensors, we wish to make the system expandable to more sensors in the future, therefore we have <a class="el" href="sensors__lib_8h.html">sensors_lib.h</a> that defines 2 parent class for sensors: Sensors(contains functions as constructor, start and stop) and <a class="el" href="classSensorCallback.html">SensorCallback(contains callback function that response to sensor input)</a>.</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Part B. callback_hall.cpp.</h2>
+<p>This is the cpp file that define the callback function of the hall sensor, which inherited from parent class <a class="el" href="classSensorCallback.html">SensorCallback</a>, it uses the sensor input from hall effect sensor to calculate the velocity of bike speed and then package the data and forward it to the mobile app. Besides, it changes the flag condition whenever the bike speed exceed threshold.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
-Roadmap</h2>
-<h3><a class="anchor" id="autotoc_md4"></a>
-Process of license plate recognition</h3>
-<h4><a class="anchor" id="autotoc_md5"></a>
-1. Image capture</h4>
-<h4><a class="anchor" id="autotoc_md6"></a>
-2. Image prepreocessing</h4>
-<h4><a class="anchor" id="autotoc_md7"></a>
-3. License plate location</h4>
-<h4><a class="anchor" id="autotoc_md8"></a>
-4. License plate location character segmentation</h4>
-<h4><a class="anchor" id="autotoc_md9"></a>
-5. Character recognition</h4>
-<h4><a class="anchor" id="autotoc_md10"></a>
-6. Output the results</h4>
-<h3><a class="anchor" id="autotoc_md11"></a>
-Threads of Sensors</h3>
-<h2><a class="anchor" id="autotoc_md12"></a>
-Packages</h2>
-<p>Cmake, OpenCv, WiringPi</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
-Usage</h2>
-<p>This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.<br  />
- Please follow these necessary steps: <br  />
-</p><ol type="1">
-<li>Clone the project with: <br  />
- <code>git clone <a href="https://github.com/OmarJabri7/Cycle_Buddy.git">https://github.com/OmarJabri7/Cycle_Buddy.git</a></code><br  />
-</li>
-<li>Change directorites and relocate in Cycle_Buddy project: <br  />
- <code>cd Cycle_Buddy</code><br  />
-</li>
-<li>Link the necessary executables and libraries using CMake: <br  />
- <code>cmake .</code><br  />
-</li>
-<li>Build the project using make: <br  />
- <code>make</code><br  />
-</li>
-<li>Run the test file labeled Cycle_Buddy: <br  />
- <code>./Cycle_Buddy</code><br  />
-</li>
-</ol>
-<h2><a class="anchor" id="autotoc_md14"></a>
-Contributing</h2>
-<p>How to contribute the project.</p>
-<h2><a class="anchor" id="autotoc_md15"></a>
-License</h2>
-<p>Distributed under the GPL-3.0 License. See <code>LICENSE</code> for more information.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
-Contact</h2>
-<p>Omar &lt;a href="https://github.com/OmarJabri7"&gt;Omar Jabri <br  />
- Chang &lt;a href="https://github.com/Cliu1993"&gt;Chang Liu <br  />
- Yifan &lt;a href="https://github.com/Yifan-Xie"&gt;Yifan Xie <br  />
- <a href="https://github.com/OmarJabri7/Cycle_Buddy">Project address</a> </p>
+Part C. callback_sonar.cpp.</h2>
+<p>This is the cpp file that define the callback function of the ultrasonic radar, which inherited from parent class <a class="el" href="classSensorCallback.html">SensorCallback</a>, it uses the sensor input from ultrasonic radar to get the relative distance between the sensor and incoming car. Also, it uses the difference between two time-adjacent distance to calculate the relative speed of incoming car towards the radar. In the meantime, it packages the velocity and distance data and forward it to the mobile app. Also, it changes the flag conditions for relative speed and relative distance when they exceed threshold.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Part D. camera.cpp.</h2>
+<p>This cpp controls the camera action and will constantly check if all flags for threshold situation is real to check if there are dangerous car driving towards the bike. When all flags are real while the camera is in stand-by status, it will then trigger the camera to take a photo of incoming car, and then forward it to online API for car-plate recognition. After receiving the identified car-plate number, it then packages the plate number, the car photo and the instant speed and distance of the car and the bike the moment the picture was taken. Then this thread will forward them to the online database(Firebase)for later use, while in the meantime send them to the application. After that, the camera requires some time for cold down and prevent be triggered multiple times by the same car. Then the camera restores stand-by status and wait for another car.</p>
+<ul>
+<li><a href="https://github.com/OmarJabri7/Cycle_Buddy">GitHub Repository</a></li>
+<li><a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw">Youtube</a></li>
+<li><a href="https://hackaday.io/project/179217-cycle-buddy">Hackaday.io</a> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

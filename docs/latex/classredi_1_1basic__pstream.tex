@@ -1,0 +1,339 @@
+\hypertarget{classredi_1_1basic__pstream}{}\doxysection{redi\+::basic\+\_\+pstream$<$ CharT, Traits $>$ Class Template Reference}
+\label{classredi_1_1basic__pstream}\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+
+
+Class template for Bidirectional P\+Streams.  
+
+
+
+
+{\ttfamily \#include $<$pstream.\+h$>$}
+
+
+
+Inheritance diagram for redi\+::basic\+\_\+pstream$<$ CharT, Traits $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1basic__pstream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for redi\+::basic\+\_\+pstream$<$ CharT, Traits $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1basic__pstream__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classredi_1_1pstream__common_a1359431898a2484b3b33dc225cfc84e8}{pbase\+\_\+type\+::pmode}} \mbox{\hyperlink{classredi_1_1basic__pstream_afe345298729108110db56a3c3c18b4d2}{pmode}}
+\begin{DoxyCompactList}\small\item\em Type used to specify how to connect to the process. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{classredi_1_1pstream__common_a292538074144e8d567ac6f09fc4c3f3b}{pbase\+\_\+type\+::argv\+\_\+type}} \mbox{\hyperlink{classredi_1_1basic__pstream_a9e421db5c7431ec36b830ffaa9dabe04}{argv\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Type used to hold the arguments for a command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream_a254f8af27912096eed1b4ce67dc88066}{basic\+\_\+pstream}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor, creates an uninitialised stream. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream_a0e0854f94230e9685cf4b02d3115008c}{basic\+\_\+pstream}} (const std\+::string \&cmd, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode=\mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}})
+\begin{DoxyCompactList}\small\item\em Constructor that initialises the stream by starting a process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream_a704808ffa353801653909d8de10a84ab}{basic\+\_\+pstream}} (const std\+::string \&file, const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&argv, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode=\mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}})
+\begin{DoxyCompactList}\small\item\em Constructor that initialises the stream by starting a process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream_a4c94eb6302ef1281b4e57a765af1e3fd}{basic\+\_\+pstream}} (const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&argv, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode=\mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}})
+\begin{DoxyCompactList}\small\item\em Constructor that initialises the stream by starting a process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream_a331fbc7e238df3a47736499c6c48380c}{$\sim$basic\+\_\+pstream}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredi_1_1basic__pstream_a110210bdb99afe12493e172b9017560c}{open}} (const std\+::string \&cmd, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode=\mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}})
+\begin{DoxyCompactList}\small\item\em Start a process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredi_1_1basic__pstream_a4f2e9ab168a74b8ea9a8546870085e4b}{open}} (const std\+::string \&file, const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&argv, \mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}} mode=\mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}})
+\begin{DoxyCompactList}\small\item\em Start a process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} \& \mbox{\hyperlink{classredi_1_1basic__pstream_ad9137d50003e6182cbc4fc25ee093bed}{out}} ()
+\begin{DoxyCompactList}\small\item\em Set streambuf to read from process\textquotesingle{} {\ttfamily stdout}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} \& \mbox{\hyperlink{classredi_1_1basic__pstream_a63a8021d6fe3ca821f2f78520c194e3c}{err}} ()
+\begin{DoxyCompactList}\small\item\em Set streambuf to read from process\textquotesingle{} {\ttfamily stderr}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::basic\+\_\+iostream$<$ CharT, Traits $>$ \mbox{\hyperlink{classredi_1_1basic__pstream_afec422037aa626d2bea37c063d55095b}{iostream\+\_\+type}}
+\item 
+typedef \mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}}$<$ CharT, Traits $>$ \mbox{\hyperlink{classredi_1_1basic__pstream_a4fa1e68123d36f08f542e41576e327c0}{pbase\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}} \mbox{\hyperlink{classredi_1_1basic__pstream_a59dd7e8a056e4e66d67f31c1ef0bfff4}{buf\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The stream buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename CharT, typename Traits = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$\newline
+class redi\+::basic\+\_\+pstream$<$ Char\+T, Traits $>$}
+
+Class template for Bidirectional P\+Streams. 
+
+Writing to a pstream opened with {\ttfamily pmode} {\ttfamily pstdin} writes to the standard input of the command. Reading from a pstream opened with {\ttfamily pmode} {\ttfamily pstdout} and/or {\ttfamily pstderr} reads the command\textquotesingle{}s standard output and/or standard error. Any of the process\textquotesingle{} {\ttfamily stdin}, {\ttfamily stdout} or {\ttfamily stderr} that is not connected to the pstream (as specified by the {\ttfamily pmode}) will be the same as the process that created the pstream object, unless altered by the command itself. 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a9e421db5c7431ec36b830ffaa9dabe04}\label{classredi_1_1basic__pstream_a9e421db5c7431ec36b830ffaa9dabe04}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!argv\_type@{argv\_type}}
+\index{argv\_type@{argv\_type}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{argv\_type}{argv\_type}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef \mbox{\hyperlink{classredi_1_1pstream__common_a292538074144e8d567ac6f09fc4c3f3b}{pbase\+\_\+type\+::argv\+\_\+type}} \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}}}
+
+
+
+Type used to hold the arguments for a command. 
+
+\mbox{\Hypertarget{classredi_1_1basic__pstream_afec422037aa626d2bea37c063d55095b}\label{classredi_1_1basic__pstream_afec422037aa626d2bea37c063d55095b}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!iostream\_type@{iostream\_type}}
+\index{iostream\_type@{iostream\_type}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{iostream\_type}{iostream\_type}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef std\+::basic\+\_\+iostream$<$CharT, Traits$>$ \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1basic__pstream_afec422037aa626d2bea37c063d55095b}{iostream\+\_\+type}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a4fa1e68123d36f08f542e41576e327c0}\label{classredi_1_1basic__pstream_a4fa1e68123d36f08f542e41576e327c0}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!pbase\_type@{pbase\_type}}
+\index{pbase\_type@{pbase\_type}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{pbase\_type}{pbase\_type}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef \mbox{\hyperlink{classredi_1_1pstream__common}{pstream\+\_\+common}}$<$CharT, Traits$>$ \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1basic__pstream_a4fa1e68123d36f08f542e41576e327c0}{pbase\+\_\+type}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classredi_1_1basic__pstream_afe345298729108110db56a3c3c18b4d2}\label{classredi_1_1basic__pstream_afe345298729108110db56a3c3c18b4d2}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!pmode@{pmode}}
+\index{pmode@{pmode}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{pmode}{pmode}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+typedef \mbox{\hyperlink{classredi_1_1pstream__common_a1359431898a2484b3b33dc225cfc84e8}{pbase\+\_\+type\+::pmode}} \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}
+
+
+
+Type used to specify how to connect to the process. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a254f8af27912096eed1b4ce67dc88066}\label{classredi_1_1basic__pstream_a254f8af27912096eed1b4ce67dc88066}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!basic\_pstream@{basic\_pstream}}
+\index{basic\_pstream@{basic\_pstream}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{basic\_pstream()}{basic\_pstream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor, creates an uninitialised stream. 
+
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a0e0854f94230e9685cf4b02d3115008c}\label{classredi_1_1basic__pstream_a0e0854f94230e9685cf4b02d3115008c}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!basic\_pstream@{basic\_pstream}}
+\index{basic\_pstream@{basic\_pstream}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{basic\_pstream()}{basic\_pstream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cmd,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode = {\ttfamily \mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that initialises the stream by starting a process. 
+
+Initialises the stream buffer by calling \mbox{\hyperlink{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}{do\+\_\+open()}} with the supplied arguments.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & a string containing a shell command. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}{do\+\_\+open(const std\+::string\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a704808ffa353801653909d8de10a84ab}\label{classredi_1_1basic__pstream_a704808ffa353801653909d8de10a84ab}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!basic\_pstream@{basic\_pstream}}
+\index{basic\_pstream@{basic\_pstream}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{basic\_pstream()}{basic\_pstream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&}]{argv,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode = {\ttfamily \mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor that initialises the stream by starting a process. 
+
+Initialises the stream buffer by calling \mbox{\hyperlink{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}{do\+\_\+open()}} with the supplied arguments.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & a string containing the pathname of a program to execute. \\
+\hline
+{\em argv} & a vector of argument strings passed to the new program. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}{do\+\_\+open(const std\+::string\&, const argv\+\_\+type\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a4c94eb6302ef1281b4e57a765af1e3fd}\label{classredi_1_1basic__pstream_a4c94eb6302ef1281b4e57a765af1e3fd}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!basic\_pstream@{basic\_pstream}}
+\index{basic\_pstream@{basic\_pstream}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{basic\_pstream()}{basic\_pstream()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&}]{argv,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode = {\ttfamily \mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that initialises the stream by starting a process. 
+
+Initialises the stream buffer by calling {\ttfamily do\+\_\+open(argv\mbox{[}0\mbox{]},argv,mode)} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & a vector of argument strings passed to the new program. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}{do\+\_\+open(const std\+::string\&, const argv\+\_\+type\&, pmode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a331fbc7e238df3a47736499c6c48380c}\label{classredi_1_1basic__pstream_a331fbc7e238df3a47736499c6c48380c}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!````~basic\_pstream@{$\sim$basic\_pstream}}
+\index{````~basic\_pstream@{$\sim$basic\_pstream}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$basic\_pstream()}{~basic\_pstream()}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::$\sim$\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+Closes the stream and waits for the child to exit. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a63a8021d6fe3ca821f2f78520c194e3c}\label{classredi_1_1basic__pstream_a63a8021d6fe3ca821f2f78520c194e3c}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!err@{err}}
+\index{err@{err}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{err()}{err()}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}}\& \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::err (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set streambuf to read from process\textquotesingle{} {\ttfamily stderr}. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily $\ast$this} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1basic__pstream_a63a8021d6fe3ca821f2f78520c194e3c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a110210bdb99afe12493e172b9017560c}\label{classredi_1_1basic__pstream_a110210bdb99afe12493e172b9017560c}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!open@{open}}
+\index{open@{open}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+void \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cmd,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode = {\ttfamily \mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start a process. 
+
+Calls do\+\_\+open( {\itshape cnd} , {\itshape mode} ).
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & a string containing a shell command. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a2505ab3e3a834b92d98b5bcb97734dfe}{do\+\_\+open(const std\+::string\&, pmode)}} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1basic__pstream_a110210bdb99afe12493e172b9017560c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a4f2e9ab168a74b8ea9a8546870085e4b}\label{classredi_1_1basic__pstream_a4f2e9ab168a74b8ea9a8546870085e4b}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!open@{open}}
+\index{open@{open}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+void \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{const \mbox{\hyperlink{structredi_1_1pstreams_af902b894b095c1875e96c10129489467}{argv\+\_\+type}} \&}]{argv,  }\item[{\mbox{\hyperlink{structredi_1_1pstreams_a1eae4aad88812af03a0fbb3ec13c50b7}{pmode}}}]{mode = {\ttfamily \mbox{\hyperlink{structredi_1_1pstreams_ad3c6d53a98de4566478b1c40c101a42b}{pstdout}}$\vert$\mbox{\hyperlink{structredi_1_1pstreams_a7a976ce992db857f86a0cc3352e42d3a}{pstdin}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start a process. 
+
+Calls do\+\_\+open( {\itshape file} , {\itshape argv} , {\itshape mode} ).
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & a string containing the pathname of a program to execute. \\
+\hline
+{\em argv} & a vector of argument strings passed to the new program. \\
+\hline
+{\em mode} & the I/O mode to use when opening the pipe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredi_1_1pstream__common_a352b77fa600f7ebe0d8f1582be05ae4d}{do\+\_\+open(const std\+::string\&, const argv\+\_\+type\&, pmode)}} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1basic__pstream_a4f2e9ab168a74b8ea9a8546870085e4b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_ad9137d50003e6182cbc4fc25ee093bed}\label{classredi_1_1basic__pstream_ad9137d50003e6182cbc4fc25ee093bed}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!out@{out}}
+\index{out@{out}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{out()}{out()}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1basic__pstream}{basic\+\_\+pstream}}\& \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream}}$<$ CharT, Traits $>$\+::out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set streambuf to read from process\textquotesingle{} {\ttfamily stdout}. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily $\ast$this} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classredi_1_1basic__pstream_ad9137d50003e6182cbc4fc25ee093bed_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{classredi_1_1basic__pstream_a59dd7e8a056e4e66d67f31c1ef0bfff4}\label{classredi_1_1basic__pstream_a59dd7e8a056e4e66d67f31c1ef0bfff4}} 
+\index{redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}!buf\_@{buf\_}}
+\index{buf\_@{buf\_}!redi::basic\_pstream$<$ CharT, Traits $>$@{redi::basic\_pstream$<$ CharT, Traits $>$}}
+\doxysubsubsection{\texorpdfstring{buf\_}{buf\_}}
+{\footnotesize\ttfamily template$<$typename CharT , typename Traits  = std\+::char\+\_\+traits$<$\+Char\+T$>$$>$ \\
+\mbox{\hyperlink{classredi_1_1pstream__common_a7c3039b2db5ac78069d4c8022e700bd8}{streambuf\+\_\+type}} \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common}}$<$ CharT, Traits $>$\+::buf\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The stream buffer. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{pstream_8h}{pstream.\+h}}\end{DoxyCompactItemize}

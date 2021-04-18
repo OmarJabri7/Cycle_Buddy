@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sensorcb_51',['sensorCb',['../classSensor.html#a3787e8b888ea37ae31143a2ee44b6952',1,'Sensor']]],
-  ['sensorthread_52',['sensorThread',['../classSensor.html#ae62fb266b3c31510d13eca6404505dee',1,'Sensor']]]
+  ['error_5f_267',['error_',['../classredi_1_1basic__pstreambuf.html#a6e622be0c3c1de25ed8be12639b684e8',1,'redi::basic_pstreambuf']]]
 ];

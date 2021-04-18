@@ -1,0 +1,106 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensors\+\_\+lib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}global\+\_\+var.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plate\+\_\+id.\+cpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}callback\+\_\+hall.\+cpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}callback\+\_\+sonar.\+cpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}app\+\_\+connect.\+cpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}camera.\+cpp\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{main_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} = nlohmann\+::json
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\mbox{\hyperlink{classint}{int}} argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{main_8cpp_a31f52b549cf317b8f52300b256840b74}{host\+Ip}} \mbox{[}\mbox{\hyperlink{thershold_8h_a3e937c42922f7601edb17b747602c471}{M\+A\+X\+L\+I\+NE}}\mbox{]}
+\item 
+volatile double \mbox{\hyperlink{main_8cpp_ab7ffea0c33d85a47eaf3848d9974cf09}{old\+\_\+distance}} = 0
+\item 
+volatile \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{main_8cpp_acb927224f9ed42c665e9feb70615801f}{upcoming\+\_\+car}} = 1
+\item 
+volatile \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{main_8cpp_adc4d921ab49a69b29799a2552b8a254a}{bike\+\_\+flag}} = 0
+\item 
+volatile \mbox{\hyperlink{structconditions}{conditions}} \mbox{\hyperlink{main_8cpp_a5f0eb060dcd1b8f6a749057ccb01f01c}{conds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{main_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}\label{main_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}} 
+\index{main.cpp@{main.cpp}!json@{json}}
+\index{json@{json}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{json}{json}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{app__connect_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} =  nlohmann\+::json}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+system initialzation\+: making connection with mobile app
+
+get gpio pin info from gpio\+\_\+def
+
+construct the sensor objects and assign callbacks to proper sensor.
+
+start running all three threads
+
+close the system, delete all threadsHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_adc4d921ab49a69b29799a2552b8a254a}\label{main_8cpp_adc4d921ab49a69b29799a2552b8a254a}} 
+\index{main.cpp@{main.cpp}!bike\_flag@{bike\_flag}}
+\index{bike\_flag@{bike\_flag}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{bike\_flag}{bike\_flag}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{classint}{int}} bike\+\_\+flag = 0}
+
+\mbox{\Hypertarget{main_8cpp_a5f0eb060dcd1b8f6a749057ccb01f01c}\label{main_8cpp_a5f0eb060dcd1b8f6a749057ccb01f01c}} 
+\index{main.cpp@{main.cpp}!conds@{conds}}
+\index{conds@{conds}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{conds}{conds}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{structconditions}{conditions}} conds}
+
+\mbox{\Hypertarget{main_8cpp_a31f52b549cf317b8f52300b256840b74}\label{main_8cpp_a31f52b549cf317b8f52300b256840b74}} 
+\index{main.cpp@{main.cpp}!hostIp@{hostIp}}
+\index{hostIp@{hostIp}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{hostIp}{hostIp}}
+{\footnotesize\ttfamily char host\+Ip\mbox{[}\mbox{\hyperlink{thershold_8h_a3e937c42922f7601edb17b747602c471}{M\+A\+X\+L\+I\+NE}}\mbox{]}}
+
+\mbox{\Hypertarget{main_8cpp_ab7ffea0c33d85a47eaf3848d9974cf09}\label{main_8cpp_ab7ffea0c33d85a47eaf3848d9974cf09}} 
+\index{main.cpp@{main.cpp}!old\_distance@{old\_distance}}
+\index{old\_distance@{old\_distance}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{old\_distance}{old\_distance}}
+{\footnotesize\ttfamily volatile double old\+\_\+distance = 0}
+
+Set old distance to calculate the derivative and get velocity \mbox{\Hypertarget{main_8cpp_acb927224f9ed42c665e9feb70615801f}\label{main_8cpp_acb927224f9ed42c665e9feb70615801f}} 
+\index{main.cpp@{main.cpp}!upcoming\_car@{upcoming\_car}}
+\index{upcoming\_car@{upcoming\_car}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{upcoming\_car}{upcoming\_car}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{classint}{int}} upcoming\+\_\+car = 1}
+

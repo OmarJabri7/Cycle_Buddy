@@ -1,0 +1,4 @@
+<map id="redi::basic_rpstream::out" name="redi::basic_rpstream::out">
+<area shape="rect" id="node1" title="Obtain a reference to the istream that reads the process&#39; stdout." alt="" coords="5,13,189,39"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__pstreambuf.html#ac831c1a0ec6deb5ef2cbcab5cf510969" title="Change active input source." alt="" coords="237,5,408,47"/>
+</map>

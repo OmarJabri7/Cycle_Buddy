@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['resize_42',['ReSize',['../Plate__Number_8cpp.html#a796b4d7e56c6f5a14a9cf2742c092f5e',1,'Plate_Number.cpp']]],
-  ['run_5fhall_43',['run_hall',['../classSensor.html#a912fdb6c72ae18115b5faf8dac9886b4',1,'Sensor']]],
-  ['run_5fsonar_44',['run_sonar',['../classSensor.html#a083a7259934a7b667af80acbce6a628e',1,'Sensor']]]
+  ['empty_5fbuffer_211',['empty_buffer',['../classredi_1_1basic__pstreambuf.html#aa9d2bb07c6d563cbf9886d69fa42523e',1,'redi::basic_pstreambuf']]],
+  ['err_212',['err',['../classredi_1_1basic__ipstream.html#a7057a0f44305277d67ee86e653e486e6',1,'redi::basic_ipstream::err()'],['../classredi_1_1basic__pstream.html#a63a8021d6fe3ca821f2f78520c194e3c',1,'redi::basic_pstream::err()'],['../classredi_1_1basic__rpstream.html#a3170d8e6c74d8280d89918bb3334f324',1,'redi::basic_rpstream::err()']]],
+  ['error_213',['error',['../classredi_1_1basic__pstreambuf.html#a87e5bc3b59a7cb3f72fd81ebde783c13',1,'redi::basic_pstreambuf']]],
+  ['exec_214',['exec',['../plate__id_8cpp.html#a43b669bccb8bce8ea862a58a9dc116bd',1,'plate_id.cpp']]],
+  ['exited_215',['exited',['../classredi_1_1basic__pstreambuf.html#a9ed1ec24bfa867c99b6bf8a35a94d063',1,'redi::basic_pstreambuf']]]
 ];

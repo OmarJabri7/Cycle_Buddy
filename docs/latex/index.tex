@@ -1,84 +1,18 @@
-\doxysubsection*{Cycle Buddy}
+The project is composed by two separate sections, an embedded system developed with C++, and an android application developed with Java\+Script. This part will focus on introducing the structure of the embedded system using C++.
 
-~\newline
- 
+The embedded system can be separated into 4 part, they are in charge of connection, two types of sensors and the camera. Each part has its own cpp file\+:
 
-\href{https://github.com/OmarJabri7/Cycle_Buddy}{\texttt{  }}
+First the raspi system will establish connection with the mobile application. after connecting with the cellphone, the raspi system will then start three thread at the same time, each in charge of a unique hardware action for the system. The three hardware components are one hall-\/effect sensor, one ultrasonic radar and one Pi camera. The camera is in standby while the hall-\/effect sensor and ultrasonic radar refresh data in a frequency of 2Hz. Also, we use volatile variable and mutex locks to allow communication between the three-\/running thread\hypertarget{index_autotoc_md1}{}\doxysubsection{Part A. app\+\_\+connect.\+cpp.}\label{index_autotoc_md1}
+The system would need to establish connection with the mobile application in order to start measurement. The function try\+\_\+connect will be executed first in the main program, only when the connection successfully information returns form the phone application will the main program continue to next part.
 
+For the sensors, we wish to make the system expandable to more sensors in the future, therefore we have \mbox{\hyperlink{sensors__lib_8h}{sensors\+\_\+lib.\+h}} that defines 2 parent class for sensors\+: Sensors(contains functions as constructor, start and stop) and \mbox{\hyperlink{classSensorCallback}{Sensor\+Callback(contains callback function that response to sensor input)}}.\hypertarget{index_autotoc_md2}{}\doxysubsection{Part B. callback\+\_\+hall.\+cpp.}\label{index_autotoc_md2}
+This is the cpp file that define the callback function of the hall sensor, which inherited from parent class \mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}}, it uses the sensor input from hall effect sensor to calculate the velocity of bike speed and then package the data and forward it to the mobile app. Besides, it changes the flag condition whenever the bike speed exceed threshold.\hypertarget{index_autotoc_md3}{}\doxysubsection{Part C. callback\+\_\+sonar.\+cpp.}\label{index_autotoc_md3}
+This is the cpp file that define the callback function of the ultrasonic radar, which inherited from parent class \mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}}, it uses the sensor input from ultrasonic radar to get the relative distance between the sensor and incoming car. Also, it uses the difference between two time-\/adjacent distance to calculate the relative speed of incoming car towards the radar. In the meantime, it packages the velocity and distance data and forward it to the mobile app. Also, it changes the flag conditions for relative speed and relative distance when they exceed threshold.\hypertarget{index_autotoc_md4}{}\doxysubsection{Part D. camera.\+cpp.}\label{index_autotoc_md4}
+This cpp controls the camera action and will constantly check if all flags for threshold situation is real to check if there are dangerous car driving towards the bike. When all flags are real while the camera is in stand-\/by status, it will then trigger the camera to take a photo of incoming car, and then forward it to online A\+PI for car-\/plate recognition. After receiving the identified car-\/plate number, it then packages the plate number, the car photo and the instant speed and distance of the car and the bike the moment the picture was taken. Then this thread will forward them to the online database(\+Firebase)for later use, while in the meantime send them to the application. After that, the camera requires some time for cold down and prevent be triggered multiple times by the same car. Then the camera restores stand-\/by status and wait for another car.
 
-
-To keep people can ride bike more safely on the road. ~\newline
- ~\newline
- Please follow our youtube channel ~\newline
- @\+Cycle\+Buddy\+: \href{https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw}{\texttt{ https\+://www.\+youtube.\+com/channel/\+U\+C4m\+Hw6\+L\+X\+U8\+Y\+Y\+Ivd\+Zxg\+I5\+Btw}} ~\newline
- 
-
-$<$details open=\char`\"{}open\char`\"{}$>$ \doxysubsection*{Contents}
-
-
-\begin{DoxyEnumerate}
-\item \href{\#about}{\texttt{ About}} 
-\item \href{\#software}{\texttt{ Software}} 
-\item \href{\#hardware}{\texttt{ Hardware}} ~\newline
-  
-\item \href{\#roadmap}{\texttt{ Roadmap}} 
-\item \href{\#Packages}{\texttt{ Packages}} 
-\item \href{\#usage}{\texttt{ Usage}} 
-\item \href{\#contributing}{\texttt{ Contributing}} 
-\item \href{\#license}{\texttt{ License}} 
-\item \href{\#contact}{\texttt{ Contact}} 
-\end{DoxyEnumerate}$<$/details$>$\hypertarget{index_autotoc_md0}{}\doxysubsection{About}\label{index_autotoc_md0}
-Cycle Buddy is System that detects danger levels in bikers relative to drivers. Once a driver overpasses a biker, the system detects this unauthorised act, and responds by recognising the face/car plate of the driver in order to contact law enforcements. ~\newline
-  ~\newline
- ~\newline
- \hypertarget{index_autotoc_md1}{}\doxysubsubsection{Software}\label{index_autotoc_md1}
 
 \begin{DoxyItemize}
-\item \mbox{[}V\+NC\mbox{]}
-\item \mbox{[}Putty\mbox{]} ~\newline
-
-\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysubsubsection{Hardware}\label{index_autotoc_md2}
-
-\begin{DoxyItemize}
-\item \mbox{[}Raspberry Pi 3 Model B +\mbox{]}
-\item \mbox{[}Sensors\+: Hall sensors, Ultrasonic sensors, Pi camera\mbox{]}
+\item \href{https://github.com/OmarJabri7/Cycle_Buddy}{\texttt{ Git\+Hub Repository}}
+\item \href{https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw}{\texttt{ Youtube}}
+\item \href{https://hackaday.io/project/179217-cycle-buddy}{\texttt{ Hackaday.\+io}} 
 \end{DoxyItemize}
-
-~\newline
-\hypertarget{index_autotoc_md3}{}\doxysubsection{Roadmap}\label{index_autotoc_md3}
-\hypertarget{index_autotoc_md4}{}\doxysubsubsection{Process of license plate recognition}\label{index_autotoc_md4}
-\hypertarget{index_autotoc_md5}{}\doxyparagraph{1. Image capture}\label{index_autotoc_md5}
-\hypertarget{index_autotoc_md6}{}\doxyparagraph{2. Image prepreocessing}\label{index_autotoc_md6}
-\hypertarget{index_autotoc_md7}{}\doxyparagraph{3. License plate location}\label{index_autotoc_md7}
-\hypertarget{index_autotoc_md8}{}\doxyparagraph{4. License plate location character segmentation}\label{index_autotoc_md8}
-\hypertarget{index_autotoc_md9}{}\doxyparagraph{5. Character recognition}\label{index_autotoc_md9}
-\hypertarget{index_autotoc_md10}{}\doxyparagraph{6. Output the results}\label{index_autotoc_md10}
-\hypertarget{index_autotoc_md11}{}\doxysubsubsection{Threads of Sensors}\label{index_autotoc_md11}
-\hypertarget{index_autotoc_md12}{}\doxysubsection{Packages}\label{index_autotoc_md12}
-Cmake, Open\+Cv, Wiring\+Pi\hypertarget{index_autotoc_md13}{}\doxysubsection{Usage}\label{index_autotoc_md13}
-This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.~\newline
- Please follow these necessary steps\+: ~\newline
-
-\begin{DoxyEnumerate}
-\item Clone the project with\+: ~\newline
- {\ttfamily git clone \href{https://github.com/OmarJabri7/Cycle_Buddy.git}{\texttt{ https\+://github.\+com/\+Omar\+Jabri7/\+Cycle\+\_\+\+Buddy.\+git}}}~\newline
-
-\item Change directorites and relocate in Cycle\+\_\+\+Buddy project\+: ~\newline
- {\ttfamily cd Cycle\+\_\+\+Buddy}~\newline
-
-\item Link the necessary executables and libraries using C\+Make\+: ~\newline
- {\ttfamily cmake .}~\newline
-
-\item Build the project using make\+: ~\newline
- {\ttfamily make}~\newline
-
-\item Run the test file labeled Cycle\+\_\+\+Buddy\+: ~\newline
- {\ttfamily ./\+Cycle\+\_\+\+Buddy}~\newline
-
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md14}{}\doxysubsection{Contributing}\label{index_autotoc_md14}
-How to contribute the project.\hypertarget{index_autotoc_md15}{}\doxysubsection{License}\label{index_autotoc_md15}
-Distributed under the G\+P\+L-\/3.\+0 License. See {\ttfamily L\+I\+C\+E\+N\+SE} for more information.\hypertarget{index_autotoc_md16}{}\doxysubsection{Contact}\label{index_autotoc_md16}
-Omar $<$a href=\char`\"{}https\+://github.\+com/\+Omar\+Jabri7\char`\"{}$>$Omar Jabri ~\newline
- Chang $<$a href=\char`\"{}https\+://github.\+com/\+Cliu1993\char`\"{}$>$Chang Liu ~\newline
- Yifan $<$a href=\char`\"{}https\+://github.\+com/\+Yifan-\/\+Xie\char`\"{}$>$Yifan Xie ~\newline
- \href{https://github.com/OmarJabri7/Cycle_Buddy}{\texttt{ Project address}} 

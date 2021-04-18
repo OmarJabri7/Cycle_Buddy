@@ -1,0 +1,82 @@
+\hypertarget{camera_8cpp}{}\doxysection{src/camera.cpp File Reference}
+\label{camera_8cpp}\index{src/camera.cpp@{src/camera.cpp}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\newline
+Include dependency graph for camera.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{camera_8cpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{camera_8cpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{camera_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} = nlohmann\+::json
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{camera_8cpp_a01fcba625613d4b3558d47af92c5990f}{camera\+\_\+process}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \mbox{\hyperlink{camera_8cpp_ad5e0dbd36f0d71fce9b00b7f991b2f38}{mtx}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{camera_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}\label{camera_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}} 
+\index{camera.cpp@{camera.cpp}!json@{json}}
+\index{json@{json}!camera.cpp@{camera.cpp}}
+\doxysubsubsection{\texorpdfstring{json}{json}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{app__connect_8cpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} =  nlohmann\+::json}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{camera_8cpp_a01fcba625613d4b3558d47af92c5990f}\label{camera_8cpp_a01fcba625613d4b3558d47af92c5990f}} 
+\index{camera.cpp@{camera.cpp}!camera\_process@{camera\_process}}
+\index{camera\_process@{camera\_process}!camera.cpp@{camera.cpp}}
+\doxysubsubsection{\texorpdfstring{camera\_process()}{camera\_process()}}
+{\footnotesize\ttfamily void camera\+\_\+process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+function for Photo capture and car plate recognization initialize the camera
+
+looping and waiting for incoming photo timing
+
+when all conditions for taking photo fullfills, trigger the camera to take one
+
+upload the photo to the online A\+PI for plate recognization
+
+Send sensor readings to appHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{camera_8cpp_a01fcba625613d4b3558d47af92c5990f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{camera_8cpp_a01fcba625613d4b3558d47af92c5990f_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{camera_8cpp_ad5e0dbd36f0d71fce9b00b7f991b2f38}\label{camera_8cpp_ad5e0dbd36f0d71fce9b00b7f991b2f38}} 
+\index{camera.cpp@{camera.cpp}!mtx@{mtx}}
+\index{mtx@{mtx}!camera.cpp@{camera.cpp}}
+\doxysubsubsection{\texorpdfstring{mtx}{mtx}}
+{\footnotesize\ttfamily std\+::mutex mtx}
+
+mutex obj defined to enable usage of mutex lock to prevent conflict 

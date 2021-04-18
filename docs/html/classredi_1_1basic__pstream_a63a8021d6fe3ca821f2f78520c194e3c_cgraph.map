@@ -1,0 +1,4 @@
+<map id="redi::basic_pstream::err" name="redi::basic_pstream::err">
+<area shape="rect" id="node1" title="Set streambuf to read from process&#39; stderr." alt="" coords="5,13,181,39"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__pstreambuf.html#ac831c1a0ec6deb5ef2cbcab5cf510969" title="Change active input source." alt="" coords="229,5,400,47"/>
+</map>
