@@ -244,7 +244,7 @@ For more <b>information</b>, please visit this [**Youtube link**](https://www.yo
 * Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time.
 <br><br><br /> 
 
-3. The final thing to notice is how the system saves the relevant data once the image is capture, reinforcing the idea of a real-time embedded system:
+3. The final thing to notice is how the system saves the relevant data once the image is captured, reinforcing the idea of a real-time embedded system:
 <p align="center">
     <img src="Images/Results+RealTime.png">
     <br><br>    
