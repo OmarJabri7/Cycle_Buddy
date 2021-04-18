@@ -207,11 +207,11 @@ import java.util.concurrent.Executors;
             connectBtn = (Button) findViewById(R.id.connectBtn);
             // Create a storage reference from our app
 //            imgUri = null;
-            Intent intent = getIntent();
-            FirebaseUser fb_user = FirebaseAuth.getInstance().getCurrentUser();
+            //Intent intent = getIntent();
+            //FirebaseUser fb_user = FirebaseAuth.getInstance().getCurrentUser();
 //            FirebaseUser value = (FirebaseUser) intent.getSerializableExtra("user");
-            user = findViewById(R.id.user);
-            user.setText("Welcome User: " + fb_user.getEmail());
+            //user = findViewById(R.id.user);
+            //user.setText("Welcome User: " + fb_user.getEmail());
             imgLink = findViewById(R.id.img_link);
             storage = FirebaseStorage.getInstance("gs://cyclebuddy-17c84.appspot.com");
             storageRef = storage.getReference();
@@ -311,7 +311,7 @@ import java.util.concurrent.Executors;
 
             new Thread(this.serverThreadSonarOne).start();
             new Thread(this.serverThreadHall).start();
-            new Thread(this.serverThreadSonarTwo).start();
+            //new Thread(this.serverThreadSonarTwo).start();
             new Thread(this.resultsThread).start();
             //new Thread(this.imgThread).start();
         }
