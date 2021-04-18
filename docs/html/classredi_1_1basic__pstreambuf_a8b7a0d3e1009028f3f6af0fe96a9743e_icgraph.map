@@ -1,0 +1,6 @@
+<map id="redi::basic_pstreambuf::close_fd_array" name="redi::basic_pstreambuf::close_fd_array">
+<area shape="rect" id="node1" title="Helper function to close an array of file descriptors." alt="" coords="233,93,404,134"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__pstreambuf.html#a725edcfa569034899d63312fa8d98791" title="Close the stream buffer and wait for the process to exit." alt="" coords="5,5,185,61"/>
+<area shape="rect" id="node3" href="$classredi_1_1basic__pstreambuf.html#a70a3b8c71fa2019eefff0ef6e8a92d5b" title="Initialise pipes and fork process." alt="" coords="5,85,185,141"/>
+<area shape="rect" id="node4" href="$classredi_1_1basic__pstreambuf.html#a2dd6e94de1a2fa0e9e4505934b246aec" title="Initialise the stream buffer with file and argv." alt="" coords="5,165,185,221"/>
+</map>

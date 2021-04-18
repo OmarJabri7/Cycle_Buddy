@@ -23,34 +23,27 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Cycle Buddy", "index.html", [
+    [ "Project structure", "index.html", null ],
+    [ "Deprecated List", "deprecated.html", null ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ]
+      ] ]
+    ] ],
     [ "Data Structures", "annotated.html", [
-      [ "About", "index.html#autotoc_md0", [
-        [ "Software", "index.html#autotoc_md1", null ],
-        [ "Hardware", "index.html#autotoc_md2", null ]
-      ] ],
-      [ "Roadmap", "index.html#autotoc_md3", [
-        [ "Process of license plate recognition", "index.html#autotoc_md4", [
-          [ "1. Image capture", "index.html#autotoc_md5", null ],
-          [ "2. Image prepreocessing", "index.html#autotoc_md6", null ],
-          [ "3. License plate location", "index.html#autotoc_md7", null ],
-          [ "4. License plate location character segmentation", "index.html#autotoc_md8", null ],
-          [ "5. Character recognition", "index.html#autotoc_md9", null ],
-          [ "6. Output the results", "index.html#autotoc_md10", null ]
-        ] ],
-        [ "Threads of Sensors", "index.html#autotoc_md11", null ]
-      ] ],
-      [ "Packages", "index.html#autotoc_md12", null ],
-      [ "Usage", "index.html#autotoc_md13", null ],
-      [ "Contributing", "index.html#autotoc_md14", null ],
-      [ "License", "index.html#autotoc_md15", null ],
-      [ "Contact", "index.html#autotoc_md16", null ],
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -59,6 +52,7 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -67,7 +61,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Plate__Number_8cpp.html"
+"annotated.html",
+"thershold_8h.html#a473dc30411f3c4440e0577be8dd2ec43"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

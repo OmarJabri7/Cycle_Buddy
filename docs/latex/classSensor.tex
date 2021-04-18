@@ -16,27 +16,27 @@ Collaboration diagram for Sensor\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classSensor_acae0f6f3b42d935a2c816d593d20f20f}{Sensor}} (int $\ast$pin\+In, int $\ast$pin\+Out)
+\mbox{\hyperlink{classSensor_acae0f6f3b42d935a2c816d593d20f20f}{Sensor}} (\mbox{\hyperlink{classint}{int}} $\ast$pin\+In, \mbox{\hyperlink{classint}{int}} $\ast$pin\+Out)
 \item 
 void \mbox{\hyperlink{classSensor_a4ce1fa9c068da52565399b0992164d0e}{set\+Call\+Back}} (\mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}} $\ast$cb)
 \item 
-void \mbox{\hyperlink{classSensor_a6159d4e8944167e4052c7dafee3a4125}{start}} (int $\ast$pin\+In, int $\ast$pin\+Out, const int sensor\+Type)
+void \mbox{\hyperlink{classSensor_a6159d4e8944167e4052c7dafee3a4125}{start}} (\mbox{\hyperlink{classint}{int}} $\ast$pin\+In, \mbox{\hyperlink{classint}{int}} $\ast$pin\+Out, const \mbox{\hyperlink{classint}{int}} sensor\+Type)
 \item 
 void \mbox{\hyperlink{classSensor_a9634418f5e4af71e659a08dc4c5f4716}{stop}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{classSensor_a912fdb6c72ae18115b5faf8dac9886b4}{run\+\_\+hall}} (\mbox{\hyperlink{classSensor}{Sensor}} $\ast$sensor, int $\ast$pin\+In, int $\ast$pin\+Out)
+static void \mbox{\hyperlink{classSensor_a912fdb6c72ae18115b5faf8dac9886b4}{run\+\_\+hall}} (\mbox{\hyperlink{classSensor}{Sensor}} $\ast$sensor, \mbox{\hyperlink{classint}{int}} $\ast$pin\+In, \mbox{\hyperlink{classint}{int}} $\ast$pin\+Out)
 \item 
-static void \mbox{\hyperlink{classSensor_a083a7259934a7b667af80acbce6a628e}{run\+\_\+sonar}} (\mbox{\hyperlink{classSensor}{Sensor}} $\ast$sensor, int $\ast$pin\+In, int $\ast$pin\+Out)
+static void \mbox{\hyperlink{classSensor_a083a7259934a7b667af80acbce6a628e}{run\+\_\+sonar}} (\mbox{\hyperlink{classSensor}{Sensor}} $\ast$sensor, \mbox{\hyperlink{classint}{int}} $\ast$pin\+In, \mbox{\hyperlink{classint}{int}} $\ast$pin\+Out)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::thread $\ast$ \mbox{\hyperlink{classSensor_ae62fb266b3c31510d13eca6404505dee}{sensor\+Thread}} = N\+U\+LL
 \item 
-int \mbox{\hyperlink{classSensor_ae85d8e0aace2b85381dcc7632aba3381}{running}} = 0
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{classSensor_ae85d8e0aace2b85381dcc7632aba3381}{running}} = 0
 \item 
 \mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}} $\ast$ \mbox{\hyperlink{classSensor_a3787e8b888ea37ae31143a2ee44b6952}{sensor\+Cb}} = N\+U\+LL
 \end{DoxyCompactItemize}
@@ -56,7 +56,7 @@ March 2020
 \index{Sensor@{Sensor}!Sensor@{Sensor}}
 \index{Sensor@{Sensor}!Sensor@{Sensor}}
 \doxysubsubsection{\texorpdfstring{Sensor()}{Sensor()}}
-{\footnotesize\ttfamily Sensor\+::\+Sensor (\begin{DoxyParamCaption}\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Sensor\+::\+Sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+In,  }\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+Out }\end{DoxyParamCaption})}
 
 public functions/values accessible from threads. Default \mbox{\hyperlink{classSensor}{Sensor}} Constructor 
 \begin{DoxyParams}{Parameters}
@@ -72,7 +72,7 @@ public functions/values accessible from threads. Default \mbox{\hyperlink{classS
 \index{Sensor@{Sensor}!run\_hall@{run\_hall}}
 \index{run\_hall@{run\_hall}!Sensor@{Sensor}}
 \doxysubsubsection{\texorpdfstring{run\_hall()}{run\_hall()}}
-{\footnotesize\ttfamily void Sensor\+::run\+\_\+hall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensor}{Sensor}} $\ast$}]{sensor,  }\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily void Sensor\+::run\+\_\+hall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensor}{Sensor}} $\ast$}]{sensor,  }\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+In,  }\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -85,7 +85,7 @@ Here is the call graph for this function\+:\nopagebreak
 \index{Sensor@{Sensor}!run\_sonar@{run\_sonar}}
 \index{run\_sonar@{run\_sonar}!Sensor@{Sensor}}
 \doxysubsubsection{\texorpdfstring{run\_sonar()}{run\_sonar()}}
-{\footnotesize\ttfamily void Sensor\+::run\+\_\+sonar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensor}{Sensor}} $\ast$}]{sensor,  }\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily void Sensor\+::run\+\_\+sonar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensor}{Sensor}} $\ast$}]{sensor,  }\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+In,  }\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -116,7 +116,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{Sensor@{Sensor}!start@{start}}
 \index{start@{start}!Sensor@{Sensor}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
-{\footnotesize\ttfamily void Sensor\+::start (\begin{DoxyParamCaption}\item[{int $\ast$}]{pin\+In,  }\item[{int $\ast$}]{pin\+Out,  }\item[{const int}]{sensor\+Type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Sensor\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+In,  }\item[{\mbox{\hyperlink{classint}{int}} $\ast$}]{pin\+Out,  }\item[{const \mbox{\hyperlink{classint}{int}}}]{sensor\+Type }\end{DoxyParamCaption})}
 
 Start threads 
 \begin{DoxyParams}{Parameters}
@@ -150,7 +150,7 @@ Stop threads. Here is the caller graph for this function\+:\nopagebreak
 \index{Sensor@{Sensor}!running@{running}}
 \index{running@{running}!Sensor@{Sensor}}
 \doxysubsubsection{\texorpdfstring{running}{running}}
-{\footnotesize\ttfamily int Sensor\+::running = 0\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Sensor\+::running = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classSensor_a3787e8b888ea37ae31143a2ee44b6952}\label{classSensor_a3787e8b888ea37ae31143a2ee44b6952}} 
 \index{Sensor@{Sensor}!sensorCb@{sensorCb}}

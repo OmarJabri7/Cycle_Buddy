@@ -1,5 +1,5 @@
 <map id="SensorCallback" name="SensorCallback">
-<area shape="rect" id="node1" title=" " alt="" coords="110,5,233,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="98,5,221,83"/>
 <area shape="rect" id="node2" href="$classhallSampleCallback.html" title=" " alt="" coords="5,131,156,208"/>
-<area shape="rect" id="node3" href="$classsonarSampleCallback.html" title=" " alt="" coords="181,131,343,208"/>
+<area shape="rect" id="node3" href="$classsonarCallback.html" title=" " alt="" coords="181,131,295,208"/>
 </map>

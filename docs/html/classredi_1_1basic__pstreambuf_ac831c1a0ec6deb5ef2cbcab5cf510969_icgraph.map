@@ -1,0 +1,9 @@
+<map id="redi::basic_pstreambuf::read_err" name="redi::basic_pstreambuf::read_err">
+<area shape="rect" id="node1" title="Change active input source." alt="" coords="237,125,408,166"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__ipstream.html#a7057a0f44305277d67ee86e653e486e6" title="Set streambuf to read from process&#39; stderr." alt="" coords="7,5,187,32"/>
+<area shape="rect" id="node3" href="$classredi_1_1basic__pstream.html#a63a8021d6fe3ca821f2f78520c194e3c" title="Set streambuf to read from process&#39; stderr." alt="" coords="9,56,185,83"/>
+<area shape="rect" id="node4" href="$classredi_1_1basic__rpstream.html#a3170d8e6c74d8280d89918bb3334f324" title="Obtain a reference to the istream that reads the process&#39; stderr." alt="" coords="7,107,188,133"/>
+<area shape="rect" id="node5" href="$classredi_1_1basic__ipstream.html#a421171ef24c9f6b68b023e5ab30d9581" title="Set streambuf to read from process&#39; stdout." alt="" coords="6,157,189,184"/>
+<area shape="rect" id="node6" href="$classredi_1_1basic__pstream.html#ad9137d50003e6182cbc4fc25ee093bed" title="Set streambuf to read from process&#39; stdout." alt="" coords="8,208,187,235"/>
+<area shape="rect" id="node7" href="$classredi_1_1basic__rpstream.html#aa1de7000f183ef98a1be7b9c0e7a8590" title="Obtain a reference to the istream that reads the process&#39; stdout." alt="" coords="5,259,189,285"/>
+</map>

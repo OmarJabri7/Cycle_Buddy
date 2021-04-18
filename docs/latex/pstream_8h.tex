@@ -1,0 +1,98 @@
+\hypertarget{pstream_8h}{}\doxysection{src/pstream.h File Reference}
+\label{pstream_8h}\index{src/pstream.h@{src/pstream.h}}
+
+
+Declares all P\+Streams classes.  
+
+
+{\ttfamily \#include $<$ios$>$}\newline
+{\ttfamily \#include $<$streambuf$>$}\newline
+{\ttfamily \#include $<$istream$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+Include dependency graph for pstream.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pstream_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pstream_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structredi_1_1pstreams}{redi\+::pstreams}}
+\begin{DoxyCompactList}\small\item\em Common base class providing constants and typenames. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classredi_1_1basic__pstreambuf}{redi\+::basic\+\_\+pstreambuf$<$ Char\+T, Traits $>$}}
+\begin{DoxyCompactList}\small\item\em Class template for stream buffer. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classredi_1_1pstream__common}{redi\+::pstream\+\_\+common$<$ Char\+T, Traits $>$}}
+\begin{DoxyCompactList}\small\item\em Class template for common base class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classredi_1_1basic__ipstream}{redi\+::basic\+\_\+ipstream$<$ Char\+T, Traits $>$}}
+\begin{DoxyCompactList}\small\item\em Class template for Input P\+Streams. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classredi_1_1basic__opstream}{redi\+::basic\+\_\+opstream$<$ Char\+T, Traits $>$}}
+\begin{DoxyCompactList}\small\item\em Class template for Output P\+Streams. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classredi_1_1basic__pstream}{redi\+::basic\+\_\+pstream$<$ Char\+T, Traits $>$}}
+\begin{DoxyCompactList}\small\item\em Class template for Bidirectional P\+Streams. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classredi_1_1basic__rpstream}{redi\+::basic\+\_\+rpstream$<$ Char\+T, Traits $>$}}
+\begin{DoxyCompactList}\small\item\em Class template for Restricted P\+Streams. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceredi}{redi}}
+\begin{DoxyCompactList}\small\item\em All P\+Streams classes are declared in namespace redi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pstream_8h_a5c4f138ebedc8a045896cdd27a039baa}{P\+S\+T\+R\+E\+A\+M\+S\+\_\+\+V\+E\+R\+S\+I\+ON}}~0x0103
+\begin{DoxyCompactList}\small\item\em The library version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef basic\+\_\+pstreambuf$<$ char $>$ \mbox{\hyperlink{namespaceredi_a61a2d5e52aff7522cddbfca50e51466e}{redi\+::pstreambuf}}
+\begin{DoxyCompactList}\small\item\em Type definition for common template specialisation. \end{DoxyCompactList}\item 
+typedef basic\+\_\+ipstream$<$ char $>$ \mbox{\hyperlink{namespaceredi_a79a63a7aabe8195921dce43f74179b75}{redi\+::ipstream}}
+\begin{DoxyCompactList}\small\item\em Type definition for common template specialisation. \end{DoxyCompactList}\item 
+typedef basic\+\_\+opstream$<$ char $>$ \mbox{\hyperlink{namespaceredi_a9d1b2f460762a9489cc614900e016992}{redi\+::opstream}}
+\begin{DoxyCompactList}\small\item\em Type definition for common template specialisation. \end{DoxyCompactList}\item 
+typedef basic\+\_\+pstream$<$ char $>$ \mbox{\hyperlink{namespaceredi_ab4104b694bb99372359e0b475b281884}{redi\+::pstream}}
+\begin{DoxyCompactList}\small\item\em Type definition for common template specialisation. \end{DoxyCompactList}\item 
+typedef basic\+\_\+rpstream$<$ char $>$ \mbox{\hyperlink{namespaceredi_a92a19b0425d873c37a5b94a43acd1b47}{redi\+::rpstream}}
+\begin{DoxyCompactList}\small\item\em Type definition for common template specialisation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares all P\+Streams classes. 
+
+\begin{DoxyAuthor}{Author}
+Jonathan Wakely
+\end{DoxyAuthor}
+Defines classes \mbox{\hyperlink{namespaceredi_a79a63a7aabe8195921dce43f74179b75}{redi\+::ipstream}}, \mbox{\hyperlink{namespaceredi_a9d1b2f460762a9489cc614900e016992}{redi\+::opstream}}, \mbox{\hyperlink{namespaceredi_ab4104b694bb99372359e0b475b281884}{redi\+::pstream}} and \mbox{\hyperlink{namespaceredi_a92a19b0425d873c37a5b94a43acd1b47}{redi\+::rpstream}}. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pstream_8h_a5c4f138ebedc8a045896cdd27a039baa}\label{pstream_8h_a5c4f138ebedc8a045896cdd27a039baa}} 
+\index{pstream.h@{pstream.h}!PSTREAMS\_VERSION@{PSTREAMS\_VERSION}}
+\index{PSTREAMS\_VERSION@{PSTREAMS\_VERSION}!pstream.h@{pstream.h}}
+\doxysubsubsection{\texorpdfstring{PSTREAMS\_VERSION}{PSTREAMS\_VERSION}}
+{\footnotesize\ttfamily \#define P\+S\+T\+R\+E\+A\+M\+S\+\_\+\+V\+E\+R\+S\+I\+ON~0x0103}
+
+
+
+The library version. 
+

@@ -1,0 +1,7 @@
+<map id="redi::basic_pstreambuf::close_fd" name="redi::basic_pstreambuf::close_fd">
+<area shape="rect" id="node1" title="Helper function to close a file descriptor." alt="" coords="261,133,432,174"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__pstreambuf.html#a725edcfa569034899d63312fa8d98791" title="Close the stream buffer and wait for the process to exit." alt="" coords="19,5,199,61"/>
+<area shape="rect" id="node3" href="$classredi_1_1basic__pstreambuf.html#a8b7a0d3e1009028f3f6af0fe96a9743e" title="Helper function to close an array of file descriptors." alt="" coords="5,85,213,141"/>
+<area shape="rect" id="node4" href="$classredi_1_1basic__pstreambuf.html#a6937e84719c4eaf08f2a2e514ff98e93" title="Close the pipe connected to the process&#39; stdin." alt="" coords="19,165,199,221"/>
+<area shape="rect" id="node5" href="$classredi_1_1basic__pstreambuf.html#afa976526cfb7ea56e29afbee8ead68e1" title="Wait for the child process to exit." alt="" coords="19,245,199,301"/>
+</map>

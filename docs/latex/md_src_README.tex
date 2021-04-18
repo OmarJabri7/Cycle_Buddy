@@ -1,0 +1,274 @@
+\doxysubsection*{Cycle Buddy}
+
+~\newline
+ 
+
+\href{https://github.com/OmarJabri7/Cycle_Buddy}{\texttt{ ⭐️{\bfseries{Explore Our website»}}}} ~\newline
+ ~\newline
+   ~\newline
+ ~\newline
+ ⭐️\href{https://omarjabri7.github.io/Cycle_Buddy/}{\texttt{ {\bfseries{Explore the doxygen»}}}} ~\newline
+ 
+
+To keep people can ride bike more safely on the road. ~\newline
+ ~\newline
+ \href{https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw}{\texttt{ }}~~~~ \href{https://hackaday.io/project/179217-cycle-buddy}{\texttt{ }}~~~~ \href{https://twitter.com/buddy_cycle}{\texttt{ }}~~~~ ~\newline
+
+
+
+
+\href{https://github.com/OmarJabri7/Cycle_Buddy/graphs/contributors}{\texttt{ }} \href{https://github.com/OmarJabri7/Cycle_Buddy/network/members}{\texttt{ }} \href{https://github.com/OmarJabri7/Cycle_Buddy/stargazers}{\texttt{ }} \href{https://github.com/OmarJabri7/Cycle_Buddy/issues}{\texttt{ }} \href{https://github.com/OmarJabri7/Cycle_Buddy/blob/main/LICENSE}{\texttt{ }}
+
+
+
+$<$details open=\char`\"{}open\char`\"{}$>$ \doxysubsection*{Contents}
+
+
+\begin{DoxyEnumerate}
+\item \href{\#about}{\texttt{ About}} 
+\item \href{\#software}{\texttt{ Software}} 
+\item \href{\#hardware}{\texttt{ Hardware}} ~\newline
+  
+\item \href{\#roadmap}{\texttt{ Roadmap}} 
+\item \href{\#Packages}{\texttt{ Packages}} 
+\item \href{\#usage}{\texttt{ Usage}} 
+\item \href{\#Results & Real-Time Responsivness}{\texttt{ Results \& Real-\/\+Time Responsivness}} 
+\item \href{\#contributing}{\texttt{ Contributing}} 
+\item \href{\#license}{\texttt{ License}} 
+\item \href{\#contact}{\texttt{ Contact}} 
+\end{DoxyEnumerate}$<$/details$>$\hypertarget{md_src_README_autotoc_md5}{}\doxysubsection{About}\label{md_src_README_autotoc_md5}
+We are a group of graduate students currently studying at University of Glasgow. This is our course project for Real-\/\+Time Embedded Programming Project advised by Dr. Bernd Porr and Dr. Nicholas Bailey. For our team, two members major in Robotics \& Ai, one member majors in Electronic and Electrical Engineering.~\newline
+
+
+Our project, Cycle Buddy, is a system that detects cars that endanger the bikers on the road. Once the car overpasses our biker in a relative high speed and within a close distance, the system can detect this dangerous action and responds by capturing the car\textquotesingle{}s photo and recognize its car plate number. Then it will send the id, the photo and the velocity\& distance to the mobile application as long as the online database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcement to report the issue. ~\newline
+
+
+⭐️ \href{https://omarjabri7.github.io/Cycle_Buddy/}{\texttt{ {\bfseries{Doxygen about the project}}}}\hypertarget{md_src_README_autotoc_md6}{}\doxysubsubsection{Circuit of Cycle Buddy\+:}\label{md_src_README_autotoc_md6}
+ ~\newline
+~\newline
+ ~\newline
+ {\bfseries{Figure 1\+: Indoor circuit of Cycle Buddy}} ~\newline
+ 
+
+~\newline
+~\newline
+~\newline
+\hypertarget{md_src_README_autotoc_md7}{}\doxysubsection{Software}\label{md_src_README_autotoc_md7}
+\hypertarget{md_src_README_autotoc_md8}{}\doxysubsubsection{Necessary\+:}\label{md_src_README_autotoc_md8}
+
+\begin{DoxyItemize}
+\item \href{https://developer.android.com/studio}{\texttt{ {\bfseries{Android Studio}}}} ({\bfseries{Mobile Phone Application}})
+
+​ Android Studio provides the fastest tools for building apps on every type of Android device. We use it for connecting the raspberry pi and get real-\/time information from the raspberry pi, such as car distance, car velocity, and bike velocity.
+\item \href{https://visualstudio.microsoft.com/zh-hans/vs/}{\texttt{ {\bfseries{Visual Studio 2019}}}} ({\bfseries{Raspberry pi threads}})
+
+​ Visual Studio 2019 has the latest features to bring real-\/time collaboration so it is convenient for us to write C++ code for their project.
+\item \href{https://firebase.google.com/}{\texttt{ {\bfseries{Firebase}}}} ({\bfseries{Real time database}})
+
+​ Firebase is Google’s mobile application development platform that helps you build, improve, and grow your app. It manages our data and stores our license plate numbers which are from the Pi camera.
+\item \href{https://cmake.org/}{\texttt{ {\bfseries{Cmake}}}} ({\bfseries{Build up the full project}})
+
+​ C\+Make is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of our choice.
+\item \href{https://www.doxygen.nl/index.html}{\texttt{ {\bfseries{Doxygen}}}} ({\bfseries{document generation tool}})
+
+​ Doxygen is a document generation tool that extracts documents from code, organizes them, and outputs them into beautiful documents (H\+T\+ML, P\+DF, R\+TF, etc.).
+
+​ With the Doxygen tool, programmers can write code directly in the document, no longer need to write a separate document for a function of the code, thus keeping the document and code as consistent as possible.
+\item \href{https://www.openalpr.com/}{\texttt{ {\bfseries{Open\+A\+L\+PR -\/ Automatic License Plate Recognition}}}} ({\bfseries{A\+PI}})
+
+​ This A\+PI can recognize the license plate number directly from the picture, we find a GB (Great Britain, UK) lib trained model and use it.
+\end{DoxyItemize}\hypertarget{md_src_README_autotoc_md9}{}\doxysubsubsection{Optional\+:}\label{md_src_README_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Putty
+
+​ Find the IP address of raspberry pi simply.
+\item V\+NC (Other Remote Desktop Services are also fine)
+
+​ Use ssh services to log in to the raspberry pi so that we do not need to use H\+D\+MI or screen to connect to the raspberry pi. It is also convenient to use UI to code in raspberry pi.
+\item Typora
+
+​ Edit markdown and Html files for Doxygen and web page.
+\item \href{https://vehicleenquiry.service.gov.uk/?_ga=2.97692959.1629293611.1618412250-1021591735.1618412250}{\texttt{ {\bfseries{Search for the car information}}}}
+
+​ Here is the government website to search for the car information, so when we get the license plate number, we can search for it here. ~\newline
+~\newline
+~\newline
+
+\end{DoxyItemize}\hypertarget{md_src_README_autotoc_md10}{}\doxysubsection{Hardware}\label{md_src_README_autotoc_md10}
+\hypertarget{md_src_README_autotoc_md11}{}\doxysubsubsection{Main device\+:}\label{md_src_README_autotoc_md11}
+
+\begin{DoxyItemize}
+\item \href{https://thepihut.com/products/raspberry-pi-3-model-b-plus?src=raspberrypi}{\texttt{ Raspberry Pi 3 Model B +}} (￡33.90, {\bfseries{1}} is needed, not included)
+
+​ The Raspberry Pi 3 Model B is the earliest model of the third-\/generation Raspberry Pi. In our project, It can receive the real-\/time signals of the G\+P\+IO from all the sensors and deal with the real-\/time data.
+\end{DoxyItemize}\hypertarget{md_src_README_autotoc_md12}{}\doxysubsubsection{Sensors\+:}\label{md_src_README_autotoc_md12}
+
+\begin{DoxyItemize}
+\item \href{https://www.amazon.co.uk/AZDelivery-Linear-Magnetic-Sensor-Arduino/dp/B07DPVTKBB/ref=sr_1_4_sspa?dchild=1&keywords=Hall+Effect+Sensor&qid=1618406619&sr=8-4-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV1lEMzJNSUE5S1A4JmVuY3J5cHRlZElkPUEwMjc5ODE1MTI4TUc5SFI1R0gxUSZlbmNyeXB0ZWRBZElkPUEwMDIzNjQwMTkzSk03UDI4WFdROSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=}{\texttt{ Hall sensor}} (￡4.49, {\bfseries{1}} is needed)
+
+​ We use a hall sensor to detect the velocity of the bike. The theory is to put the magnets On the axle of the bicycle wheel. Make sure the hall sensor is close to magnets enough so that it can detect the magnetic field when the bike runs.
+\item \href{https://www.amazon.co.uk/HC-SR04-Ultrasonic-Distance-Measuring-Arduino/dp/B01DM8MRTS/ref=sr_1_7?dchild=1&keywords=Ultrasonic+Sensor&qid=1618407336&sr=8-7}{\texttt{ Ultrasonic sensor}}（￡3.99, {\bfseries{1}} is needed)
+
+​ The Ultrasonic sensor is to detect the distance between the bicycle and car. Besides, according to the velocity of the bicycle, it can calculate the velocity of the car.
+\item \href{https://www.amazon.co.uk/dp/B07XBKC6H7/ref=cm_sw_r_u_apa_glt_fabc_74TKMY2AH1HFZ4SVKC7J}{\texttt{ Pi camera}} （￡10.99, {\bfseries{1}} is needed)
+
+​ The Pi camera is to capture the picture of the car, especially capture the license plate number of the car. We find a feasible location for the Pi camera so that the
+\end{DoxyItemize}\hypertarget{md_src_README_autotoc_md13}{}\doxysubsubsection{Other auxiliary tools \+:}\label{md_src_README_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Male/\+Male, Female/\+Female and Male/\+Female wires ，magnets (approximately ￡ 2.\+34)
+\item G\+P\+IO Breakout Kit Expansion Board For Raspberry Pi 3 B+ (￡14.49)
+\item Power supply for Raspberry Pi or Power bank. (￡ 13.\+56)
+\end{DoxyItemize}
+
+​ {\bfseries{Overall}}, it costs us ￡49.86 except the {\bfseries{Raspberry Pi 3 Model B +}} for the project. ~\newline
+~\newline
+~\newline
+\hypertarget{md_src_README_autotoc_md14}{}\doxysubsection{Roadmap}\label{md_src_README_autotoc_md14}
+See the \href{https://github.com/OmarJabri7/Cycle_Buddy/issues}{\texttt{ open issues}} for a list of proposed features (and known issues).\hypertarget{md_src_README_autotoc_md15}{}\doxysubsubsection{Threads of Sensors}\label{md_src_README_autotoc_md15}
+3 threads\+: One is for ultrasonic sensors, one for hall sensor, the rest one is for Pi camera. ~\newline
+~\newline
+~\newline
+\hypertarget{md_src_README_autotoc_md16}{}\doxysubsection{Packages}\label{md_src_README_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Wiring\+Pi
+\item Raspicam
+\item Open\+A\+L\+PR
+\item J\+S\+ON
+\item Cmake ~\newline
+~\newline
+
+\end{DoxyItemize}\hypertarget{md_src_README_autotoc_md17}{}\doxysubsubsection{Packages Installations}\label{md_src_README_autotoc_md17}
+Before install any packages, please run the following\+:~\newline
+ sudo apt-\/get update \&\& upgrade~\newline
+
+\begin{DoxyEnumerate}
+\item \href{http://wiringpi.com/}{\texttt{ {\bfseries{Wiring\+Pi}}}}\+:~\newline
+ {\ttfamily sudo apt-\/get install wiringpi}~\newline
+
+\item \href{https://sourceforge.net/projects/raspicam/files/}{\texttt{ {\bfseries{Raspicam}}}} \+: (For Pi camera)~\newline
+ Download, build, make and install it.~\newline
+
+\item \href{https://github.com/openalpr/openalpr}{\texttt{ {\bfseries{Open\+A\+L\+PR}}}}\+: (Github page)~\newline
+ {\ttfamily sudo apt-\/get update \&\& sudo apt-\/get install -\/y openalpr openalpr-\/daemon openalpr-\/utils libopenalpr-\/dev}~\newline
+
+\item \href{https://github.com/nlohmann/json}{\texttt{ {\bfseries{J\+S\+ON Library}}}}\+: (Github page)~\newline
+ {\ttfamily sudo apt-\/get install -\/y nlohmann-\/json-\/dev}~\newline
+ If the above method does not work, please try the following\+:~\newline
+ a.{\ttfamily git clone \href{https://github.com/nlohmann/json.git}{\texttt{ https\+://github.\+com/nlohmann/json.\+git}}}~\newline
+ b.{\ttfamily cd json}~\newline
+ c.{\ttfamily mkdir build}~\newline
+ d.{\ttfamily cd build}~\newline
+ e.{\ttfamily cmake ..}~\newline
+ f.{\ttfamily make}~\newline
+ g.{\ttfamily make install}
+\item \href{https://cmake.org/}{\texttt{ {\bfseries{Cmake}}}} \+: (Website)~\newline
+
+
+Click and download it from the website above. ~\newline
+~\newline
+~\newline
+
+\end{DoxyEnumerate}\hypertarget{md_src_README_autotoc_md18}{}\doxysubsection{Usage}\label{md_src_README_autotoc_md18}
+This project is built using Cmake and Makefiles in order to allow users to easily run our code and tets it.~\newline
+ Please follow these necessary steps\+: ~\newline
+
+\begin{DoxyEnumerate}
+\item Clone the project with\+: ~\newline
+ {\ttfamily git clone \href{https://github.com/OmarJabri7/Cycle_Buddy.git}{\texttt{ https\+://github.\+com/\+Omar\+Jabri7/\+Cycle\+\_\+\+Buddy.\+git}}}~\newline
+
+\item Change directorites and relocate in Cycle\+\_\+\+Buddy project\+: ~\newline
+ {\ttfamily cd Cycle\+\_\+\+Buddy}~\newline
+
+\item Link the necessary executables and libraries using C\+Make\+: ~\newline
+ {\ttfamily cmake .}~\newline
+
+\item Build the project using make\+: ~\newline
+ {\ttfamily make}~\newline
+
+\item Generate Unit tests and check if all components pass\+:~\newline
+ {\ttfamily make test}~\newline
+
+\item Run the test file labeled Cycle\+\_\+\+Buddy\+: ~\newline
+ {\ttfamily ./\+Cycle\+\_\+\+Buddy}~\newline
+ For more {\bfseries{information}}, please visit this \href{https://www.youtube.com/watch?v=VLvaPXP31dk}{\texttt{ {\bfseries{Youtube link}}}} ~\newline
+~\newline
+~\newline
+
+\end{DoxyEnumerate}\hypertarget{md_src_README_autotoc_md19}{}\doxysubsection{Results \& Real-\/\+Time Responsivness\+:}\label{md_src_README_autotoc_md19}
+
+\begin{DoxyEnumerate}
+\item The Gif below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time\+: 
+\end{DoxyEnumerate}
+
+ ~\newline
+~\newline
+ ~\newline
+ {\bfseries{Figure 2\+: Real time demo}} ~\newline
+ 
+
+
+\begin{DoxyItemize}
+\item It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-\/time responsiveness of our system.
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it using the Open\+Alpr A\+PI\+: ~\newline
+ 
+\end{DoxyEnumerate}
+
+~\newline
+~\newline
+{\bfseries{Figure 3\+: Indoor and Outdoor results}}
+
+~\newline
+
+
+
+\begin{DoxyItemize}
+\item On the left, we have the results from the indoor testing, where the car plate is displayed on a phone screen.~\newline
+
+\item On the right, we have the results from the outdoor testing, where the car plate is captured by the camera on the streets of Glasgow.~\newline
+
+\item Moral of the story is, that the api is capable enough to recognize the car plates within any environment. Moreover, the data displayed under the Car Plate are the sensor readings at the instant of capturing the image. Thus, ensuring that the system operates in real time. ~\newline
+~\newline
+~\newline
+
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item The final thing to notice is how the system saves the relevant data once the image is captured, reinforcing the idea of a real-\/time embedded system\+: 
+\end{DoxyEnumerate}
+
+ ~\newline
+~\newline
+ ~\newline
+ {\bfseries{Figure 4\+: Real time \& Results snapshot}} ~\newline
+ 
+
+
+\begin{DoxyItemize}
+\item Notice how the car plate is equivalent (green square), alongside car distance, velocity and bike velocity (red square). ~\newline
+~\newline
+~\newline
+
+\end{DoxyItemize}\hypertarget{md_src_README_autotoc_md20}{}\doxysubsection{Contributing}\label{md_src_README_autotoc_md20}
+This is an open-\/source project, therefore, just fork it and build up the project according to the \mbox{\hyperlink{README_8md}{R\+E\+A\+D\+M\+E.\+md}} in every document. ~\newline
+~\newline
+~\newline
+\hypertarget{md_src_README_autotoc_md21}{}\doxysubsection{License}\label{md_src_README_autotoc_md21}
+Distributed under the G\+P\+L-\/3.\+0 License. See \href{https://github.com/OmarJabri7/Cycle_Buddy/blob/main/LICENSE}{\texttt{ {\ttfamily L\+I\+C\+E\+N\+SE}}} for more information. ~\newline
+~\newline
+~\newline
+\hypertarget{md_src_README_autotoc_md22}{}\doxysubsection{Contact}\label{md_src_README_autotoc_md22}
+
+\begin{DoxyItemize}
+\item Omar Jabri -\/ \href{https://github.com/OmarJabri7}{\texttt{ @\+Omar Jabri}} ~\newline
+
+\item Chang Liu -\/ \href{https://github.com/Cliu1993}{\texttt{ @\+Chang Liu}} ~\newline
+
+\item Yifan Xie -\/ \href{https://github.com/Yifan-Xie}{\texttt{ @\+Yifan Xie}} ~\newline
+
+\end{DoxyItemize}
+
+⭐️ {\bfseries{Project address}} -\/ \href{https://github.com/OmarJabri7/Cycle_Buddy}{\texttt{ @\+Project address}} 

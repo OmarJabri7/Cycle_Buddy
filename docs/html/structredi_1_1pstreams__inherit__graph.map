@@ -1,0 +1,11 @@
+<map id="redi::pstreams" name="redi::pstreams">
+<area shape="rect" id="node1" title="Common base class providing constants and typenames." alt="" coords="408,5,524,127"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__pstreambuf.html" title=" " alt="" coords="5,175,185,809"/>
+<area shape="rect" id="node3" href="$classredi_1_1pstream__common.html" title=" " alt="" coords="312,365,492,619"/>
+<area shape="rect" id="node4" href="$classredi_1_1basic__ipstream.html" title="Class template for Input PStreams." alt="" coords="49,857,206,1081"/>
+<area shape="rect" id="node5" href="$classredi_1_1basic__opstream.html" title="Class template for Output PStreams." alt="" coords="231,879,392,1059"/>
+<area shape="rect" id="node6" href="$classredi_1_1basic__pstream.html" title="Class template for Bidirectional PStreams." alt="" coords="416,865,569,1074"/>
+<area shape="rect" id="node7" href="$classredi_1_1basic__rpstream.html" title="Class template for Restricted PStreams." alt="" coords="593,865,752,1074"/>
+<area shape="rect" id="node8" href="$classredi_1_1basic__pstreambuf.html" title="Class template for stream buffer." alt="" coords="619,182,793,802"/>
+<area shape="rect" id="node9" href="$classredi_1_1pstream__common.html" title="Class template for common base class." alt="" coords="818,373,994,611"/>
+</map>

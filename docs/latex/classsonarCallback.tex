@@ -1,0 +1,52 @@
+\hypertarget{classsonarCallback}{}\doxysection{sonar\+Callback Class Reference}
+\label{classsonarCallback}\index{sonarCallback@{sonarCallback}}
+
+
+Inheritance diagram for sonar\+Callback\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classsonarCallback__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sonar\+Callback\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classsonarCallback__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsonarCallback_a820e4ba30c1ebdeeb6267de3d9a5c767}{data\+In}} (double t, bool is\+Interrupt=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Sample Call Back class inheriting \mbox{\hyperlink{classSensorCallback}{Sensor\+Callback}}, associated with the sonar sensor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsonarCallback_a820e4ba30c1ebdeeb6267de3d9a5c767}\label{classsonarCallback_a820e4ba30c1ebdeeb6267de3d9a5c767}} 
+\index{sonarCallback@{sonarCallback}!dataIn@{dataIn}}
+\index{dataIn@{dataIn}!sonarCallback@{sonarCallback}}
+\doxysubsubsection{\texorpdfstring{dataIn()}{dataIn()}}
+{\footnotesize\ttfamily virtual void sonar\+Callback\+::data\+In (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{bool}]{is\+Interrupt = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+Call back functin associated with sonar sensor to return the velocity readiings. 
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/ time of echo heading t obstacle and coming back as reading from sonar sensor \\
+\hline
+\end{DoxyParams}
+Send sensor readings to app
+
+Implements \mbox{\hyperlink{classSensorCallback_a3b896bfbc6395bcb87b5c25e859f3c97}{Sensor\+Callback}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{callback__sonar_8cpp}{callback\+\_\+sonar.\+cpp}}\end{DoxyCompactItemize}

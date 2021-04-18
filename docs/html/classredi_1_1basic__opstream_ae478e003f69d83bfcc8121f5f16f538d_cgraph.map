@@ -1,0 +1,4 @@
+<map id="redi::basic_opstream::peof" name="redi::basic_opstream::peof">
+<area shape="rect" id="node1" title="Manipulator to close the pipe connected to the process&#39; stdin." alt="" coords="5,5,164,47"/>
+<area shape="rect" id="node2" href="$classredi_1_1basic__pstreambuf.html#a6937e84719c4eaf08f2a2e514ff98e93" title="Close the pipe connected to the process&#39; stdin." alt="" coords="212,5,383,47"/>
+</map>
