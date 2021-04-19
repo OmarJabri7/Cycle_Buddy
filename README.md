@@ -68,10 +68,12 @@ Then it will send the plate number, its photo and the relevant sensor readings t
 </p>
 
 <p align="center">
-  <img height = 400 src="Images/diagram/Concept.png">    
+  <img height = 400 src="Images/diagram/Concept.png">
+   <br><br> 
+  <b>Figure 2: System design concept</b>
 </p>
 <br>  
-<b>Figure 2: System design concept</b>
+
 <br><br><br />
 
 
@@ -256,7 +258,7 @@ Please follow these necessary steps: <br/>
   <p align="center">
     <img height = 400 src="Images/realtime_demo_results/real-time-nature.gif">
     <br><br>    
-    <b>Figure 2: Real time demo</b>    
+    <b>Figure 3: Real time demo</b>    
   </p>
 
 
@@ -266,7 +268,7 @@ Please follow these necessary steps: <br/>
 
 2. The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it using the OpenAlpr API:
     <br>
-<p align="center"><img width="400" height="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png" style="margin-right: 50px" title="Indoor test results"><img width="400" height="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png" title="Outdoor test results"><br><br><b>Figure 3: Indoor and Outdoor results</b></p>
+<p align="center"><img width="400" height="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png" style="margin-right: 50px" title="Indoor test results"><img width="400" height="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png" title="Outdoor test results"><br><br><b>Figure 4: Indoor and Outdoor results</b></p>
 <br>
 
 * On the left, we have the results from the indoor testing, where the car plate is displayed on a phone screen.<br>
@@ -280,7 +282,7 @@ Please follow these necessary steps: <br/>
 <p align="center">
     <img src="Images/realtime_demo_results/Results+RealTime.png">
     <br><br>    
-    <b>Figure 4: Real time & Results snapshot</b>    
+    <b>Figure 5: Real time & Results snapshot</b>    
   </p>
 
 
