@@ -225,17 +225,21 @@ Please follow these necessary steps: <br/>
     `git clone https://github.com/OmarJabri7/Cycle_Buddy.git`<br/>
 2. Change directorites and relocate in Cycle_Buddy project: <br/>
     `cd Cycle_Buddy`<br/>
-3. Link the necessary executables and libraries using CMake: <br/>
-    `cmake .`<br/>
-4. Build the project using make: <br/>
-    `make`<br/>
-5. Before Testing and Running the system: <br>
+3. Make Build directory containing all executables: <br>
+    `mkdir build && cd build`
+4. Link the necessary executables and libraries using CMake (in build dir): <br>
+    `cmake ..`<br/>
+5. Build the project using make (in build dir): <br/>
+     `make`<br/>
+6. Before Testing and Running the system: <br>
     Be sure to either use our GPIO setup, or change to your own in: <br>
     [GPIO numbering](src/gpio_def.h)
-6. Generate Unit tests and check if all components pass:<br>
+7. Generate Unit tests and check if all components pass (in build dir):<br>
    `make test`<br>
-7. Run the test file labeled Cycle_Buddy: <br/>
-    `./Cycle_Buddy`<br/>
+8. Go to main directory:
+    `cd ..`
+10. Run the bash script labeled run.sh: <br/>
+    `./run.sh`<br/>
 <b>Youtube Links</b>: <br>
 [**How to setup the system**](https://www.youtube.com/watch?v=VLvaPXP31dk)<br>
 [**How to run the system (full flow of execution example)**](https://www.youtube.com/watch?v=jFNNWsNNDZw)
