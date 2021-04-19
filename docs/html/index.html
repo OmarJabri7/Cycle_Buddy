@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">Project structure </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The project is composed by two separate sections, an embedded system developed with C++, and an android application developed with JavaScript. This part will focus on introducing the structure of the embedded system using C++.</p>
+<div class="textblock"><p>The project is composed by two separate sections, an embedded system developed with C++, and an android application developed with Java. This part will focus on introducing the structure of the embedded system using C++.</p>
 <p>The embedded system can be separated into 4 part, they are in charge of connection, two types of sensors and the camera. Each part has its own cpp file:</p>
 <p>First the raspi system will establish connection with the mobile application. after connecting with the cellphone, the raspi system will then start three thread at the same time, each in charge of a unique hardware action for the system. The three hardware components are one hall-effect sensor, one ultrasonic radar and one Pi camera. The camera is in standby while the hall-effect sensor and ultrasonic radar refresh data in a frequency of 2Hz. Also, we use volatile variable and mutex locks to allow communication between the three-running thread</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
