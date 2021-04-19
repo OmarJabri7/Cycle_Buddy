@@ -161,12 +161,13 @@ See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a li
 
 
 
-## Packages
+## Package Prerequisites
 * WiringPi 
 * Raspicam
 * OpenALPR
 * JSON
 * Cmake
+* Pyrebase
 <br><br />
 
 ### Packages Installations
@@ -192,6 +193,9 @@ sudo apt-get update && upgrade<br>
 5. [**Cmake**](https://cmake.org/) : (Website)<br>
 
    Click and download it from the website above.
+6. [**Pyrebase**]: <br>
+    pip3 install pyrebase
+    pip install pyrebase
 <br><br><br />
 
 
