@@ -1,4 +1,4 @@
-<h2 align="center">Cycle Buddy</h2>  
+<h2 align="center">Cycle Buddy - Team 16</h2>  
 <p align="center">
   <a href="https://github.com/OmarJabri7/Cycle_Buddy">
     ⭐️<a href="https://yifan-xie.github.io/"><strong>Explore Our website»</strong></a>
