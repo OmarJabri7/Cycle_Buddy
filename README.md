@@ -53,8 +53,9 @@
 ## About
 We are a group of graduate students currently studying at the University of Glasgow.  This github page represents our coursework for Real-Time Embedded Programming Project supervised by Dr. Bernd Porr and Dr. Nicholas Bailey. Our team, is enriched by two members majoring in Robotics & Ai, one member majoring in Electronics and Electrical Engineering.<br>
 
-Our project, Cycle Buddy, is a system that detects cars that endanger everyday cyclits. Once the car overpasses the biker's path with a relative high speed and within a close distance, the system can detect this unjust act and stimulates a camera to capture the car's plate number and recognizes it using a Computer Vision API. <br>
-Then it will send the plate number, its photo and the relevant sensor readings to the mobile application which then stores the proof data in an online real-time database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcements to report the issue. <br />
+Our project, Cycle Buddy, is a system that detects cars that endanger everyday cyclits. <br>
+Once the car overpasses the biker's path with a relative high speed and within a close distance, the system can detect this unjust act and stimulates a camera to capture the car's plate number and recognizes it using a Computer Vision API. <br>
+Then it will send the plate number, its photo and the relevant sensor readings to the mobile application through <b>socket connections</b>, which then stores the proof data in an online real-time database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcements to report the issue. <br />
 
 ⭐️ [**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
@@ -101,7 +102,7 @@ Then it will send the plate number, its photo and the relevant sensor readings t
 ### Optional: 
 * Putty
 
-  ​	Find the IP address of raspberry pi simply. 
+  ​	Simplifies SSH connections to the Raspberry Pi.
 
 * VNC (Other Remote Desktop Services are also fine) 
 
@@ -109,11 +110,11 @@ Then it will send the plate number, its photo and the relevant sensor readings t
 
 *  Typora 
 
-  ​	Edit markdown and Html files for Doxygen and web page.
+  ​	Edit markdown and Html files for Doxygen and web page in a clear setup.
 
 * [**Search for the car information**](https://vehicleenquiry.service.gov.uk/?_ga=2.97692959.1629293611.1618412250-1021591735.1618412250)
 
-  ​	Here is the government website to search for the car information, so when we get the license plate number, we can search for it here.
+  ​	Here is the government website to search for the car information, so when we get the license plate number, we can extract the car information to alert  the authorities.
 <br><br><br />
 
 
@@ -128,15 +129,15 @@ Then it will send the plate number, its photo and the relevant sensor readings t
 ### Sensors:
 * [Hall sensor](https://www.amazon.co.uk/AZDelivery-Linear-Magnetic-Sensor-Arduino/dp/B07DPVTKBB/ref=sr_1_4_sspa?dchild=1&keywords=Hall+Effect+Sensor&qid=1618406619&sr=8-4-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV1lEMzJNSUE5S1A4JmVuY3J5cHRlZElkPUEwMjc5ODE1MTI4TUc5SFI1R0gxUSZlbmNyeXB0ZWRBZElkPUEwMDIzNjQwMTkzSk03UDI4WFdROSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) (￡4.49, **1** is needed)
 
-  ​	We use a hall sensor to detect the velocity of the bike. The theory is to put the magnets On the axle of the bicycle wheel. Make sure the hall sensor is close to magnets enough so that it can detect the magnetic field when the bike runs.
+  ​	We use a hall sensor to detect the velocity of the bike. The theory is to put the magnets on the axle of the bicycle wheel. Make sure the hall sensor is close to magnets enough so that it can detect the magnetic field when the bike runs. Hence estimating the bike's velocity from the rotations of the wheel.
 
 * [Ultrasonic sensor](https://www.amazon.co.uk/HC-SR04-Ultrasonic-Distance-Measuring-Arduino/dp/B01DM8MRTS/ref=sr_1_7?dchild=1&keywords=Ultrasonic+Sensor&qid=1618407336&sr=8-7)（￡3.99,  **1** is needed)
 
-  ​	The Ultrasonic sensor is to detect the distance between the bicycle and car. Besides, according to the velocity of the bicycle, it can calculate the velocity of the car. 
+  ​	The Ultrasonic sensor is to detect the distance between the bicycle and car. Alongside, calculating the velocity of the incoming car by differentiating its position.
 
 * [Pi camera](https://www.amazon.co.uk/dp/B07XBKC6H7/ref=cm_sw_r_u_apa_glt_fabc_74TKMY2AH1HFZ4SVKC7J) （￡10.99, **1** is needed) 
 
-  ​	The Pi camera is to capture the picture of the car, especially capture the license plate number of the car. We find a feasible location for the Pi camera so that the 
+  ​	The Pi camera is used to capture the picture of the car plate. We found a feasible location for the Pi camera so that it has a strategic point to always capture a clear view of the plate number.
 
 ### Other auxiliary tools :
 
@@ -155,12 +156,12 @@ Then it will send the plate number, its photo and the relevant sensor readings t
 ## Roadmap
 See the [open issues](https://github.com/OmarJabri7/Cycle_Buddy/issues) for a list of proposed features (and known issues).
 
-### Threads of Sensors 
-3 threads: One is for ultrasonic sensors, one for hall sensor, the  rest one is for Pi camera.
-<br><br><br />
-
-
-
+### Threading Pipeline 
+The system is split into three threads:
+1. Main Thread that extracts information from the remaining threads and sends them to the mobile application
+2. Ultrasonic Sensor thread, event driven thread that captures readings from the sensor and sends the data through a socket connection to the application which plots it in real time.
+3. Hall Effect Sensor thread, event driven thread that captures readings from the sensor and sends the data through a socket connection to the application which plots it in real time.
+<br><br>
 
 ## Package Prerequisites
 * WiringPi 
