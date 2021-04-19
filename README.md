@@ -4,23 +4,23 @@
     ⭐️<a href="https://yifan-xie.github.io/"><strong>Explore Our website»</strong></a>
     <br />
     <br />
-    <img src="Images/Logo.png" alt="Logo" >
+    <img src="Images/logo/Logo.png" alt="Logo" >
   </a>
     <br />
     <br />
     ⭐️<a href="https://omarjabri7.github.io/Cycle_Buddy/"><strong>Explore the doxygen»</strong></a>  
   <p align="center">
-    Built by cyclists, for cyclists, keep safe with Cycle Buddy!
+      <strong>Built by cyclists, for cyclists, keep safe with Cycle Buddy!</strong>
     <br />
     <br />
-    <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/youtube_social_circle_red.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://hackaday.io/project/179217-cycle-buddy"><img height=40 src="Images/hackaday.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://twitter.com/buddy_cycle"><img height=40 src="Images/2021%20Twitter%20logo%20-%20blue.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/logo/youtube_log.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://hackaday.io/project/179217-cycle-buddy"><img height=40 src="Images/logo/hackaday_logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://twitter.com/buddy_cycle"><img height=40 src="Images/twitter_logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
+
 
 
 <div align="center">
-
 [![Contributors](https://img.shields.io/github/contributors/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/graphs/contributors)
 [![Forks](https://img.shields.io/github/forks/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/network/members)
 [![Stars](https://img.shields.io/github/stars/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/stargazers)
@@ -63,10 +63,11 @@ Then it will send the plate number, its photo and the relevant sensor readings t
 ### Circuit of Cycle Buddy: 
 
 <p align="center">
-  <img height = 400 src="Images/MicrosoftTeams-image.png">
+  <img height = 400 src="Images/sensor_circuit/circuits.png">
   <br><br>    
   <b>Figure 1: Indoor circuit of Cycle Buddy</b>    
 </p>
+
 <br><br><br />
 
 
@@ -233,17 +234,18 @@ Please follow these necessary steps: <br/>
 ## Results & Real-Time Responsiveness:
 1. The Gif below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
   <p align="center">
-    <img height = 400 src="Images/real-time-nature.gif">
+    <img height = 400 src="Images/realtime_demo_results/real-time-nature.gif">
     <br><br>    
     <b>Figure 2: Real time demo</b>    
   </p>
-  
+
+
 * It is clear to note how the timestamp emerging from the raspberry pi is the same as the one displayed in the android app. This reinforces the real-time responsiveness of our system.
 
   
 
 2. The image below demonstrates how the system triggers the Pi Camera to capture an image of the car plate and recognizes it using the OpenAlpr API:
-  <br>
+    <br>
 <p align="center"><img width="400" height="500" alt="results-app" src="https://user-images.githubusercontent.com/35663665/115084304-985d4d80-9f00-11eb-9685-0603499ff66d.png" style="margin-right: 50px" title="Indoor test results"><img width="400" height="500" alt="results_outdoor" src="https://user-images.githubusercontent.com/35663665/115085960-4cf86e80-9f03-11eb-9872-c7964fdc4ee3.png" title="Outdoor test results"><br><br><b>Figure 3: Indoor and Outdoor results</b></p>
 <br>
 
@@ -256,11 +258,12 @@ Please follow these necessary steps: <br/>
 
 3. The final thing to notice is how the system saves the relevant data once the image is captured, reinforcing the idea of a real-time embedded system:
 <p align="center">
-    <img src="Images/Results+RealTime.png">
+    <img src="Images/realtime_demo_results/Results+RealTime.png">
     <br><br>    
     <b>Figure 4: Real time & Results snapshot</b>    
   </p>
-  
+
+
 * Notice how the car plate is equivalent (green square), alongside car distance, velocity and bike velocity (red square).
 <br><br><br />
 <!-- Contributing -->
