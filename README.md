@@ -52,7 +52,7 @@
 ## About
 We are a group of graduate students currently studying at the University of Glasgow.  This github page represents our coursework for Real-Time Embedded Programming Project supervised by Dr. Bernd Porr and Dr. Nicholas Bailey. Our team, is enriched by two members majoring in Robotics & Ai, one member majoring in Electronics and Electrical Engineering.<br>
 
-Our project, Cycle Buddy, is a system that detects cars that endanger everyday cyclits. <br>
+Our project, Cycle Buddy, is a system that detects cars that endanger everyday cyclists. <br>
 Once the car overpasses the biker's path with a relative high speed and within a close distance, the system can detect this unjust act and stimulates a camera to capture the car's plate number and recognizes it using a Computer Vision API. <br>
 
 Then it will send the plate number, its photo and the relevant sensor readings to the mobile application through <b>socket connections</b>, which then stores the proof data in an online real-time database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcements to report the issue. <br />
