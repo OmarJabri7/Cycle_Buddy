@@ -243,7 +243,7 @@ Please follow these necessary steps: <br/>
 11. Run the bash script labeled run.sh: <br/>
     `./run.sh`<br/>
 <b>Youtube Links</b>: <br>
-[**How to setup the system**](https://www.youtube.com/watch?v=VLvaPXP31dk)<br>
+[**How to setup the system**](https://youtu.be/hLp1nWcYq-g)<br>
 [**How to run the system (full flow of execution example)**](https://www.youtube.com/watch?v=jFNNWsNNDZw)
 <br><br><br />
 
