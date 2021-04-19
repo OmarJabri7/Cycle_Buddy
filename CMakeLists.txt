@@ -19,6 +19,8 @@ find_package(nlohmann_json REQUIRED
 find_library(wiringPi_LIB wiringPi)
 find_package(raspicam REQUIRED)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin/)
+
 add_executable(Cycle_Buddy 
             src/main.cpp
             src/sensors.cpp)
