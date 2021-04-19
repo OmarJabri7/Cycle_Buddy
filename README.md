@@ -221,7 +221,7 @@ Please follow these necessary steps: <br/>
    `make test`<br>
 7. Run the test file labeled Cycle_Buddy: <br/>
     `./Cycle_Buddy`<br/>
-Youtube Links: <br>
+<b>Youtube Links</b>: <br>
 [**How to setup the system**](https://www.youtube.com/watch?v=VLvaPXP31dk)<br>
 [**How to run the system (full flow of execution example)**](https://www.youtube.com/watch?v=jFNNWsNNDZw)
 <br><br><br />
