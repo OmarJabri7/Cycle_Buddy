@@ -217,11 +217,13 @@ Please follow these necessary steps: <br/>
 5. Before Testing and Running the system: <br>
     Be sure to either use our GPIO setup, or change to your own in: <br>
     [GPIO numbering](src/gpio_def.h)
-7. Generate Unit tests and check if all components pass:<br>
+6. Generate Unit tests and check if all components pass:<br>
    `make test`<br>
-6. Run the test file labeled Cycle_Buddy: <br/>
+7. Run the test file labeled Cycle_Buddy: <br/>
     `./Cycle_Buddy`<br/>
-For more <b>information</b>, please visit this [**Youtube link**](https://www.youtube.com/watch?v=VLvaPXP31dk)
+Youtube Links: <br>
+[**How to setup the system**](https://www.youtube.com/watch?v=VLvaPXP31dk)<br>
+[**How to run the system (full flow of execution example)**](https://www.youtube.com/watch?v=jFNNWsNNDZw)
 <br><br><br />
 
 
