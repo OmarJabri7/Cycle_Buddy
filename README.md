@@ -13,7 +13,7 @@
       <strong>Built by cyclists, for cyclists, keep safe with Cycle Buddy!</strong>
     <br />
     <br />
-    <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/logo/youtube_log.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.youtube.com/channel/UC4mHw6LXU8YYIvdZxgI5Btw"><img height=40 src="Images/logo/youtube_logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://hackaday.io/project/179217-cycle-buddy"><img height=40 src="Images/logo/hackaday_logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://twitter.com/buddy_cycle"><img height=40 src="Images/logo/twitter_logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
