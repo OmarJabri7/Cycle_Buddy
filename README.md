@@ -194,8 +194,8 @@ sudo apt-get update && upgrade<br>
 
    Click and download it from the website above.
 6. [**Pyrebase**]: <br>
-    pip3 install pyrebase
-    pip install pyrebase
+    `pip3 install pyrebase` <br>
+    `pip install pyrebase`
 <br><br><br />
 
 
