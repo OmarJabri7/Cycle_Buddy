@@ -184,7 +184,15 @@ sudo apt-get update && upgrade<br>
 1. [**WiringPi**](http://wiringpi.com/):<br>
    `sudo apt-get install wiringpi`<br/>
 2. [**Raspicam**](https://sourceforge.net/projects/raspicam/files/) : (For Pi camera)<br>
-    Download, build, make and install it.<br>
+  Download folder from that link and:<br>
+   a. `tar xvzf raspicamxx.tgz`<br>
+   b. `cd raspicamxx`<br>
+   c. `mkdir build`<br>
+   d. `cd build`<br>
+   e. `cmake ..`<br>
+   f. `make` <br>
+   g. `sudo make install` <br>
+   
 3. [**OpenALPR**](https://github.com/openalpr/openalpr):  (Github page)<br>
    `sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev`<br>
 4. [**JSON Library**](https://github.com/nlohmann/json):  (Github page)<br>
@@ -196,15 +204,16 @@ sudo apt-get update && upgrade<br>
    d.`cd build`<br>
    e.`cmake ..`<br>
    f.`make`<br>
-   g.`make install`
+   g.`sudo make install`
 
 5. [**Cmake**](https://cmake.org/) : (Website)<br>
 
    Click and download it from the website above.
 6. [**Pyrebase**](https://github.com/thisbejim/Pyrebase): Github page<br>
     `pip3 install pyrebase` <br>
-    `pip install pyrebase`
-<br><br><br />
+    `pip install pyrebase`<br>
+7. Android APK File: <br>
+    Just download the [Android Application](CycleBuddyApp.apk) onto your phone and enjoy!
 
 
 
