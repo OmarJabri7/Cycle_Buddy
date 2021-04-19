@@ -18,9 +18,8 @@
     <a href="https://twitter.com/buddy_cycle"><img height=40 src="Images/twitter_logo.png"></img></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
 
-
-
 <div align="center">
+  
 [![Contributors](https://img.shields.io/github/contributors/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/graphs/contributors)
 [![Forks](https://img.shields.io/github/forks/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/network/members)
 [![Stars](https://img.shields.io/github/stars/OmarJabri7/Cycle_Buddy.svg?style=for-the-badge)](https://github.com/OmarJabri7/Cycle_Buddy/stargazers)
