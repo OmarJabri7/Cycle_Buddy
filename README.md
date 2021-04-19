@@ -214,7 +214,10 @@ Please follow these necessary steps: <br/>
     `cmake .`<br/>
 4. Build the project using make: <br/>
     `make`<br/>
-5. Generate Unit tests and check if all components pass:<br>
+5. Before Testing and Running the system: <br>
+    Be sure to either use our GPIO setup, or change to your own in: <br>
+    [GPIO numbering](src/gpio_def.h)
+7. Generate Unit tests and check if all components pass:<br>
    `make test`<br>
 6. Run the test file labeled Cycle_Buddy: <br/>
     `./Cycle_Buddy`<br/>
