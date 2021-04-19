@@ -238,7 +238,9 @@ Please follow these necessary steps: <br/>
    `make test`<br>
 8. Go to main directory:
     `cd ..`
-10. Run the bash script labeled run.sh: <br/>
+9. Make sure you have permissions to execute run.sh: <br>
+    `chmod +x run.sh`
+11. Run the bash script labeled run.sh: <br/>
     `./run.sh`<br/>
 <b>Youtube Links</b>: <br>
 [**How to setup the system**](https://www.youtube.com/watch?v=VLvaPXP31dk)<br>
