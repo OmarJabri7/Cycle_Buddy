@@ -55,6 +55,7 @@ We are a group of graduate students currently studying at the University of Glas
 
 Our project, Cycle Buddy, is a system that detects cars that endanger everyday cyclits. <br>
 Once the car overpasses the biker's path with a relative high speed and within a close distance, the system can detect this unjust act and stimulates a camera to capture the car's plate number and recognizes it using a Computer Vision API. <br>
+
 Then it will send the plate number, its photo and the relevant sensor readings to the mobile application through <b>socket connections</b>, which then stores the proof data in an online real-time database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcements to report the issue. <br />
 
 ⭐️ [**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
