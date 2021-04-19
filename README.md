@@ -67,6 +67,11 @@ Then it will send the plate number, its photo and the relevant sensor readings t
   <b>Figure 1: Indoor circuit of Cycle Buddy</b>    
 </p>
 
+<p align="center">
+  <img height = 400 src="Images/diagram/Concept.png">    
+</p>
+<br>  
+<b>Figure 2: System design concept</b>
 <br><br><br />
 
 
