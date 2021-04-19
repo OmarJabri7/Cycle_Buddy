@@ -322,7 +322,7 @@ Distributed under the GPL-3.0 License. See [`LICENSE`](https://github.com/OmarJa
 ## Acknowledgments
 
 For a wrap up, we would like to show our appreciation to: <br>
-* [**Dr. Bern Porr**](https://github.com/berndporr)  for guiding us on the necessary modules to use in the system and for valuable tips and advices regarding the real-time aspect behind our system<br>
+* [**Dr. Bernd Porr**](https://github.com/berndporr)  for guiding us on the necessary modules to use in the system and for valuable tips and advices regarding the real-time aspect behind our system<br>
 * [**Dr. Nicholas Bailey**](https://github.com/nick-bailey) for showing us the necessary tricks and tools to document and market our product in a professional and efficient manner.<br>
 * All teaching assistants for being there whenever we had questions and doubts and aiding us on moving forward.<br>
 
