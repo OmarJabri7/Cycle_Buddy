@@ -40,7 +40,7 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#Packages">Packages</a>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#Results & Real-Time Responsivness">Results & Real-Time Responsivness</a></li>
+    <li><a href="#Results & Real-Time Responsiveness">Results & Real-Time Responsiveness</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -51,9 +51,32 @@
 <!-- Project descirption -->
 
 ## About
-We are a group of graduate students currently studying at University of Glasgow.  This is our course project for Real-Time Embedded Programming Project advised by Dr. Bernd Porr and Dr. Nicholas Bailey. For our team, two members major in Robotics & Ai, one member majors in Electronic and Electrical Engineering.<br>
+We are a group of graduate students currently studying at the University of Glasgow.  This github page represents our coursework for Real-Time Embedded Programming Project supervised by Dr. Bernd Porr and Dr. Nicholas Bailey. Our team, is enriched by two members majoring in Robotics & Ai, one member majoring in Electronics and Electrical Engineering.<br>
 
-Our project, Cycle Buddy, is a system that detects cars that endanger the bikers on the road. Once the car overpasses our biker in a relative high speed and within a close distance, the system can detect this dangerous action and responds by capturing the car's photo and recognize its car plate number. Then it will send the id, the photo and the velocity& distance to the mobile application as long as the online database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcement to report the issue. <br />
+Our project, Cycle Buddy, is a system that detects cars that endanger everyday cyclits. Once the car overpasses the biker's path with a relative high speed and within a close distance, the system can detect this unjust act and stimulates a camera to capture the car's plate number and recognizes it using a Computer Vision API. <br>
+Then it will send the plate number, its photo and the relevant sensor readings to the mobile application which then stores the proof data in an online real-time database. With those infomation recorded as evidence, the bikers can then use it to contact local law enforcements to report the issue. <br />
+
+So how does Cycle Buddy work? <br>
+
+Cycle Buddy is built directly onto the user's bicycle.<br>
+
+First of all, let us tackle what are the roles of the sensors.<br>
+
+1. Ultrasonic Sensor: The latter aims at capturing the distance from the car relative to to the bike. Moreover, it will extract the speed at which the car was coming at with cm/s as units.<br>
+
+2. Hall Effect Sensor: This sensor will enable the system to know when the bike is rotating, giving us its velocity with cm/s as units. This is needed to understand if the car is parked or not. We would not want to blame a driverless car.<br>
+
+3. Pi Camera: Once the camera is triggered, it will be situated strategically to ensure it captures the driver's car plate. Once done, the system will send the captured image to an API that will recognise the car plate using Computer Vision.<br>
+
+Moreover, the system includes some external components:<br>
+
+1. Android app that can be easily downloaded by the user, which has the following assets:<br>
+It plots the real time data coming from the sensor readings (car distance and velocity, bike velocity)<br>
+Once a car gets too close to the bike at high speeds, it will extract the image and display the car plate's image and its recognised symbols, the car velocity, distance and the bike velocity at the instant the camera was triggered.<br>
+2. Firebase:<br>
+A real time database that stores the results stated above which enables safe storage for the proof.<br>
+3. Car Enquiry Website for UK cars:<br>
+Once the users have all the data needed, and especially the car plate of the driver's vehicle, they can visit the following link:<br> https://vehicleenquiry.service.gov.uk/, plugging in the car plate recognised, and having enough proof to contact local authorities.<br>
 
 ⭐️ [**Doxygen about the project**](https://omarjabri7.github.io/Cycle_Buddy/)
 
@@ -222,7 +245,7 @@ For more <b>information</b>, please visit this [**Youtube link**](https://www.yo
 
 
 
-## Results & Real-Time Responsivness:
+## Results & Real-Time Responsiveness:
 1. The Gif below demonstrates the real time nature of the system, where each sensor reading is sent to the android application and plotted in real time:
   <p align="center">
     <img height = 400 src="Images/real-time-nature.gif">
